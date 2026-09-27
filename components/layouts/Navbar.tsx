@@ -9,6 +9,17 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [showAmenitiesNav, setShowAmenitiesNav] = useState(false);
+
+  useEffect(() => {
+    const host = window.location.hostname.replace(/^www\./, "").toLowerCase();
+    const amenityHosts = [
+      "findlonemountainhomes.com",
+      "lonemountainheights.com",
+      "lonemountainvistas.com",
+    ];
+    setShowAmenitiesNav(amenityHosts.includes(host));
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +32,9 @@ export default function Navbar() {
   const mainNavLinks = [
     { href: "/", label: "Home", external: false },
     { href: "http://drjanduffy.realscout.com/", label: "Properties", external: true },
+    ...(showAmenitiesNav
+      ? [{ href: "/amenities", label: "Nearby Amenities", external: false as const }]
+      : []),
     { href: "/neighborhoods", label: "Neighborhoods", external: false },
     { href: "/about", label: "About", external: false },
     { href: "/contact", label: "Contact", external: false },
