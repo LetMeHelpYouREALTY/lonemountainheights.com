@@ -11,7 +11,7 @@ const nextConfig = {
     minimumCacheTTL: 31536000, // 1 year
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
-    contentSecurityPolicy: "default-src 'self'; script-src https://widgetbe.com https://*.widgetbe.com 'none'; sandbox;",
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
   // Compression
