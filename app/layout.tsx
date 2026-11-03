@@ -5,6 +5,7 @@ import { headers } from "next/headers";
 import { getDomainConfig } from "@/lib/domain-config";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
+import RealtorAnalytics from "../components/analytics/RealtorAnalytics";
 
 export async function generateMetadata(): Promise<Metadata> {
   const domain = headers().get("x-domain") || "";
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {children}
         <Analytics />
+        <RealtorAnalytics siteName="lonemountainheights.com" />
       </body>
     </html>
   );
