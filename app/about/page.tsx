@@ -1,6 +1,7 @@
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
-import RealScoutListings from "@/components/realscout/RealScoutListings";
+import DomainRealScoutListings from "@/components/realscout/DomainRealScoutListings";
+import { AgentPortrait } from "@/components/brand/AgentPortrait";
 import Link from "next/link";
 import { 
   Phone, 
@@ -223,14 +224,7 @@ export default function AboutPage() {
 
               {/* Stats & Credentials */}
               <div className="space-y-6">
-                {/* Agent Photo Placeholder */}
-                <div className="bg-gradient-to-br from-blue-100 to-slate-100 rounded-lg p-8 aspect-square flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-6xl mb-4">👩‍💼</div>
-                    <p className="text-slate-600 font-semibold">Dr. Jan Duffy</p>
-                    <p className="text-sm text-slate-500">BHHS Nevada Properties</p>
-                  </div>
-                </div>
+                <AgentPortrait className="relative aspect-[3/4] w-full overflow-hidden rounded-xl shadow-lg" />
 
                 {/* Stats Grid */}
                 <div className="grid grid-cols-2 gap-4">
@@ -459,7 +453,7 @@ export default function AboutPage() {
           Last Updated: January 2026
         </div>
       </main>
-      <RealScoutListings />
+      <DomainRealScoutListings />
       <Footer />
     </>
   );

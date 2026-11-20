@@ -1,7 +1,9 @@
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
-import RealScoutListings from "@/components/realscout/RealScoutListings";
+import DomainRealScoutListings from "@/components/realscout/DomainRealScoutListings";
 import CalendlyWidget from "@/components/calendly/CalendlyWidget";
+import { getPageDomainConfig } from "@/lib/get-domain-config";
+import { calendlyUrl } from "@/lib/calendly";
 import Link from "next/link";
 import { Phone, CheckCircle, Home, TrendingUp, MapPin, Calculator, Clock, DollarSign } from "lucide-react";
 import type { Metadata } from "next";
@@ -61,7 +63,10 @@ const faqSchema = {
   ],
 };
 
-export default function HomeValuationPage() {
+export default async function HomeValuationPage() {
+  const config = await getPageDomainConfig();
+  const listingCalendly = calendlyUrl(config.domain, "seller", "home-valuation", "cma");
+
   return (
     <>
       <script
@@ -106,7 +111,7 @@ export default function HomeValuationPage() {
                   Book a consultation with Dr. Jan Duffy
                 </p>
               </div>
-              <CalendlyWidget url="showing" height="650px" />
+              <CalendlyWidget url={listingCalendly} height="650px" />
               <p className="text-xs text-slate-500 text-center p-4 border-t border-slate-200">
                 No obligation. No pressure. Just accurate information from Berkshire Hathaway
                 HomeServices.
@@ -489,7 +494,7 @@ export default function HomeValuationPage() {
         {/* Last Updated */}
         <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
       </main>
-      <RealScoutListings />
+      <DomainRealScoutListings />
       <Footer />
     </>
   );

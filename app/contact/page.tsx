@@ -1,10 +1,13 @@
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
-import RealScoutListings from "@/components/realscout/RealScoutListings";
+import DomainRealScoutListings from "@/components/realscout/DomainRealScoutListings";
 import { Phone, Mail, MapPin, Clock, Calendar, CheckCircle, Star, Users, Shield } from "lucide-react";
 import CalendlyWidget from "@/components/calendly/CalendlyWidget";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { getPageDomainConfig } from "@/lib/get-domain-config";
+import { calendlyUrl } from "@/lib/calendly";
+import { CLIENT_PHONE_DISPLAY, CLIENT_PHONE_TEL } from "@/lib/domain-site";
 
 export const metadata: Metadata = {
   title: "Contact Dr. Jan Duffy | Berkshire Hathaway HomeServices Las Vegas",
@@ -38,7 +41,10 @@ const contactSchema = {
   },
 };
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const config = await getPageDomainConfig();
+  const scheduleUrl = calendlyUrl(config.domain, "buyer", "contact", "inline");
+
   return (
     <>
       <script
@@ -193,7 +199,7 @@ export default function ContactPage() {
                     or in-person meeting at our office.
                   </p>
                 </div>
-                <CalendlyWidget height="600px" />
+                <CalendlyWidget url={scheduleUrl} height="600px" />
               </div>
 
               {/* Why Contact BHHS */}
@@ -243,6 +249,7 @@ export default function ContactPage() {
                 "Southern Highlands",
                 "Skye Canyon",
                 "Centennial Hills",
+                "Lone Mountain Heights",
                 "The Ridges",
                 "Inspirada",
                 "Mountains Edge",
@@ -320,7 +327,7 @@ export default function ContactPage() {
         {/* Last Updated */}
         <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
       </main>
-      <RealScoutListings />
+      <DomainRealScoutListings />
       <Footer />
     </>
   );

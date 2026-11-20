@@ -1,6 +1,6 @@
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
-import RealScoutListings from "@/components/realscout/RealScoutListings";
+import DomainRealScoutListings from "@/components/realscout/DomainRealScoutListings";
 import Link from "next/link";
 import {
   Phone,
@@ -422,7 +422,7 @@ export default function HeritageAtStonebridgePage() {
           Last Updated: January 2026
         </div>
       </main>
-      <RealScoutListings />
+      <DomainRealScoutListings />
       <Footer />
     </>
   );
