@@ -176,10 +176,9 @@ export default function RootLayout({
       <body className="font-sans antialiased bg-white text-slate-900">
         {children}
         <Analytics />
-        {/* RealScout — load once globally */}
+        {/* RealScout — load once globally (UMD build; .js without .umd 404s) */}
         <Script
-          src="https://em.realscout.com/widgets/realscout-web-components.js"
-          type="module"
+          src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
           strategy="afterInteractive"
         />
         {/* Calendly — load once globally */}

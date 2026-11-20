@@ -67,7 +67,7 @@ export const CALENDLY = {
 
 export const REALSCOUT = {
   agentId: "QWdlbnQtMjI1MDUw",
-  portal: "http://drjanduffy.realscout.com/",
+  portal: "https://drjanduffy.realscout.com/",
 } as const;
 
 /** Lone Mountain Heights market snapshot (as of Nov 2026 — verify before citing exact comps) */

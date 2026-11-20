@@ -341,7 +341,7 @@ export default function AboutPage() {
                       Free Home Valuation
                     </Link>
                     <a
-                      href="http://drjanduffy.realscout.com/"
+                      href="https://drjanduffy.realscout.com/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center text-slate-700 hover:text-blue-600"

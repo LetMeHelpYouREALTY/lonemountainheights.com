@@ -105,7 +105,7 @@ export default function FeaturedProperties() {
           </div>
           <Button asChild variant="outline" className="mt-4 md:mt-0">
             <a
-              href="http://drjanduffy.realscout.com/"
+              href="https://drjanduffy.realscout.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
