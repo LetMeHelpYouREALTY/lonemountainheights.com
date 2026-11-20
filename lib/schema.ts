@@ -592,8 +592,15 @@ export function combineSchemas(...schemas: Record<string, unknown>[]) {
 }
 
 /**
- * Convert schema object to JSON-LD string
+ * Convert schema object to JSON-LD string safe for <script> injection.
+ * Escape U+003C so request-controlled values cannot break out of the script tag
+ * when CSP allows unsafe-inline (JSON.stringify alone does not escape "<").
  */
 export function schemaToJsonLd(schema: Record<string, unknown>): string {
-  return JSON.stringify(schema);
+  return JSON.stringify(schema)
+    .replace(/</g, "\\u003c")
+    .replace(/>/g, "\\u003e")
+    .replace(/&/g, "\\u0026")
+    .replace(/\u2028/g, "\\u2028")
+    .replace(/\u2029/g, "\\u2029");
 }

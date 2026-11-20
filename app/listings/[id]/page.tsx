@@ -8,8 +8,18 @@ import Image from "next/image";
 import { Bed, Bath, Square, MapPin, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import PageJsonLd from "@/components/seo/PageJsonLd";
 import { BRAND } from "@/lib/brand";
+
+/** Only allow URL-safe listing ids in paths / JSON-LD (blocks script breakout payloads). */
+function sanitizeListingId(raw: string): string | null {
+  const id = decodeURIComponent(raw).trim();
+  if (!/^[a-zA-Z0-9][a-zA-Z0-9._-]{0,127}$/.test(id)) {
+    return null;
+  }
+  return id;
+}
 
 // This would typically fetch from RealScout API
 async function getProperty(id: string) {
@@ -36,7 +46,11 @@ type PropertyPageProps = {
 export async function generateMetadata({
   params,
 }: PropertyPageProps): Promise<Metadata> {
-  const { id } = await params;
+  const { id: rawId } = await params;
+  const id = sanitizeListingId(rawId);
+  if (!id) {
+    return { title: `Listing | ${BRAND.name}` };
+  }
   const property = await getProperty(id);
   const path = `/listings/${id}`;
   return {
@@ -54,7 +68,11 @@ export async function generateMetadata({
 }
 
 export default async function PropertyPage({ params }: PropertyPageProps) {
-  const { id } = await params;
+  const { id: rawId } = await params;
+  const id = sanitizeListingId(rawId);
+  if (!id) {
+    notFound();
+  }
   const property = await getProperty(id);
   const path = `/listings/${id}`;
 
