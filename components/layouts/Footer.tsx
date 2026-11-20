@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+import { AmenityFooterLink } from "@/components/amenities/AmenitySiteLinks";
 
-export default function Footer() {
+export default async function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -17,29 +18,29 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="http://drjanduffy.realscout.com/"
+                href="https://www.facebook.com/BHHSNevadaProperties"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-400 hover:text-white transition-colors"
-                aria-label="Search Las Vegas Homes"
+                aria-label="BHHS Nevada Properties on Facebook"
               >
                 <Facebook className="h-5 w-5" />
               </a>
               <a
-                href="http://drjanduffy.realscout.com/"
+                href="https://twitter.com/bhhsnv"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-400 hover:text-white transition-colors"
-                aria-label="Search Las Vegas Homes"
+                aria-label="BHHS Nevada Properties on X"
               >
-                <Instagram className="h-5 w-5" />
+                <Instagram className="h-5 w-5" aria-hidden="true" />
               </a>
               <a
-                href="http://drjanduffy.realscout.com/"
+                href="https://www.linkedin.com/company/berkshire-hathaway-homeservices-nevada-properties"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-400 hover:text-white transition-colors"
-                aria-label="Search Las Vegas Homes"
+                aria-label="BHHS Nevada Properties on LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
@@ -100,6 +101,7 @@ export default function Footer() {
                   Contact
                 </Link>
               </li>
+              <AmenityFooterLink />
             </ul>
           </div>
 

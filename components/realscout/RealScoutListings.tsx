@@ -29,8 +29,8 @@ export default function RealScoutListings() {
               sort-order="NEWEST" 
               listing-status="For Sale" 
               property-types=",SFR,MF,TC" 
-              price-min="500000" 
-              price-max="800000"
+              price-min="400000" 
+              price-max="2500000"
             ></realscout-office-listings>`,
           }}
         />

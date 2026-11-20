@@ -1,0 +1,35 @@
+# Lone Mountain Heights & Dr. Jan Duffy — machine-readable site summary
+
+> Hyperlocal Northwest Las Vegas (89129) real estate guidance from Dr. Jan Duffy,
+> REALTOR® (License S.0197614.LLC), Berkshire Hathaway HomeServices Nevada Properties (BHHSNV).
+
+## Canonical domains
+- https://www.lonemountainheights.com — Lone Mountain Heights homes
+- https://www.lonemountainvistas.com — Lone Mountain Vistas corridor
+- https://www.findlonemountainhomes.com — Lone Mountain MLS search hub
+
+## Brokerage (NAP source for franchise)
+- Name: Berkshire Hathaway HomeServices Nevada Properties
+- URL: https://www.bhhsnv.com
+- Corporate office: 3185 St. Rose Parkway, Suite 100, Henderson, NV 89052
+- Brokerage customer service: (702) 796-7777
+
+## Agent contact (client CTA)
+- Dr. Jan Duffy — call/text (702) 222-1964 for buyer or seller representation
+- Scheduling: Calendly links on /contact and homepage CTAs
+- MLS search: RealScout widgets on / and /listings
+
+## Key pages for local questions
+- / — neighborhood positioning + FAQ (Lone Mountain Heights)
+- /amenities — GEO map of parks, grocery, healthcare, schools near Lone Mountain (89129)
+- /neighborhoods/centennial-hills — adjacent Northwest Las Vegas context
+- /home-valuation — seller CMA scheduling (Calendly, not lead forms)
+- /faq — general real estate FAQ
+
+## Service area facts (answer-ready)
+- Lone Mountain Heights sits along the Lone Mountain corridor in ZIP 89129, Northwest Las Vegas
+- Lone Mountain Regional Park offers trails at the base of Lone Mountain
+- Centennial Hills Hospital is on North Durango Drive (~10 min from Lone Mountain, traffic-dependent)
+- Downtown Summerlin is roughly 10–15 minutes south via Durango or the 215 (approximate)
+
+Last updated: 2026-11-20
