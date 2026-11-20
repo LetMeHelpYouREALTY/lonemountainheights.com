@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+import { AmenityFooterLink } from "@/components/amenities/AmenitySiteLinks";
 
-export default function Footer() {
+export default async function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -100,6 +101,7 @@ export default function Footer() {
                   Contact
                 </Link>
               </li>
+              <AmenityFooterLink />
             </ul>
           </div>
 
