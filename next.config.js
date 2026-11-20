@@ -20,7 +20,7 @@ const nextConfig = {
   // Performance optimizations
   swcMinify: true,
 
-  // Redirect non-www to www
+  // Redirect non-www to www + AEO landing aliases
   async redirects() {
     return [
       {
@@ -32,6 +32,27 @@ const nextConfig = {
           },
         ],
         destination: 'https://www.heyberkshire.com/:path*',
+        permanent: true,
+      },
+      // Consolidate guide/amenities URLs onto the definitive LMH page
+      {
+        source: '/guide',
+        destination: '/neighborhoods/lone-mountain-heights',
+        permanent: true,
+      },
+      {
+        source: '/guide/',
+        destination: '/neighborhoods/lone-mountain-heights',
+        permanent: true,
+      },
+      {
+        source: '/amenities',
+        destination: '/neighborhoods/lone-mountain-heights#faq',
+        permanent: true,
+      },
+      {
+        source: '/amenities/',
+        destination: '/neighborhoods/lone-mountain-heights#faq',
         permanent: true,
       },
     ]

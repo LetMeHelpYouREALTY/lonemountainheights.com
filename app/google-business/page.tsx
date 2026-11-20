@@ -18,6 +18,7 @@ import {
   Heart,
 } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   businessInfo,
   gbpDescription,
@@ -42,8 +43,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
     description: "Trusted Las Vegas REALTOR® serving since 2008. Summerlin, Henderson, luxury homes, 55+ communities.",
-    url: "https://heyberkshire.com/google-business",
+    url: "https://lonemountainheights.com/google-business",
     type: "profile",
+    images: [
+      {
+        url: "https://lonemountainheights.com/images/agent/dr-jan-duffy-portrait.jpg",
+        alt: "Dr. Jan Duffy, Berkshire Hathaway HomeServices Nevada Properties",
+      },
+    ],
   },
 };
 
@@ -103,8 +110,18 @@ export default function GoogleBusinessPage() {
                   </div>
                 </div>
                 
-                {/* Rating & CTA */}
+                {/* Portrait + Rating & CTA */}
                 <div className="text-center bg-white/10 rounded-xl p-8">
+                  <div className="relative mx-auto mb-6 h-36 w-36 overflow-hidden rounded-full border-4 border-white/40 shadow-lg">
+                    <Image
+                      src="/images/agent/dr-jan-duffy-portrait.jpg"
+                      alt="Dr. Jan Duffy portrait — Berkshire Hathaway HomeServices Nevada Properties"
+                      fill
+                      className="object-cover"
+                      sizes="144px"
+                      priority
+                    />
+                  </div>
                   <div className="flex justify-center mb-4">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <Star key={star} className="h-8 w-8 text-yellow-400 fill-yellow-400" />

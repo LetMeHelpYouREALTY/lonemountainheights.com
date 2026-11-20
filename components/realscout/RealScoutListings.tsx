@@ -37,7 +37,7 @@ export default function RealScoutListings({ config }: Props) {
         <div
           className="min-h-[320px] rounded-xl bg-white p-4 shadow-sm"
           dangerouslySetInnerHTML={{
-            __html: `<realscout-office-listings agent-encoded-id="${config.realscoutAgentId}" sort-order="NEWEST" listing-status="For Sale" property-types=",SFR,MF,TC" price-min="${priceMin}"${priceMaxAttr}></realscout-office-listings>`,
+            __html: `<realscout-office-listings agent-encoded-id="${config.realscoutAgentId}" sort-order="NEWEST" listing-status="For Sale" property-types="SFR,MF,TC" price-min="${priceMin}"${priceMaxAttr}></realscout-office-listings>`,
           }}
         />
 
