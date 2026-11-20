@@ -29,6 +29,7 @@ export default function RealScoutSimpleSearch({
         <p className="text-slate-600 mb-6">{subtitle ?? defaultSubtitle}</p>
         <div className="flex justify-center min-h-[56px]">
           <div
+            className="realscout-widget-wrap w-full max-w-3xl"
             dangerouslySetInnerHTML={{
               __html: `<realscout-simple-search agent-encoded-id="${config.realscoutAgentId}"></realscout-simple-search>`,
             }}

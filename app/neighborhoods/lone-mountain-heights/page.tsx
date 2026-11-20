@@ -1,8 +1,8 @@
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
-import RealScoutListings from "@/components/realscout/RealScoutListings";
-import RealScoutUnderHero from "@/components/realscout/RealScoutUnderHero";
-import { LeadCaptureForm } from "@/components/forms/LeadCaptureForm";
+import DomainRealScoutListings from "@/components/realscout/DomainRealScoutListings";
+import RealScoutSimpleSearch from "@/components/realscout/RealScoutSimpleSearch";
+import CalendlyWidget from "@/components/calendly/CalendlyWidget";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -16,6 +16,8 @@ import {
   Building2,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { getPageDomainConfig } from "@/lib/get-domain-config";
+import { calendlyUrl } from "@/lib/calendly";
 import {
   LMH_AMENITIES,
   LMH_COMMUTES,
@@ -55,7 +57,10 @@ export const metadata: Metadata = {
 
 const siteUrl = "https://lonemountainheights.com";
 
-export default function LoneMountainHeightsPage() {
+export default async function LoneMountainHeightsPage() {
+  const config = await getPageDomainConfig();
+  const scheduleUrl = calendlyUrl(config.domain, "buyer", "lmh-guide", "inline");
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -245,9 +250,10 @@ export default function LoneMountainHeightsPage() {
           </div>
         </section>
 
-        <RealScoutUnderHero
-          headline="Search Lone Mountain Heights Listings"
-          subheadline="Live MLS — filter Northwest Las Vegas homes by price and features"
+        <RealScoutSimpleSearch
+          config={config}
+          title="Search Lone Mountain Heights Listings"
+          subtitle="Live MLS — filter Northwest Las Vegas homes by price and features"
         />
 
         <div className="container mx-auto px-4 py-16">
@@ -490,11 +496,11 @@ export default function LoneMountainHeightsPage() {
             <h2 className="mb-6 text-center text-3xl font-bold text-slate-900">
               Schedule a Private Tour
             </h2>
-            <LeadCaptureForm formType="property-search" height="700px" />
+            <CalendlyWidget url={scheduleUrl} height="700px" />
           </section>
         </div>
 
-        <RealScoutListings />
+        <DomainRealScoutListings />
 
         <section className="bg-blue-600 py-16 text-white">
           <div className="container mx-auto px-4 text-center">
