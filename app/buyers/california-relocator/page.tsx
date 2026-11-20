@@ -20,8 +20,12 @@ import {
   TrendingUp,
 } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/buyers/california-relocator",
+  },
   title: "Relocating from California to Las Vegas | Berkshire Hathaway HomeServices",
   description:
     "Moving from California to Las Vegas? Zero state income tax, 40-60% lower home prices, same sunshine. Dr. Jan Duffy helps CA relocators find their perfect Las Vegas home. Call (702) 222-1964.",
@@ -87,7 +91,7 @@ const realEstateAgentSchema = {
   "@type": "RealEstateAgent",
   name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
   telephone: "+17022221964",
-  url: "https://heyberkshire.com/buyers/california-relocator",
+  url: "https://lonemountainheights.com/buyers/california-relocator",
   address: {
     "@type": "PostalAddress",
     streetAddress: "9406 W Lake Mead Blvd, Suite 100",
@@ -102,6 +106,11 @@ const realEstateAgentSchema = {
 export default function CaliforniaRelocatorPage() {
   return (
     <>
+      <PageJsonLd
+        path="/buyers/california-relocator"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "California Relocator", url: "/buyers/california-relocator" }]}
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

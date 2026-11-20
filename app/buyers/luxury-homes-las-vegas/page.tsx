@@ -19,8 +19,12 @@ import {
   DollarSign,
 } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/buyers/luxury-homes-las-vegas",
+  },
   title: "Luxury Homes Las Vegas | Berkshire Hathaway HomeServices",
   description:
     "Las Vegas luxury real estate from $1.2M to $10M+. Guard-gated estates, Strip penthouses, and custom homes. Dr. Jan Duffy provides discrete, expert representation. Call (702) 222-1964.",
@@ -68,6 +72,11 @@ const faqSchema = {
 export default function LuxuryHomesPage() {
   return (
     <>
+      <PageJsonLd
+        path="/buyers/luxury-homes-las-vegas"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Luxury Homes Las Vegas", url: "/buyers/luxury-homes-las-vegas" }]}
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

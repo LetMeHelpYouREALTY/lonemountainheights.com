@@ -7,8 +7,12 @@ import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
 import { Phone, Mountain, TreePine, DollarSign, Home as HomeIcon } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/neighborhoods/mountains-edge",
+  },
   title: "Berkshire Hathaway HomeServices Mountains Edge | Southwest Las Vegas",
   description:
     "Find Mountains Edge homes with Berkshire Hathaway HomeServices Nevada Properties. Dr. Jan Duffy specializes in this southwest Las Vegas community. Median price $475K. Call (702) 222-1964.",
@@ -63,6 +67,11 @@ const faqSchema = {
 export default function MountainsEdgePage() {
   return (
     <>
+      <PageJsonLd
+        path="/neighborhoods/mountains-edge"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Mountains Edge", url: "/neighborhoods/mountains-edge" }]}
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

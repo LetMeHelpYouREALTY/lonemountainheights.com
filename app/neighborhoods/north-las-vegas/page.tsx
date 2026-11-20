@@ -7,8 +7,12 @@ import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
 import { Phone, DollarSign, TrendingUp, Home as HomeIcon, Users } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/neighborhoods/north-las-vegas",
+  },
   title: "Berkshire Hathaway HomeServices North Las Vegas | Affordable Homes",
   description:
     "Find affordable North Las Vegas homes with Berkshire Hathaway HomeServices Nevada Properties. Dr. Jan Duffy helps first-time buyers and investors. Median price $385K. Call (702) 222-1964.",
@@ -63,6 +67,11 @@ const faqSchema = {
 export default function NorthLasVegasPage() {
   return (
     <>
+      <PageJsonLd
+        path="/neighborhoods/north-las-vegas"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "North Las Vegas", url: "/neighborhoods/north-las-vegas" }]}
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

@@ -1,5 +1,4 @@
 import Navbar from "@/components/layouts/Navbar";
-import PageJsonLd from "@/components/seo/PageJsonLd";
 import RealScoutOfficeSection from "@/components/realscout/RealScoutOfficeSection";
 import CalendlyScheduleSection from "@/components/calendly/CalendlyScheduleSection";
 import SectionEngagement from "@/components/sections/SectionEngagement";
@@ -8,8 +7,12 @@ import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
 import { MapPin, Phone, Home, Users, GraduationCap } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/neighborhoods",
+  },
   title: "Lone Mountain Heights & Las Vegas Neighborhoods | Dr. Jan Duffy",
   description:
     "Explore Lone Mountain Heights and Las Vegas neighborhoods with Dr. Jan Duffy. Gated 89129 living, Centennial Hills, Skye Canyon, Summerlin & more. Call (702) 222-1964.",

@@ -47,7 +47,8 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       type: "website",
-      url: BRAND.url,
+      // Do not set a sitewide OG/canonical URL here — child pages would inherit
+      // the homepage and look like duplicates. metadataBase resolves relative URLs.
       siteName: BRAND.fullName,
       images: [
         {
@@ -72,9 +73,6 @@ export async function generateMetadata(): Promise<Metadata> {
       apple: [{ url: "/icons/apple-touch-icon.png", sizes: "180x180" }],
     },
     metadataBase: new URL(BRAND.url),
-    alternates: {
-      canonical: BRAND.url,
-    },
     other: {
       "geo.region": "US-NV",
       "geo.placename": "Lone Mountain Heights, Las Vegas",

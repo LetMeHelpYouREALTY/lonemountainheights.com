@@ -22,8 +22,12 @@ import {
   Globe,
 } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/relocation",
+  },
   title: "Relocating to Las Vegas | Berkshire Hathaway HomeServices",
   description:
     "Moving to Las Vegas? Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties provides comprehensive relocation services. Schools, neighborhoods, cost of living. Call (702) 222-1964.",
@@ -109,6 +113,11 @@ const relocationServices = [
 export default function RelocationPage() {
   return (
     <>
+      <PageJsonLd
+        path="/relocation"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Relocation", url: "/relocation" }]}
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(relocationSchema) }}

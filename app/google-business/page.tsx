@@ -29,24 +29,27 @@ import {
   generateLocalBusinessSchema,
   generateFAQSchema,
 } from "@/lib/gbp-schema";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
-  title: "Dr. Jan Duffy, REALTOR® Las Vegas | Berkshire Hathaway HomeServices",
+  title: "Dr. Jan Duffy Google Business Profile | Lone Mountain Heights",
   description:
-    "Dr. Jan Duffy is a trusted Las Vegas REALTOR® with Berkshire Hathaway HomeServices Nevada Properties. Specializing in Summerlin, Henderson, 55+ communities, California relocation, and luxury homes. Call (702) 222-1964.",
+    "Google Business Profile for Dr. Jan Duffy — Lone Mountain Heights homes specialist. Berkshire Hathaway HomeServices Nevada Properties. Call (702) 222-1964.",
   keywords: [
     "Dr. Jan Duffy realtor",
+    "Lone Mountain Heights realtor",
     "Las Vegas real estate agent",
     "Berkshire Hathaway HomeServices Las Vegas",
-    "Summerlin realtor",
-    "Henderson real estate agent",
-    "55+ communities Las Vegas",
-    "California relocation Las Vegas",
+    "89129 homes for sale",
   ],
+  alternates: {
+    canonical: "https://lonemountainheights.com/google-business",
+  },
   openGraph: {
-    title: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
-    description: "Trusted Las Vegas REALTOR® serving since 2008. Summerlin, Henderson, luxury homes, 55+ communities.",
-    url: "https://heyberkshire.com/google-business",
+    title: "Dr. Jan Duffy — Lone Mountain Heights | BHHS Nevada Properties",
+    description:
+      "Trusted Las Vegas REALTOR® for Lone Mountain Heights, Summerlin, and Northwest Las Vegas. Call (702) 222-1964.",
+    url: "https://lonemountainheights.com/google-business",
     type: "profile",
   },
 };
@@ -57,6 +60,11 @@ export default function GoogleBusinessPage() {
 
   return (
     <>
+      <PageJsonLd
+        path="/google-business"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Google Business", url: "/google-business" }]}
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
@@ -91,13 +99,7 @@ export default function GoogleBusinessPage() {
                         <p className="font-medium">{businessInfo.address.streetAddress}</p>
                         <p>{businessInfo.address.addressLocality}, {businessInfo.address.addressRegion} {businessInfo.address.postalCode}</p>
                       </div>
-
-          <RealScoutOfficeSection />
-          <SectionEngagement />
                     </div>
-
-
-
                     <div className="flex items-center gap-3">
                       <Phone className="h-5 w-5 text-blue-400 flex-shrink-0" />
                       <a href={`tel:${businessInfo.phone.tel}`} className="font-medium hover:text-blue-300">
@@ -121,7 +123,15 @@ export default function GoogleBusinessPage() {
                     ))}
                   </div>
                   <p className="text-3xl font-bold mb-2">5.0 / 5.0</p>
-                  <p className="text-blue-200 mb-6">50 Realtor.com Reviews</p>
+                  <p className="text-blue-200 mb-4">Google &amp; client reviews</p>
+                  <a
+                    href="https://search.google.com/local/writereview?placeid=ChIJ7XLw8ta5yIARjTZPjgHJWVQ"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block w-full mb-3 border border-white/40 hover:bg-white/10 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+                  >
+                    View Google Reviews
+                  </a>
                   <a
                     href={`tel:${businessInfo.phone.tel}`}
                     className="inline-block w-full bg-blue-600 hover:bg-blue-500 text-white px-6 py-4 rounded-lg font-bold text-lg transition-colors"
@@ -133,6 +143,9 @@ export default function GoogleBusinessPage() {
               </div>
             </div>
           </section>
+
+          <RealScoutOfficeSection />
+          <SectionEngagement />
 
           {/* Business Hours */}
           <section className="max-w-5xl mx-auto mb-16">

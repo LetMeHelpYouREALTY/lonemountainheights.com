@@ -23,8 +23,12 @@ import {
   generateFAQSchema,
   combineSchemas,
 } from "@/lib/schema";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/55-plus-communities/sun-city-anthem",
+  },
   title: "Sun City Anthem Homes for Sale | Berkshire Hathaway HomeServices",
   description:
     "Henderson's premier 55+ community. Sun City Anthem homes from $350K-$1.2M. 2 championship golf courses, stunning mountain views. Dr. Jan Duffy. Call (702) 222-1964.",
@@ -104,6 +108,11 @@ const pageSchemas = combineSchemas(
 export default function SunCityAnthemPage() {
   return (
     <>
+      <PageJsonLd
+        path="/55-plus-communities/sun-city-anthem"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Sun City Anthem", url: "/55-plus-communities/sun-city-anthem" }]}
+      />
+
       {/* Combined JSON-LD Schema: Breadcrumb + ResidentialComplex + FAQ */}
       <SchemaScript schema={pageSchemas} id="sun-city-anthem-schema" />
       <Navbar />

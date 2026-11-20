@@ -14,8 +14,12 @@ import {
   generateNeighborhoodSchema,
   combineSchemas,
 } from "@/lib/schema";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/neighborhoods/summerlin",
+  },
   title: "Berkshire Hathaway HomeServices Summerlin | Las Vegas Luxury Real Estate",
   description:
     "Find Summerlin homes with Berkshire Hathaway HomeServices Nevada Properties. Dr. Jan Duffy offers expert guidance in Las Vegas's premier master-planned community. Median price $625K. Call (702) 222-1964.",
@@ -77,6 +81,11 @@ const pageSchemas = combineSchemas(
 export default function SummerlinPage() {
   return (
     <>
+      <PageJsonLd
+        path="/neighborhoods/summerlin"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Summerlin", url: "/neighborhoods/summerlin" }]}
+      />
+
       {/* Combined JSON-LD Schema: Breadcrumb + Place + FAQ */}
       <SchemaScript schema={pageSchemas} id="summerlin-schema" />
       <Navbar />

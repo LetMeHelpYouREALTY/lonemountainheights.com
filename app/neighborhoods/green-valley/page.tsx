@@ -7,8 +7,12 @@ import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
 import { Phone, TreePine, ShoppingBag, GraduationCap, MapPin } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/neighborhoods/green-valley",
+  },
   title: "Berkshire Hathaway HomeServices Green Valley | Henderson Real Estate",
   description:
     "Find Green Valley homes with Berkshire Hathaway HomeServices Nevada Properties. Dr. Jan Duffy specializes in Green Valley, Southern Nevada's first master-planned community (1978). Median price $520K. Call (702) 222-1964.",
@@ -63,6 +67,11 @@ const faqSchema = {
 export default function GreenValleyPage() {
   return (
     <>
+      <PageJsonLd
+        path="/neighborhoods/green-valley"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Green Valley", url: "/neighborhoods/green-valley" }]}
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

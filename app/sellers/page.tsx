@@ -1,5 +1,4 @@
 import Navbar from "@/components/layouts/Navbar";
-import PageJsonLd from "@/components/seo/PageJsonLd";
 import RealScoutOfficeSection from "@/components/realscout/RealScoutOfficeSection";
 import CalendlyScheduleSection from "@/components/calendly/CalendlyScheduleSection";
 import SectionEngagement from "@/components/sections/SectionEngagement";
@@ -22,8 +21,12 @@ import {
   Award,
 } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/sellers",
+  },
   title: "Sell Your Lone Mountain Heights Home | Dr. Jan Duffy",
   description:
     "Sell your Lone Mountain Heights or Northwest Las Vegas home with Dr. Jan Duffy. Free CMA, gated-community pricing strategy, Calendly consult. Call (702) 222-1964.",

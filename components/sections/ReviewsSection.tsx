@@ -4,7 +4,7 @@ import { Star, Quote } from "lucide-react";
 import Image from "next/image";
 import AgentPortrait from "@/components/brand/AgentPortrait";
 import SectionEngagement from "@/components/sections/SectionEngagement";
-import { BRAND } from "@/lib/brand";
+import { BRAND, OFFICE } from "@/lib/brand";
 
 export interface Review {
   id: number;
@@ -72,7 +72,7 @@ export default function ReviewsSection({
   reviews = defaultReviews,
   title = "What Our Clients Say",
   subtitle = "Real testimonials from satisfied clients across Las Vegas and Henderson",
-  googleReviewsUrl = "https://search.google.com/local/writereview?placeid=ChIJ7XLw8ta5yIARjTZPjgHJWVQ",
+  googleReviewsUrl = OFFICE.reviewsUrl,
   className = "",
 }: ReviewsSectionProps) {
   return (

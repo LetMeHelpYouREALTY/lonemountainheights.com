@@ -26,8 +26,12 @@ import {
   ArrowRight,
 } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/55-plus-communities",
+  },
   title:
     "55+ Active Adult Communities Las Vegas | Sun City, Del Webb, Heritage | Dr. Jan Duffy",
   description:
@@ -114,7 +118,7 @@ const localBusinessSchema = {
   description:
     "55+ community specialist helping active adults find their perfect Las Vegas retirement home",
   telephone: "(702) 222-1964",
-  url: "https://heyberkshire.com/55-plus-communities",
+  url: "https://lonemountainheights.com/55-plus-communities",
   areaServed: {
     "@type": "City",
     name: "Las Vegas",
@@ -328,6 +332,11 @@ const lifestyleBenefits = [
 export default function FiftyFiveCommunitiesPage() {
   return (
     <>
+      <PageJsonLd
+        path="/55-plus-communities"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "55 Plus Communities", url: "/55-plus-communities" }]}
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

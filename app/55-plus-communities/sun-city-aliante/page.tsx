@@ -17,8 +17,12 @@ import {
   TrendingUp,
 } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/55-plus-communities/sun-city-aliante",
+  },
   title: "Sun City Aliante Homes for Sale | Most Affordable Sun City | Dr. Jan Duffy",
   description:
     "Sun City Aliante - the most affordable Sun City in Las Vegas. Homes from $280K-$550K with full amenities. 18-hole golf course, pools, fitness center. Dr. Jan Duffy, BHHS. Call (702) 222-1964.",
@@ -60,6 +64,11 @@ const communitySchema = {
 export default function SunCityAliantePage() {
   return (
     <>
+      <PageJsonLd
+        path="/55-plus-communities/sun-city-aliante"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Sun City Aliante", url: "/55-plus-communities/sun-city-aliante" }]}
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(communitySchema) }}

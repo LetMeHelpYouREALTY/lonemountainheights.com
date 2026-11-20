@@ -7,8 +7,12 @@ import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
 import { Phone, TrendingUp, DollarSign, Building, BarChart, CheckCircle, Calculator } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/investment-properties",
+  },
   title: "Las Vegas Investment Properties | Berkshire Hathaway HomeServices",
   description:
     "Invest in Las Vegas real estate with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Rental properties, ROI analysis, 1031 exchanges. No state income tax. Call (702) 222-1964.",
@@ -70,6 +74,11 @@ const investmentAreas = [
 export default function InvestmentPropertiesPage() {
   return (
     <>
+      <PageJsonLd
+        path="/investment-properties"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Investment Properties", url: "/investment-properties" }]}
+      />
+
       <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">

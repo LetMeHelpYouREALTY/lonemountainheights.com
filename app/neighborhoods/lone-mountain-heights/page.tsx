@@ -6,7 +6,6 @@ import SectionEngagement from "@/components/sections/SectionEngagement";
 import FAQSection from "@/components/sections/FAQSection";
 import AgentPortrait from "@/components/brand/AgentPortrait";
 import CalendlyButton from "@/components/calendly/CalendlyButton";
-import PageJsonLd from "@/components/seo/PageJsonLd";
 import AeoAnswerBlock from "@/components/seo/AeoAnswerBlock";
 import Link from "next/link";
 import { Phone, Mountain, Trees, Car, Home as HomeIcon } from "lucide-react";
@@ -19,8 +18,12 @@ import {
   OFFICE,
 } from "@/lib/brand";
 import { marketStats } from "@/lib/site-config";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/neighborhoods/lone-mountain-heights",
+  },
   title: "Lone Mountain Heights Homes for Sale | Las Vegas 89129",
   description: BRAND.description,
   keywords: [...BRAND.keywords],

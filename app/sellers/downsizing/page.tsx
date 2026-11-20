@@ -17,8 +17,12 @@ import {
   Sun,
 } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/sellers/downsizing",
+  },
   title: "Downsizing in Las Vegas | Berkshire Hathaway HomeServices",
   description:
     "Ready to simplify? Dr. Jan Duffy helps Las Vegas homeowners extract equity and transition to low-maintenance living. 55+ communities, condos, and more. Call (702) 222-1964.",
@@ -34,6 +38,11 @@ export const metadata: Metadata = {
 export default function DownsizingPage() {
   return (
     <>
+      <PageJsonLd
+        path="/sellers/downsizing"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Downsizing", url: "/sellers/downsizing" }]}
+      />
+
       <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">

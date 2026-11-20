@@ -1,5 +1,4 @@
 import Navbar from "@/components/layouts/Navbar";
-import PageJsonLd from "@/components/seo/PageJsonLd";
 import RealScoutOfficeSection from "@/components/realscout/RealScoutOfficeSection";
 import CalendlyScheduleSection from "@/components/calendly/CalendlyScheduleSection";
 import SectionEngagement from "@/components/sections/SectionEngagement";
@@ -23,8 +22,12 @@ import {
   ArrowRight,
 } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/buyers",
+  },
   title: "Buy Lone Mountain Heights Homes | Dr. Jan Duffy",
   description:
     "Buy a home in Lone Mountain Heights or Northwest Las Vegas with Dr. Jan Duffy. Free buyer representation, gated-community comps, Calendly showings. Call (702) 222-1964.",

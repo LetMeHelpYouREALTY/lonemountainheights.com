@@ -9,7 +9,6 @@ import FAQSection from "@/components/sections/FAQSection";
 import AgentPortrait from "@/components/brand/AgentPortrait";
 import BrandLogo from "@/components/brand/BrandLogo";
 import CalendlyButton from "@/components/calendly/CalendlyButton";
-import PageJsonLd from "@/components/seo/PageJsonLd";
 import AeoAnswerBlock from "@/components/seo/AeoAnswerBlock";
 import Link from "next/link";
 import { Phone, Mountain, Shield, Home as HomeIcon, MapPin } from "lucide-react";
@@ -22,6 +21,23 @@ import {
   REALSCOUT,
 } from "@/lib/brand";
 import { commonFAQs, marketStats } from "@/lib/site-config";
+import PageJsonLd from "@/components/seo/PageJsonLd";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: `${BRAND.name} Homes for Sale | ${BRAND.subscript}`,
+  description: BRAND.description,
+  keywords: [...BRAND.keywords],
+  alternates: {
+    canonical: BRAND.url,
+  },
+  openGraph: {
+    title: `${BRAND.name} Homes for Sale | ${BRAND.subscript}`,
+    description: BRAND.description,
+    url: BRAND.url,
+    type: "website",
+  },
+};
 
 export default function Home() {
   return (

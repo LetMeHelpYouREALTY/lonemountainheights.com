@@ -53,7 +53,11 @@ export const OFFICE = {
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3220.8!2d-115.2821!3d36.1893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzbCsDExJzIxLjUiTiAxMTXCsDE2JzU1LjYiVw!5e0!3m2!1sen!2sus!4v1",
   mapsDirections:
     "https://www.google.com/maps/dir/?api=1&destination=9406+W+Lake+Mead+Blvd+Suite+100+Las+Vegas+NV+89134",
-  reviewsUrl: "https://www.realtor.com/realestateagents/dr-jan-duffy_las-vegas_nv_1782023",
+  /** Google Business Profile reviews / write-a-review */
+  reviewsUrl:
+    "https://search.google.com/local/writereview?placeid=ChIJ7XLw8ta5yIARjTZPjgHJWVQ",
+  realtorReviewsUrl:
+    "https://www.realtor.com/realestateagents/dr-jan-duffy_las-vegas_nv_1782023",
 } as const;
 
 export const CALENDLY = {

@@ -18,8 +18,12 @@ import {
   CheckCircle,
 } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/55-plus-communities/sun-city-summerlin",
+  },
   title: "Sun City Summerlin Homes for Sale | Berkshire Hathaway HomeServices",
   description:
     "Nevada's largest 55+ community. Sun City Summerlin homes from $320K-$850K. 3 golf courses, 4 rec centers, 100+ clubs. Dr. Jan Duffy, BHHS specialist. Call (702) 222-1964.",
@@ -53,6 +57,11 @@ const communitySchema = {
 export default function SunCitySummerlinPage() {
   return (
     <>
+      <PageJsonLd
+        path="/55-plus-communities/sun-city-summerlin"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Sun City Summerlin", url: "/55-plus-communities/sun-city-summerlin" }]}
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(communitySchema) }}

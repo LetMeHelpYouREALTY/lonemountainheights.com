@@ -7,8 +7,12 @@ import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
 import { Phone, Mountain, Users, ShoppingBag, Home as HomeIcon } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/neighborhoods/centennial-hills",
+  },
   title: "Berkshire Hathaway HomeServices Centennial Hills | Las Vegas Homes",
   description:
     "Find Centennial Hills homes with Berkshire Hathaway HomeServices Nevada Properties. Dr. Jan Duffy specializes in this established northwest community. Median price $495K. Call (702) 222-1964.",
@@ -63,6 +67,11 @@ const faqSchema = {
 export default function CentennialHillsPage() {
   return (
     <>
+      <PageJsonLd
+        path="/neighborhoods/centennial-hills"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Centennial Hills", url: "/neighborhoods/centennial-hills" }]}
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

@@ -7,8 +7,12 @@ import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
 import { Phone, Shield, Users, GraduationCap, TreePine } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/neighborhoods/henderson",
+  },
   title: "Berkshire Hathaway HomeServices Henderson | Nevada Real Estate",
   description:
     "Find Henderson homes with Berkshire Hathaway HomeServices Nevada Properties. Dr. Jan Duffy specializes in Henderson's master-planned communities. Median price $485K. Call (702) 222-1964.",
@@ -75,6 +79,11 @@ const faqSchema = {
 export default function HendersonPage() {
   return (
     <>
+      <PageJsonLd
+        path="/neighborhoods/henderson"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Henderson", url: "/neighborhoods/henderson" }]}
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(neighborhoodSchema) }}

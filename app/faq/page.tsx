@@ -14,8 +14,12 @@ import {
   generateWebPageSchema,
   combineSchemas,
 } from "@/lib/schema";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/faq",
+  },
   title: "FAQ | Berkshire Hathaway HomeServices Las Vegas Real Estate",
   description:
     "Frequently asked questions about Las Vegas real estate, Berkshire Hathaway HomeServices, buying, selling, and working with Dr. Jan Duffy at BHHS Nevada Properties.",
@@ -183,6 +187,11 @@ const pageSchemas = combineSchemas(
 export default function FAQPage() {
   return (
     <>
+      <PageJsonLd
+        path="/faq"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Faq", url: "/faq" }]}
+      />
+
       {/* Combined JSON-LD Schema: Breadcrumb + WebPage + FAQPage (all categories) */}
       <SchemaScript schema={pageSchemas} id="faq-page-schema" />
       <Navbar />

@@ -7,8 +7,12 @@ import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
 import { Phone, Waves, TreePine, GraduationCap, Home as HomeIcon } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/neighborhoods/inspirada",
+  },
   title: "Berkshire Hathaway HomeServices Inspirada | Henderson Resort Living",
   description:
     "Find Inspirada homes with Berkshire Hathaway HomeServices Nevada Properties. Dr. Jan Duffy specializes in Henderson's resort-style community. Median price $525K. Call (702) 222-1964.",
@@ -63,6 +67,11 @@ const faqSchema = {
 export default function InspiradaPage() {
   return (
     <>
+      <PageJsonLd
+        path="/neighborhoods/inspirada"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Inspirada", url: "/neighborhoods/inspirada" }]}
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

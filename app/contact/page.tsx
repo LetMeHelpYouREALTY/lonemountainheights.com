@@ -4,13 +4,16 @@ import CalendlyScheduleSection from "@/components/calendly/CalendlyScheduleSecti
 import SectionEngagement from "@/components/sections/SectionEngagement";
 import AgentPortrait from "@/components/brand/AgentPortrait";
 import Footer from "@/components/layouts/Footer";
-import PageJsonLd from "@/components/seo/PageJsonLd";
 import { Phone, Mail, MapPin, Clock, Calendar, CheckCircle, Star, Users, Shield } from "lucide-react";
 import CalendlyWidget from "@/components/calendly/CalendlyWidget";
 import Link from "next/link";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/contact",
+  },
   title: "Contact Dr. Jan Duffy | Lone Mountain Heights Tours",
   description:
     "Contact Dr. Jan Duffy for Lone Mountain Heights showings and valuations. Book on Calendly or call (702) 222-1964. Berkshire Hathaway HomeServices Nevada Properties.",

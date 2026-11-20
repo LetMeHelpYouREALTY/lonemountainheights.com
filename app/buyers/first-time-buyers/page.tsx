@@ -20,8 +20,12 @@ import {
   HelpCircle,
 } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/buyers/first-time-buyers",
+  },
   title: "First-Time Home Buyers Las Vegas | Berkshire Hathaway HomeServices",
   description:
     "First-time buyer in Las Vegas? Down payment assistance, builder incentives, and expert guidance from Dr. Jan Duffy at Berkshire Hathaway HomeServices. Call (702) 222-1964.",
@@ -77,6 +81,11 @@ const faqSchema = {
 export default function FirstTimeBuyersPage() {
   return (
     <>
+      <PageJsonLd
+        path="/buyers/first-time-buyers"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "First Time Buyers", url: "/buyers/first-time-buyers" }]}
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

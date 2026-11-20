@@ -8,11 +8,8 @@ import Image from "next/image";
 import { Bed, Bath, Square, MapPin, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Property Details | Las Vegas & Henderson Real Estate",
-  description: "View detailed information about this property listing in Las Vegas or Henderson, NV.",
-};
+import PageJsonLd from "@/components/seo/PageJsonLd";
+import { BRAND } from "@/lib/brand";
 
 // This would typically fetch from RealScout API
 async function getProperty(id: string) {
@@ -36,12 +33,43 @@ type PropertyPageProps = {
   params: Promise<{ id: string }>;
 };
 
+export async function generateMetadata({
+  params,
+}: PropertyPageProps): Promise<Metadata> {
+  const { id } = await params;
+  const property = await getProperty(id);
+  const path = `/listings/${id}`;
+  return {
+    title: `${property.name} | ${BRAND.name} Listings`,
+    description: property.description,
+    alternates: {
+      canonical: `${BRAND.url}${path}`,
+    },
+    openGraph: {
+      title: `${property.name} | ${BRAND.name}`,
+      description: property.description,
+      url: `${BRAND.url}${path}`,
+    },
+  };
+}
+
 export default async function PropertyPage({ params }: PropertyPageProps) {
   const { id } = await params;
   const property = await getProperty(id);
+  const path = `/listings/${id}`;
 
   return (
     <>
+      <PageJsonLd
+        path={path}
+        title={property.name}
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Listings", url: "/listings" },
+          { name: property.name, url: path },
+        ]}
+      />
+
       <Navbar />
       <main className="pt-24 pb-16">
         <RealScoutOfficeSection />
@@ -57,7 +85,7 @@ export default async function PropertyPage({ params }: PropertyPageProps) {
               </li>
               <li>/</li>
               <li>
-                <a href="http://drjanduffy.realscout.com/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600">
+                <a href="/listings" className="hover:text-blue-600">
                   Properties
                 </a>
               </li>

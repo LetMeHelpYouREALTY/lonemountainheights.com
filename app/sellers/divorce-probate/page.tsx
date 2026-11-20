@@ -17,8 +17,12 @@ import {
   Users,
 } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/sellers/divorce-probate",
+  },
   title: "Divorce & Probate Home Sales Las Vegas | Berkshire Hathaway HomeServices",
   description:
     "Sensitive real estate situations handled with discretion. Dr. Jan Duffy helps with divorce sales, probate, estate liquidation, and court-ordered sales. Call (702) 222-1964.",
@@ -34,6 +38,11 @@ export const metadata: Metadata = {
 export default function DivorceProbatePage() {
   return (
     <>
+      <PageJsonLd
+        path="/sellers/divorce-probate"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Divorce Probate", url: "/sellers/divorce-probate" }]}
+      />
+
       <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">

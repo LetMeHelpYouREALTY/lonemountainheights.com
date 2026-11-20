@@ -18,8 +18,12 @@ import {
   DollarSign,
 } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/55-plus-communities/solera-anthem",
+  },
   title: "Solera at Anthem Homes for Sale | Intimate Guard-Gated 55+ Henderson | Dr. Jan Duffy",
   description:
     "Solera at Anthem - intimate guard-gated 55+ community in Henderson. Homes from $380K-$650K. Lower HOA fees, close-knit atmosphere. Dr. Jan Duffy, BHHS. Call (702) 222-1964.",
@@ -61,6 +65,11 @@ const communitySchema = {
 export default function SoleraAnthemPage() {
   return (
     <>
+      <PageJsonLd
+        path="/55-plus-communities/solera-anthem"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Solera Anthem", url: "/55-plus-communities/solera-anthem" }]}
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(communitySchema) }}

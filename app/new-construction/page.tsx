@@ -21,8 +21,12 @@ import {
   HelpCircle,
 } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/new-construction",
+  },
   title: "Berkshire Hathaway HomeServices New Construction Las Vegas | Buyer's Guide",
   description:
     "Free buyer representation on new construction homes in Las Vegas. Dr. Jan Duffy helps you navigate builder contracts, negotiate upgrades, and secure incentives. Call (702) 222-1964.",
@@ -234,6 +238,11 @@ const builders = [
 export default function NewConstructionPage() {
   return (
     <>
+      <PageJsonLd
+        path="/new-construction"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "New Construction", url: "/new-construction" }]}
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

@@ -18,8 +18,12 @@ import {
   CheckCircle,
 } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/market-insights",
+  },
   title: "Las Vegas Real Estate Market Insights 2026 | Berkshire Hathaway HomeServices",
   description:
     "Technology trends, economic forecasts, and market analysis shaping Las Vegas real estate in 2026. AI, data centers, California migration, and what it means for buyers and sellers. Call (702) 222-1964.",
@@ -52,6 +56,11 @@ const reportSchema = {
 export default function MarketInsightsPage() {
   return (
     <>
+      <PageJsonLd
+        path="/market-insights"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Market Insights", url: "/market-insights" }]}
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(reportSchema) }}
