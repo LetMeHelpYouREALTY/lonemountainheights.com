@@ -140,12 +140,13 @@ export default function ListingsPage() {
           <section className="mb-16">
             <div className="max-w-7xl mx-auto">
               <div
+                className="realscout-widget-wrap"
                 dangerouslySetInnerHTML={{
                   __html: `<realscout-office-listings 
                     agent-encoded-id="QWdlbnQtMjI1MDUw" 
                     sort-order="NEWEST" 
                     listing-status="For Sale" 
-                    property-types=",SFR,MF,TC"
+                    property-types="SFR,MF,TC"
                   ></realscout-office-listings>`,
                 }}
               />
