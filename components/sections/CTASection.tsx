@@ -17,7 +17,7 @@ export default function CTASection() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-blue-50">
-              <a href="http://drjanduffy.realscout.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+              <a href="https://drjanduffy.realscout.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                 <Home className="h-5 w-5" />
                 Browse Properties
               </a>

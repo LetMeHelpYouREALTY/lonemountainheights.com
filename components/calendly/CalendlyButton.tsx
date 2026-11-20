@@ -34,7 +34,7 @@ export default function CalendlyButton({
         strategy="lazyOnload"
       />
       <a
-        href=""
+        href={url}
         onClick={handleClick}
         className={className}
       >
