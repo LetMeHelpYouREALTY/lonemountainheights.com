@@ -1,4 +1,5 @@
 import Navbar from "@/components/layouts/Navbar";
+import { LoneMountainHeightsHome } from "@/components/luxury/LoneMountainHeightsHome";
 import RealScoutListings from "@/components/realscout/RealScoutListings";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import ReviewsSection from "@/components/sections/ReviewsSection";
@@ -7,9 +8,16 @@ import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
 import { Phone, Home as HomeIcon, TrendingUp, Shield, Users } from "lucide-react";
 import { getPageDomainConfig } from "@/lib/get-domain-config";
+import { headers } from "next/headers";
+import { isLoneMountainHeightsDomain } from "@/lib/lone-mountain-heights";
 
 export default async function Home() {
   const config = await getPageDomainConfig();
+  const host = headers().get("x-domain") || headers().get("host") || "";
+
+  if (isLoneMountainHeightsDomain(host)) {
+    return <LoneMountainHeightsHome config={config} />;
+  }
 
   const organizationSchema = {
     "@context": "https://schema.org",
@@ -53,15 +61,6 @@ export default async function Home() {
               {config.heroSubheadline}
             </p>
 
-            {/* RealScout Search Widget */}
-            <div className="mb-8 flex justify-center">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: `<realscout-simple-search agent-encoded-id="${config.realscoutAgentId}"></realscout-simple-search>`,
-                }}
-              />
-            </div>
-
             {/* Trust Indicators */}
             <div className="flex flex-wrap justify-center gap-6 text-white/80 text-sm">
               <div className="flex items-center gap-2">
@@ -79,6 +78,12 @@ export default async function Home() {
             </div>
           </div>
         </section>
+
+        <RealScoutListings
+          agentEncodedId={config.realscoutAgentId}
+          title={`${config.neighborhood} Listings`}
+          subtitle="Live MLS search—office listings load below the hero on every community site."
+        />
 
         {/* Value Proposition */}
         <section className="py-16 md:py-20 bg-white">
@@ -141,7 +146,6 @@ export default async function Home() {
           </div>
         </section>
 
-        <RealScoutListings />
         <WhyChooseUs />
         <ReviewsSection />
         <FAQSection />
@@ -163,12 +167,14 @@ export default async function Home() {
                 <Phone className="h-5 w-5 mr-2" />
                 Call 702-222-1964
               </a>
-              <Link
-                href="/contact"
+              <a
+                href="https://calendly.com/drjanduffy/buyer-consultation-30-min?utm_source=heyberkshire.com&utm_medium=website&utm_content=home-cta"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-block bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-md font-bold text-lg transition-colors"
               >
-                Send a Message
-              </Link>
+                Schedule on Calendly
+              </a>
             </div>
             <p className="mt-6 text-blue-200 text-sm">
               Dr. Jan Duffy | License S.0197614.LLC | Berkshire Hathaway HomeServices Nevada Properties

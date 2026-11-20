@@ -49,8 +49,8 @@ interface FAQSectionProps {
   title?: string;
   /** Custom subtitle for the section */
   subtitle?: string;
-  /** Whether to include JSON-LD schema (handled separately by FAQSchema component) */
   className?: string;
+  variant?: "light" | "dark";
 }
 
 export default function FAQSection({
@@ -58,6 +58,7 @@ export default function FAQSection({
   title = "Frequently Asked Questions",
   subtitle = "Get answers to common questions about our real estate services",
   className = "",
+  variant = "light",
 }: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -65,36 +66,50 @@ export default function FAQSection({
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const isDark = variant === "dark";
+
   return (
-    <section className={`py-16 md:py-24 bg-white ${className}`}>
+    <section
+      className={`py-16 md:py-24 ${isDark ? "bg-[#121212]" : "bg-white"} ${className}`}
+    >
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+          <h2
+            className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-4 ${isDark ? "text-white" : "text-slate-900"}`}
+          >
             {title}
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">{subtitle}</p>
+          <p className={`text-xl max-w-3xl mx-auto ${isDark ? "text-slate-400" : "text-slate-600"}`}>
+            {subtitle}
+          </p>
         </div>
 
         <div className="max-w-3xl mx-auto">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="border border-slate-200 rounded-lg mb-4 overflow-hidden"
+              className={`border rounded-lg mb-4 overflow-hidden ${isDark ? "border-[#2a2a2a]" : "border-slate-200"}`}
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-slate-50 transition-colors"
+                className={`w-full px-6 py-4 text-left flex justify-between items-center transition-colors ${isDark ? "hover:bg-[#1a1a1a]" : "hover:bg-slate-50"}`}
               >
-                <span className="font-semibold text-slate-900 pr-4">{faq.question}</span>
+                <span className={`font-semibold pr-4 ${isDark ? "text-white" : "text-slate-900"}`}>
+                  {faq.question}
+                </span>
                 {openIndex === index ? (
-                  <ChevronUp className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                  <ChevronUp
+                    className={`h-5 w-5 flex-shrink-0 ${isDark ? "text-[#c9a962]" : "text-blue-600"}`}
+                  />
                 ) : (
-                  <ChevronDown className="h-5 w-5 text-slate-400 flex-shrink-0" />
+                  <ChevronDown className={`h-5 w-5 flex-shrink-0 ${isDark ? "text-slate-500" : "text-slate-400"}`} />
                 )}
               </button>
               {openIndex === index && (
-                <div className="px-6 py-4 bg-slate-50 border-t border-slate-200">
-                  <p className="text-slate-700">{faq.answer}</p>
+                <div
+                  className={`px-6 py-4 border-t ${isDark ? "bg-[#1a1a1a] border-[#2a2a2a]" : "bg-slate-50 border-slate-200"}`}
+                >
+                  <p className={isDark ? "text-slate-300" : "text-slate-700"}>{faq.answer}</p>
                 </div>
               )}
             </div>

@@ -7,17 +7,28 @@ import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const domain = headers().get("x-domain") || "";
+  const domain = headers().get("x-domain") || headers().get("host") || "";
   const config = getDomainConfig(domain);
+  const canonicalHost = config.domain !== "default" ? config.domain : "heyberkshire.com";
+  const siteUrl = `https://www.${canonicalHost.replace(/^www\./, "")}`;
+
   return {
+    metadataBase: new URL(siteUrl),
     title: `${config.neighborhood} | Dr. Jan Duffy, REALTOR® | BHHS Nevada`,
     description: config.description,
     keywords: config.keywords,
+    icons: {
+      icon: [{ url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" }],
+      apple: [{ url: "/images/agent/dr-jan-duffy.jpg", sizes: "180x180", type: "image/jpeg" }],
+    },
     openGraph: {
       title: config.heroHeadline,
       description: config.description,
       type: "website",
+      url: siteUrl,
+      images: [{ url: "/images/agent/dr-jan-duffy.jpg", alt: "Dr. Jan Duffy, REALTOR®" }],
     },
+    alternates: { canonical: siteUrl },
   };
 }
 
