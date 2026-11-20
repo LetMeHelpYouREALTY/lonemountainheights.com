@@ -35,6 +35,17 @@
   }
 }
 
+/* Lone Mountain Heights luxury theme (domain-specific homepage) */
+.lmh-luxury {
+  --lmh-gold: #c9a962;
+  --lmh-surface: #1a1a1a;
+  --lmh-border: #2a2a2a;
+}
+
+.lmh-luxury a:not([class]) {
+  color: var(--lmh-gold);
+}
+
 /* ===== RealScout Widget Styling ===== */
 
 /* RealScout Simple Search - Desktop */

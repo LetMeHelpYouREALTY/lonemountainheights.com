@@ -4,6 +4,9 @@ import RealScoutListings from "@/components/realscout/RealScoutListings";
 import Link from "next/link";
 import { Phone } from "lucide-react";
 import type { Metadata } from "next";
+import { getContactNap } from "@/lib/contact-nap";
+import { isLmhRequest } from "@/lib/request-host";
+import { LMH_FAQ, LMH_NAP, buildLmhFaqJsonLd, serializeJsonLd } from "@/lib/lone-mountain-heights";
 import SchemaScript from "@/components/SchemaScript";
 import {
   generateBreadcrumbSchema,
@@ -12,18 +15,34 @@ import {
   combineSchemas,
 } from "@/lib/schema";
 
-export const metadata: Metadata = {
-  title: "FAQ | Berkshire Hathaway HomeServices Las Vegas Real Estate",
-  description:
-    "Frequently asked questions about Las Vegas real estate, Berkshire Hathaway HomeServices, buying, selling, and working with Dr. Jan Duffy at BHHS Nevada Properties.",
-  keywords: [
-    "Berkshire Hathaway HomeServices FAQ",
-    "Las Vegas real estate questions",
-    "buying a home Las Vegas",
-    "selling a home Henderson",
-    "BHHS agent questions",
-  ],
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const isLmh = isLmhRequest();
+  if (isLmh) {
+    return {
+      title: "FAQ | Lone Mountain Heights Homes | Dr. Jan Duffy",
+      description:
+        "Answers about Lone Mountain Heights location, home types, tours, and working with Dr. Jan Duffy. Call (702) 222-1964.",
+      alternates: { canonical: `${LMH_NAP.siteUrl}/faq` },
+      keywords: [
+        "Lone Mountain Heights FAQ",
+        "Northwest Las Vegas real estate questions",
+        "Dr. Jan Duffy FAQ",
+      ],
+    };
+  }
+  return {
+    title: "FAQ | Berkshire Hathaway HomeServices Las Vegas Real Estate",
+    description:
+      "Frequently asked questions about Las Vegas real estate, Berkshire Hathaway HomeServices, buying, selling, and working with Dr. Jan Duffy at BHHS Nevada Properties.",
+    keywords: [
+      "Berkshire Hathaway HomeServices FAQ",
+      "Las Vegas real estate questions",
+      "buying a home Las Vegas",
+      "selling a home Henderson",
+      "BHHS agent questions",
+    ],
+  };
+}
 
 // Breadcrumb items
 const breadcrumbs = [
@@ -146,7 +165,7 @@ const faqCategories = [
       },
       {
         q: "How do I contact Dr. Jan Duffy?",
-        a: "Call or text (702) 500-1942 or email homes@heyberkshire.com. Office located at 9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134.",
+        a: "Call or text CONTACT_PHONE or email CONTACT_EMAIL. Office located at 9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134.",
       },
       {
         q: "What areas does Dr. Jan cover?",
@@ -156,32 +175,101 @@ const faqCategories = [
   },
 ];
 
-// Flatten all FAQs for schema generation
-const allFaqs = faqCategories.flatMap((category) =>
-  category.faqs.map((faq) => ({
-    question: faq.q,
-    answer: faq.a,
-  }))
-);
+export default async function FAQPage() {
+  const isLmh = isLmhRequest();
+  const nap = getContactNap(isLmh);
 
-// Combined page schemas including all FAQs
-const pageSchemas = combineSchemas(
-  generateBreadcrumbSchema(breadcrumbs),
-  generateWebPageSchema({
-    name: "Frequently Asked Questions | Berkshire Hathaway HomeServices Las Vegas",
-    description:
-      "Comprehensive FAQ about Las Vegas real estate, buying, selling, investing, and working with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties.",
-    url: "/faq",
-    dateModified: "2026-01-25",
-  }),
-  generateFAQSchema(allFaqs)
-);
+  if (isLmh) {
+    const lmhSchemas = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": `${LMH_NAP.siteUrl}/faq`,
+          name: "Lone Mountain Heights FAQ",
+          url: `${LMH_NAP.siteUrl}/faq`,
+          isPartOf: { "@id": `${LMH_NAP.siteUrl}/#website` },
+        },
+        buildLmhFaqJsonLd(LMH_FAQ),
+      ],
+    };
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(lmhSchemas) }}
+        />
+        <Navbar />
+        <main className="pt-24 pb-16">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center mb-16">
+              <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+                Lone Mountain Heights FAQ
+              </h1>
+              <p className="text-xl text-slate-600">
+                Direct answers about the neighborhood, tours, and working with Dr. Jan Duffy.
+              </p>
+            </div>
+            <div className="max-w-4xl mx-auto space-y-4">
+              {LMH_FAQ.map((faq) => (
+                <div key={faq.question} className="bg-slate-50 rounded-lg p-6">
+                  <h2 className="font-bold text-slate-900 mb-2 text-lg">{faq.question}</h2>
+                  <p className="text-slate-600">
+                    <strong>Answer: </strong>
+                    {faq.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <section className="mt-16 text-center bg-slate-900 text-white rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-4">Still have questions?</h2>
+              <p className="text-slate-300 mb-8">
+                Call or text {nap.phoneDisplay} · {LMH_NAP.addressFull}
+              </p>
+              <a
+                href={`tel:${nap.phoneTel}`}
+                className="inline-flex items-center bg-white text-slate-900 px-8 py-4 rounded-md font-bold text-lg"
+              >
+                <Phone className="h-5 w-5 mr-2" />
+                Call {nap.phoneDisplay}
+              </a>
+            </section>
+          </div>
+        </main>
+        <Footer />
+      </>
+    );
+  }
 
-export default function FAQPage() {
+  const categories = faqCategories.map((category) => ({
+    ...category,
+    faqs: category.faqs.map((faq) => ({
+      ...faq,
+      a: faq.a
+        .replace("CONTACT_PHONE", nap.phoneDisplay)
+        .replace("CONTACT_EMAIL", nap.email)
+        .replace("(702) 500-1942", nap.phoneDisplay)
+        .replace("homes@heyberkshire.com", nap.email),
+    })),
+  }));
+  const faqsForSchema = categories.flatMap((category) =>
+    category.faqs.map((faq) => ({ question: faq.q, answer: faq.a }))
+  );
+  const schemas = combineSchemas(
+    generateBreadcrumbSchema(breadcrumbs),
+    generateWebPageSchema({
+      name: "Frequently Asked Questions | Berkshire Hathaway HomeServices Las Vegas",
+      description:
+        "Comprehensive FAQ about Las Vegas real estate, buying, selling, investing, and working with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties.",
+      url: "/faq",
+      dateModified: "2026-11-20",
+    }),
+    generateFAQSchema(faqsForSchema)
+  );
+
   return (
     <>
-      {/* Combined JSON-LD Schema: Breadcrumb + WebPage + FAQPage (all categories) */}
-      <SchemaScript schema={pageSchemas} id="faq-page-schema" />
+      <SchemaScript schema={schemas} id="faq-page-schema" />
       <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
@@ -201,7 +289,7 @@ export default function FAQPage() {
 
           {/* FAQ Categories */}
           <div className="max-w-4xl mx-auto space-y-12">
-            {faqCategories.map((category) => (
+            {categories.map((category) => (
               <section key={category.title}>
                 <h2 className="text-2xl font-bold text-slate-900 mb-6 pb-2 border-b border-slate-200">
                   {category.title}
@@ -226,11 +314,11 @@ export default function FAQPage() {
               with Berkshire Hathaway HomeServices.
             </p>
             <a
-              href="tel:+17025001942"
+              href={`tel:${nap.phoneTel}`}
               className="inline-flex items-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
             >
               <Phone className="h-5 w-5 mr-2" />
-              Call (702) 500-1942
+              Call {nap.phoneDisplay}
             </a>
             <p className="mt-4 text-blue-200 text-sm">
               Berkshire Hathaway HomeServices Nevada Properties
