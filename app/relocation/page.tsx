@@ -1,6 +1,9 @@
 import Navbar from "@/components/layouts/Navbar";
+import RealScoutOfficeSection from "@/components/realscout/RealScoutOfficeSection";
+import CalendlyScheduleSection from "@/components/calendly/CalendlyScheduleSection";
+import SectionEngagement from "@/components/sections/SectionEngagement";
+import AgentPortrait from "@/components/brand/AgentPortrait";
 import Footer from "@/components/layouts/Footer";
-import RealScoutListings from "@/components/realscout/RealScoutListings";
 import Link from "next/link";
 import { 
   Phone, 
@@ -23,7 +26,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Relocating to Las Vegas | Berkshire Hathaway HomeServices",
   description:
-    "Moving to Las Vegas? Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties provides comprehensive relocation services. Schools, neighborhoods, cost of living. Call (702) 500-1942.",
+    "Moving to Las Vegas? Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties provides comprehensive relocation services. Schools, neighborhoods, cost of living. Call (702) 222-1964.",
   keywords: [
     "relocating to Las Vegas",
     "moving to Las Vegas",
@@ -43,7 +46,7 @@ const relocationSchema = {
   provider: {
     "@type": "RealEstateAgent",
     name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
-    telephone: "+17025001942",
+    telephone: "+17022221964",
   },
   areaServed: "Las Vegas, Henderson, Summerlin, Clark County NV",
   serviceType: "Relocation Services",
@@ -134,6 +137,9 @@ export default function RelocationPage() {
             </div>
           </div>
 
+          <RealScoutOfficeSection />
+          <SectionEngagement />
+
           {/* Why Las Vegas */}
           <section className="mb-16 bg-slate-900 text-white rounded-2xl p-8 md:p-12 max-w-5xl mx-auto">
             <h2 className="text-2xl font-bold mb-4 text-center">Why People Are Moving to Las Vegas</h2>
@@ -148,6 +154,9 @@ export default function RelocationPage() {
                 <h3 className="font-bold mb-1">No State Income Tax</h3>
                 <p className="text-slate-400 text-sm">Keep more of what you earn—California residents can save 10%+ on taxes</p>
               </div>
+
+
+
               <div className="text-center">
                 <Sun className="h-12 w-12 text-yellow-400 mx-auto mb-3" />
                 <h3 className="font-bold mb-1">300+ Days of Sunshine</h3>
@@ -427,11 +436,11 @@ export default function RelocationPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+17025001942"
+                href="tel:+17022221964"
                 className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-md font-bold text-lg transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (702) 500-1942
+                Call (702) 222-1964
               </a>
               <Link
                 href="/contact"
@@ -449,7 +458,7 @@ export default function RelocationPage() {
         {/* Last Updated */}
         <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
       </main>
-      <RealScoutListings />
+      <CalendlyScheduleSection />
       <Footer />
     </>
   );

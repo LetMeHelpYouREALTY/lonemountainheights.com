@@ -1,4 +1,8 @@
 import Navbar from "@/components/layouts/Navbar";
+import RealScoutOfficeSection from "@/components/realscout/RealScoutOfficeSection";
+import CalendlyScheduleSection from "@/components/calendly/CalendlyScheduleSection";
+import SectionEngagement from "@/components/sections/SectionEngagement";
+import AgentPortrait from "@/components/brand/AgentPortrait";
 import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
 import {
@@ -29,7 +33,7 @@ import {
 export const metadata: Metadata = {
   title: "Dr. Jan Duffy, REALTOR® Las Vegas | Berkshire Hathaway HomeServices",
   description:
-    "Dr. Jan Duffy is a trusted Las Vegas REALTOR® with Berkshire Hathaway HomeServices Nevada Properties. Specializing in Summerlin, Henderson, 55+ communities, California relocation, and luxury homes. Call (702) 500-1942.",
+    "Dr. Jan Duffy is a trusted Las Vegas REALTOR® with Berkshire Hathaway HomeServices Nevada Properties. Specializing in Summerlin, Henderson, 55+ communities, California relocation, and luxury homes. Call (702) 222-1964.",
   keywords: [
     "Dr. Jan Duffy realtor",
     "Las Vegas real estate agent",
@@ -87,7 +91,13 @@ export default function GoogleBusinessPage() {
                         <p className="font-medium">{businessInfo.address.streetAddress}</p>
                         <p>{businessInfo.address.addressLocality}, {businessInfo.address.addressRegion} {businessInfo.address.postalCode}</p>
                       </div>
+
+          <RealScoutOfficeSection />
+          <SectionEngagement />
                     </div>
+
+
+
                     <div className="flex items-center gap-3">
                       <Phone className="h-5 w-5 text-blue-400 flex-shrink-0" />
                       <a href={`tel:${businessInfo.phone.tel}`} className="font-medium hover:text-blue-300">
@@ -310,6 +320,7 @@ export default function GoogleBusinessPage() {
         </div>
         <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
       </main>
+      <CalendlyScheduleSection />
       <Footer />
     </>
   );

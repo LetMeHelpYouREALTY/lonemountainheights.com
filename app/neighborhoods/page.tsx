@@ -1,6 +1,9 @@
 import Navbar from "@/components/layouts/Navbar";
+import RealScoutOfficeSection from "@/components/realscout/RealScoutOfficeSection";
+import CalendlyScheduleSection from "@/components/calendly/CalendlyScheduleSection";
+import SectionEngagement from "@/components/sections/SectionEngagement";
+import AgentPortrait from "@/components/brand/AgentPortrait";
 import Footer from "@/components/layouts/Footer";
-import RealScoutListings from "@/components/realscout/RealScoutListings";
 import Link from "next/link";
 import { MapPin, Phone, Home, Users, GraduationCap } from "lucide-react";
 import type { Metadata } from "next";
@@ -20,13 +23,22 @@ export const metadata: Metadata = {
 
 const neighborhoods = [
   {
+    name: "Lone Mountain Heights",
+    slug: "lone-mountain-heights",
+    medianPrice: "$749,900",
+    priceChange: "+5.2%",
+    description: "Gated Northwest Las Vegas community with mountain views near Lone Mountain Regional Park",
+    highlights: ["Gated Community", "Mountain Views", "89129 ZIP", "Trail Access"],
+    bestFor: "Move-up buyers, view seekers, Northwest Las Vegas relocators",
+  },
+  {
     name: "Summerlin",
     slug: "summerlin",
     medianPrice: "$625,000",
     priceChange: "+6.8%",
     description: "Premier master-planned community with parks, trails, and nearby public schools",
     highlights: ["150+ Parks", "Nearby Public Schools", "Red Rock Views", "Downtown Summerlin"],
-    bestFor: "Families, professionals, outdoor enthusiasts",
+    bestFor: "Professionals, outdoor enthusiasts, Red Rock proximity",
   },
   {
     name: "Henderson",
@@ -131,6 +143,9 @@ export default function NeighborhoodsPage() {
             </p>
           </div>
 
+          <RealScoutOfficeSection />
+          <SectionEngagement />
+
           {/* Neighborhood Grid */}
           <section className="mb-16 max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-6">
@@ -147,6 +162,9 @@ export default function NeighborhoodsPage() {
                       </h2>
                       <p className="text-sm text-slate-500">{neighborhood.bestFor}</p>
                     </div>
+
+
+
                     <div className="text-right">
                       <div className="font-bold text-slate-900">{neighborhood.medianPrice}</div>
                       <div className="text-sm text-green-600">{neighborhood.priceChange} YoY</div>
@@ -222,11 +240,11 @@ export default function NeighborhoodsPage() {
               neighborhood recommendations.
             </p>
             <a
-              href="tel:+17025001942"
+              href="tel:+17022221964"
               className="inline-flex items-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
             >
               <Phone className="h-5 w-5 mr-2" />
-              Call (702) 500-1942
+              Call (702) 222-1964
             </a>
             <p className="mt-4 text-blue-200 text-sm">
               Berkshire Hathaway HomeServices Nevada Properties
@@ -237,7 +255,7 @@ export default function NeighborhoodsPage() {
         {/* Last Updated */}
         <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
       </main>
-      <RealScoutListings />
+      <CalendlyScheduleSection />
       <Footer />
     </>
   );

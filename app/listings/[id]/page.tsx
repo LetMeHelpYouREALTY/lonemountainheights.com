@@ -1,4 +1,8 @@
 import Navbar from "@/components/layouts/Navbar";
+import RealScoutOfficeSection from "@/components/realscout/RealScoutOfficeSection";
+import CalendlyScheduleSection from "@/components/calendly/CalendlyScheduleSection";
+import SectionEngagement from "@/components/sections/SectionEngagement";
+import AgentPortrait from "@/components/brand/AgentPortrait";
 import Footer from "@/components/layouts/Footer";
 import Image from "next/image";
 import { Bed, Bath, Square, MapPin, Calendar } from "lucide-react";
@@ -40,6 +44,8 @@ export default async function PropertyPage({ params }: PropertyPageProps) {
     <>
       <Navbar />
       <main className="pt-24 pb-16">
+        <RealScoutOfficeSection />
+        <SectionEngagement />
         <div className="container mx-auto px-4">
           {/* Breadcrumb */}
           <nav className="mb-6 text-sm">
@@ -69,6 +75,9 @@ export default async function PropertyPage({ params }: PropertyPageProps) {
               <MapPin className="h-5 w-5 mr-2" />
               {property.location}
             </div>
+
+
+
             <div className="text-3xl font-bold text-blue-600">{property.price}</div>
           </div>
 
@@ -136,7 +145,7 @@ export default async function PropertyPage({ params }: PropertyPageProps) {
                 </p>
                 <div className="space-y-3">
                   <Button asChild className="w-full bg-blue-600 hover:bg-blue-700">
-                    <a href="tel:+17025001942">Call (702) 500-1942</a>
+                    <a href="tel:+17022221964">Call (702) 222-1964</a>
                   </Button>
                   <Button asChild variant="outline" className="w-full">
                     <a href="/contact">Send Message</a>
@@ -147,6 +156,7 @@ export default async function PropertyPage({ params }: PropertyPageProps) {
           </div>
         </div>
       </main>
+      <CalendlyScheduleSection />
       <Footer />
     </>
   );
