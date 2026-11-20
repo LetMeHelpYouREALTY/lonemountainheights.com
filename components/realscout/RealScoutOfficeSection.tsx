@@ -28,7 +28,10 @@ export default function RealScoutOfficeSection({
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
           <div className="flex items-start gap-4 max-w-3xl">
-            <AgentPortrait size="md" className="hidden sm:block shrink-0 mt-1" />
+            <AgentPortrait
+              size="md"
+              className="hidden sm:block shrink-0 mt-1"
+            />
             <div>
               <p className="text-xs tracking-[0.2em] uppercase text-[#c9a227] font-semibold mb-2">
                 Live MLS · RealScout Office

@@ -24,7 +24,11 @@ export default function Navbar() {
   const mainNavLinks = [
     { href: "/", label: "Home", external: false },
     { href: REALSCOUT.portal, label: "Properties", external: true },
-    { href: "/neighborhoods/lone-mountain-heights", label: "Lone Mountain", external: false },
+    {
+      href: "/neighborhoods/lone-mountain-heights",
+      label: "Lone Mountain",
+      external: false,
+    },
     { href: "/neighborhoods", label: "Neighborhoods", external: false },
     { href: "/about", label: "About", external: false },
     { href: "/contact", label: "Contact", external: false },
@@ -70,7 +74,7 @@ export default function Navbar() {
                 >
                   {link.label}
                 </Link>
-              )
+              ),
             )}
 
             <div className="relative">
@@ -122,8 +126,14 @@ export default function Navbar() {
               className="inline-flex items-center justify-center bg-[#1e3a8a] text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-[#1e40af] transition-colors no-underline"
             />
 
-            <Button asChild className="bg-[#c9a227] hover:bg-[#d4af37] text-slate-900">
-              <Link href={AGENT.phoneTel} className="flex items-center gap-2 no-underline">
+            <Button
+              asChild
+              className="bg-[#c9a227] hover:bg-[#d4af37] text-slate-900"
+            >
+              <Link
+                href={AGENT.phoneTel}
+                className="flex items-center gap-2 no-underline"
+              >
                 <Phone className="h-4 w-4" />
                 <span className="hidden xl:inline">{AGENT.phone}</span>
                 <span className="xl:hidden">Call</span>
@@ -132,7 +142,11 @@ export default function Navbar() {
           </div>
 
           <div className="lg:hidden flex items-center gap-3">
-            <Button asChild size="sm" className="bg-[#c9a227] hover:bg-[#d4af37] text-slate-900">
+            <Button
+              asChild
+              size="sm"
+              className="bg-[#c9a227] hover:bg-[#d4af37] text-slate-900"
+            >
               <Link href={AGENT.phoneTel} className="no-underline">
                 <Phone className="h-4 w-4" />
               </Link>
@@ -143,7 +157,11 @@ export default function Navbar() {
               aria-label="Toggle menu"
               aria-expanded={isMobileMenuOpen}
             >
-              {isMobileMenuOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
+              {isMobileMenuOpen ? (
+                <X size={24} aria-hidden="true" />
+              ) : (
+                <Menu size={24} aria-hidden="true" />
+              )}
             </button>
           </div>
         </div>
@@ -172,11 +190,13 @@ export default function Navbar() {
                   >
                     {link.label}
                   </Link>
-                )
+                ),
               )}
 
               <div className="border-t border-slate-200 pt-2 mt-2">
-                <span className="text-xs font-semibold text-slate-500 px-3 uppercase">Services</span>
+                <span className="text-xs font-semibold text-slate-500 px-3 uppercase">
+                  Services
+                </span>
                 {serviceLinks.map((link) => (
                   <Link
                     key={link.href}
@@ -195,8 +215,14 @@ export default function Navbar() {
                   text="Book a Private Tour"
                   className="inline-flex w-full items-center justify-center bg-[#1e3a8a] text-white px-4 py-3 rounded-md font-semibold no-underline"
                 />
-                <Button asChild className="bg-[#c9a227] hover:bg-[#d4af37] text-slate-900 w-full">
-                  <Link href={AGENT.phoneTel} className="flex items-center justify-center gap-2 no-underline">
+                <Button
+                  asChild
+                  className="bg-[#c9a227] hover:bg-[#d4af37] text-slate-900 w-full"
+                >
+                  <Link
+                    href={AGENT.phoneTel}
+                    className="flex items-center justify-center gap-2 no-underline"
+                  >
                     <Phone className="h-4 w-4" />
                     Call Dr. Jan: {AGENT.phone}
                   </Link>

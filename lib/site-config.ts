@@ -107,23 +107,41 @@ export const neighborhoods = [
   {
     name: "Lone Mountain Heights",
     slug: "lone-mountain-heights",
-    description: "Gated Northwest Las Vegas community with mountain views near Lone Mountain Regional Park",
+    description:
+      "Gated Northwest Las Vegas community with mountain views near Lone Mountain Regional Park",
     medianPrice: LONE_MOUNTAIN_HEIGHTS.medianListEstimate,
-    highlights: ["Gated community", "Mountain views", "89129 ZIP", "Trail access"],
+    highlights: [
+      "Gated community",
+      "Mountain views",
+      "89129 ZIP",
+      "Trail access",
+    ],
   },
   {
     name: "Summerlin",
     slug: "summerlin",
-    description: "Master-planned community with parks, trails, and nearby public schools",
+    description:
+      "Master-planned community with parks, trails, and nearby public schools",
     medianPrice: "$625,000",
-    highlights: ["Red Rock views", "150+ parks", "Nearby public schools", "Golf courses"],
+    highlights: [
+      "Red Rock views",
+      "150+ parks",
+      "Nearby public schools",
+      "Golf courses",
+    ],
   },
   {
     name: "Henderson",
     slug: "henderson",
-    description: "Nevada's second-largest city with master-planned neighborhoods",
+    description:
+      "Nevada's second-largest city with master-planned neighborhoods",
     medianPrice: "$485,000",
-    highlights: ["Public crime maps", "Nearby public schools", "Lake Las Vegas", "Green Valley"],
+    highlights: [
+      "Public crime maps",
+      "Nearby public schools",
+      "Lake Las Vegas",
+      "Green Valley",
+    ],
   },
   {
     name: "Green Valley",
@@ -137,14 +155,24 @@ export const neighborhoods = [
     slug: "the-ridges",
     description: "Ultra-luxury guard-gated community in Summerlin",
     medianPrice: "$2.5M",
-    highlights: ["Celebrity homes", "Custom estates", "Bear's Best Golf", "Strip views"],
+    highlights: [
+      "Celebrity homes",
+      "Custom estates",
+      "Bear's Best Golf",
+      "Strip views",
+    ],
   },
   {
     name: "Southern Highlands",
     slug: "southern-highlands",
     description: "Master-planned luxury community with championship golf",
     medianPrice: "$750,000",
-    highlights: ["Golf community", "Guard-gated", "Mountain views", "Luxury amenities"],
+    highlights: [
+      "Golf community",
+      "Guard-gated",
+      "Mountain views",
+      "Luxury amenities",
+    ],
   },
   {
     name: "North Las Vegas",
@@ -158,7 +186,12 @@ export const neighborhoods = [
     slug: "skye-canyon",
     description: "Newer master-planned community in northwest Las Vegas",
     medianPrice: "$550,000",
-    highlights: ["New homes", "Mountain views", "Modern amenities", "Nearby public schools"],
+    highlights: [
+      "New homes",
+      "Mountain views",
+      "Modern amenities",
+      "Nearby public schools",
+    ],
   },
   {
     name: "Centennial Hills",
@@ -172,7 +205,12 @@ export const neighborhoods = [
     slug: "inspirada",
     description: "Henderson master-planned community with resort-style living",
     medianPrice: "$525,000",
-    highlights: ["Resort pools", "Walking trails", "New construction", "Nearby public schools"],
+    highlights: [
+      "Resort pools",
+      "Walking trails",
+      "New construction",
+      "Nearby public schools",
+    ],
   },
   {
     name: "Mountains Edge",
@@ -187,25 +225,29 @@ export const services = [
   {
     name: "Home Buying",
     slug: "buyers",
-    description: "Expert guidance through every step of buying in Lone Mountain Heights and beyond",
+    description:
+      "Expert guidance through every step of buying in Lone Mountain Heights and beyond",
     icon: "Home",
   },
   {
     name: "Home Selling",
     slug: "sellers",
-    description: "Maximize your Lone Mountain Heights home's value with professional marketing",
+    description:
+      "Maximize your Lone Mountain Heights home's value with professional marketing",
     icon: "TrendingUp",
   },
   {
     name: "Luxury Homes",
     slug: "luxury-homes",
-    description: "Specialized expertise in Las Vegas luxury and gated communities",
+    description:
+      "Specialized expertise in Las Vegas luxury and gated communities",
     icon: "Star",
   },
   {
     name: "New Construction",
     slug: "new-construction",
-    description: "Buyer representation for new home purchases across the valley",
+    description:
+      "Buyer representation for new home purchases across the valley",
     icon: "Building",
   },
   {
@@ -254,7 +296,8 @@ export const commonFAQs = {
         "Typically 30-45 days from offer acceptance to closing. Cash purchases can close in as little as 7-14 days depending on inspections and title.",
     },
     {
-      question: "Do I need a pre-approval before touring Lone Mountain Heights?",
+      question:
+        "Do I need a pre-approval before touring Lone Mountain Heights?",
       answer:
         "Yes. A pre-approval shows sellers you're serious and clarifies your budget. Dr. Jan can connect you with trusted local lenders.",
     },

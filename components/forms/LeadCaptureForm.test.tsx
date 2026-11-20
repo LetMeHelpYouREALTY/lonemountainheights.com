@@ -23,13 +23,15 @@ describe("LeadCaptureForm", () => {
 
   it("uses showing URL for property-search", () => {
     render(<LeadCaptureForm formType="property-search" />);
-    expect(screen.getByTestId("calendly-widget").getAttribute("data-url")).toContain(
-      "calendly.com"
-    );
+    expect(
+      screen.getByTestId("calendly-widget").getAttribute("data-url"),
+    ).toContain("calendly.com");
   });
 
   it("shows schedule headline for contact", () => {
     render(<LeadCaptureForm formType="contact" />);
-    expect(screen.getByText(/Schedule with Dr. Jan Duffy/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Schedule with Dr. Jan Duffy/i),
+    ).toBeInTheDocument();
   });
 });

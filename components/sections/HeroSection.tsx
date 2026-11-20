@@ -12,7 +12,11 @@ export default function HeroSection() {
   const [currentImage, setCurrentImage] = useState(0);
   const prefersReducedMotion = useReducedMotion();
 
-  const images = ["/Image/hero_bg_1.jpg", "/Image/hero_bg_2.jpg", "/Image/hero_bg_3.jpg"];
+  const images = [
+    "/Image/hero_bg_1.jpg",
+    "/Image/hero_bg_2.jpg",
+    "/Image/hero_bg_3.jpg",
+  ];
 
   useEffect(() => {
     if (prefersReducedMotion) return;
@@ -58,8 +62,8 @@ export default function HeroSection() {
           </span>
         </h1>
         <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl">
-          Gated Northwest Las Vegas living near Lone Mountain — private tours, live MLS, and
-          direct access to {AGENT.name}.
+          Gated Northwest Las Vegas living near Lone Mountain — private tours,
+          live MLS, and direct access to {AGENT.name}.
         </p>
 
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-10">

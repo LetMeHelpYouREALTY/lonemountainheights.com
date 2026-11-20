@@ -20,7 +20,8 @@ export default function BrandLogo({
         ? "text-xl"
         : "text-lg md:text-xl";
 
-  const subSize = variant === "hero" ? "text-sm md:text-base" : "text-[11px] md:text-xs";
+  const subSize =
+    variant === "hero" ? "text-sm md:text-base" : "text-[11px] md:text-xs";
 
   return (
     <Link
@@ -35,7 +36,11 @@ export default function BrandLogo({
             alt={AGENT.portraitAlt}
             width={variant === "hero" ? 72 : 44}
             height={variant === "hero" ? 72 : 44}
-            className={variant === "hero" ? "h-[72px] w-[72px] object-cover" : "h-11 w-11 object-cover"}
+            className={
+              variant === "hero"
+                ? "h-[72px] w-[72px] object-cover"
+                : "h-11 w-11 object-cover"
+            }
             priority={variant === "nav"}
           />
         </span>
@@ -47,7 +52,9 @@ export default function BrandLogo({
         >
           {BRAND.name}
         </span>
-        <span className={`${subSize} tracking-[0.12em] uppercase text-[#c9a227] font-medium`}>
+        <span
+          className={`${subSize} tracking-[0.12em] uppercase text-[#c9a227] font-medium`}
+        >
           {BRAND.subscript}
         </span>
       </span>

@@ -20,7 +20,8 @@ export default function CTASection() {
             Ready to tour {BRAND.name}?
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Book a private showing on Calendly — or call Dr. Jan Duffy directly. No forms. No runaround.
+            Book a private showing on Calendly — or call Dr. Jan Duffy directly.
+            No forms. No runaround.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
@@ -29,7 +30,11 @@ export default function CTASection() {
               text="Book on Calendly"
               className="inline-flex items-center justify-center bg-[#c9a227] text-slate-900 px-6 py-3 rounded-md font-bold hover:bg-[#d4af37] transition-colors no-underline"
             />
-            <Button asChild size="lg" className="bg-white text-[#1e3a8a] hover:bg-blue-50">
+            <Button
+              asChild
+              size="lg"
+              className="bg-white text-[#1e3a8a] hover:bg-blue-50"
+            >
               <a
                 href={REALSCOUT.portal}
                 target="_blank"
@@ -46,7 +51,10 @@ export default function CTASection() {
               variant="outline"
               className="border-white text-white hover:bg-white/10"
             >
-              <Link href={AGENT.phoneTel} className="flex items-center gap-2 no-underline">
+              <Link
+                href={AGENT.phoneTel}
+                className="flex items-center gap-2 no-underline"
+              >
                 <Phone className="h-5 w-5" />
                 {AGENT.phone}
               </Link>

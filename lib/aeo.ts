@@ -62,7 +62,10 @@ export function generateLoneMountainPlaceSchema() {
     "@type": "Place",
     "@id": `${BRAND.url}/neighborhoods/lone-mountain-heights#place`,
     name: "Lone Mountain Heights",
-    alternateName: ["Lone Mountain Heights Las Vegas", "Lone Mountain Heights 89129"],
+    alternateName: [
+      "Lone Mountain Heights Las Vegas",
+      "Lone Mountain Heights 89129",
+    ],
     description: BRAND.description,
     url: `${BRAND.url}/neighborhoods/lone-mountain-heights`,
     address: {
@@ -184,10 +187,25 @@ export function generateLocalBusinessSchema() {
       "@type": "OfferCatalog",
       name: "Lone Mountain Heights Real Estate Services",
       itemListElement: [
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Buyer representation" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Seller representation" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Private gated-community tours" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Home valuation / CMA" } },
+        {
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: "Buyer representation" },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: "Seller representation" },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Private gated-community tours",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: "Home valuation / CMA" },
+        },
       ],
     },
   };

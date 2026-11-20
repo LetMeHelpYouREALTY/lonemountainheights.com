@@ -12,27 +12,32 @@ const features = [
   {
     icon: TrendingUp,
     title: "Market timing",
-    description: "Pricing and offer strategy tuned to thin Northwest Las Vegas inventory.",
+    description:
+      "Pricing and offer strategy tuned to thin Northwest Las Vegas inventory.",
   },
   {
     icon: Users,
     title: "Direct access",
-    description: "Talk to Dr. Jan Duffy — book on Calendly or call. No phone trees.",
+    description:
+      "Talk to Dr. Jan Duffy — book on Calendly or call. No phone trees.",
   },
   {
     icon: Award,
     title: "Proven results",
-    description: "500+ transactions and $127M+ closed since 2008 across the Las Vegas Valley.",
+    description:
+      "500+ transactions and $127M+ closed since 2008 across the Las Vegas Valley.",
   },
   {
     icon: Clock,
     title: "Responsive",
-    description: "Fast answers on showings, inspections, and negotiation checkpoints.",
+    description:
+      "Fast answers on showings, inspections, and negotiation checkpoints.",
   },
   {
     icon: Home,
     title: "Full service",
-    description: "Buy, sell, relocate, and value — one Berkshire Hathaway HomeServices advisor.",
+    description:
+      "Buy, sell, relocate, and value — one Berkshire Hathaway HomeServices advisor.",
   },
 ];
 
@@ -51,8 +56,8 @@ export default function WhyChooseUs() {
             Why work with Dr. Jan on Lone Mountain Heights
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Hyperlocal guidance for a gated Northwest Las Vegas community — backed by Berkshire
-            Hathaway HomeServices.
+            Hyperlocal guidance for a gated Northwest Las Vegas community —
+            backed by Berkshire Hathaway HomeServices.
           </p>
         </div>
 
@@ -70,7 +75,9 @@ export default function WhyChooseUs() {
                     <Icon className="h-6 w-6 text-[#1e3a8a]" />
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">{feature.title}</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                  {feature.title}
+                </h3>
                 <p className="text-slate-600">{feature.description}</p>
               </div>
             );

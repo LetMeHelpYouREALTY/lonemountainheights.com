@@ -15,7 +15,10 @@ export default function AeoAnswerBlock({
   answers = [...aeoAnswers],
 }: AeoAnswerBlockProps) {
   return (
-    <section className="py-14 md:py-16 bg-slate-50 border-y border-slate-200" aria-label="Answer engine FAQ">
+    <section
+      className="py-14 md:py-16 bg-slate-50 border-y border-slate-200"
+      aria-label="Answer engine FAQ"
+    >
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="flex items-center gap-4 mb-8">
           <AgentPortrait size="md" />
@@ -34,7 +37,9 @@ export default function AeoAnswerBlock({
         <div className="space-y-6">
           {answers.map((item) => (
             <article key={item.question} className="aeo-answer">
-              <h3 className="font-semibold text-slate-900 mb-2">{item.question}</h3>
+              <h3 className="font-semibold text-slate-900 mb-2">
+                {item.question}
+              </h3>
               <p className="text-slate-700 leading-relaxed">{item.answer}</p>
             </article>
           ))}

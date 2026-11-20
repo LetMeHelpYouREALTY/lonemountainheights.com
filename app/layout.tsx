@@ -82,7 +82,11 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
@@ -129,7 +133,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ],
         opens: "09:00",
         closes: "18:00",
       },
@@ -141,7 +153,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="icon" href="/icons/favicon-32x32.png" type="image/png" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
-        <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
+        <link
+          rel="stylesheet"
+          href="https://assets.calendly.com/assets/external/widget.css"
+        />
         <Script id="widget-tracker" strategy="afterInteractive">{`
           if(location.hostname.slice(-11)!==".vercel.app"&&location.hostname!=="localhost"){(function(w,i,d,g,e,t){w["WidgetTrackerObject"]=g;(w[g]=w[g]||function()
           {(w[g].q=w[g].q||[]).push(arguments);}),(w[g].ds=1*new Date());(e="script"),
@@ -153,16 +168,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         `}</Script>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessSchema),
+          }}
         />
       </head>
       <body className="font-sans antialiased bg-white text-slate-900">
         {children}
         <Analytics />
         {/* RealScout — load once globally */}
-        <Script src="https://em.realscout.com/widgets/realscout-web-components.js" type="module" strategy="afterInteractive" />
+        <Script
+          src="https://em.realscout.com/widgets/realscout-web-components.js"
+          type="module"
+          strategy="afterInteractive"
+        />
         {/* Calendly — load once globally */}
-        <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
+        <Script
+          src="https://assets.calendly.com/assets/external/widget.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

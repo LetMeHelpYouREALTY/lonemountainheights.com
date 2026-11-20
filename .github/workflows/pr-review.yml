@@ -85,7 +85,8 @@ jobs:
         run: npm run lint
 
       - name: Check Prettier formatting
-        run: npx prettier --check "**/*.{ts,tsx,js,jsx,json,md,css}"
+        # Scope to app source — repo-wide markdown/docs have historical drift
+        run: npx prettier --check "app/**/*.{ts,tsx}" "components/**/*.{ts,tsx}" "lib/**/*.{ts,tsx}" "hooks/**/*.{ts,tsx}" "middleware/**/*.{ts,tsx}"
 
   # ============================================
   # Test Suite

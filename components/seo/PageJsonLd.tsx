@@ -47,7 +47,9 @@ export default function PageJsonLd({
         "@type": "ListItem",
         position: index + 1,
         name: item.name,
-        item: item.url.startsWith("http") ? item.url : `${BRAND.url}${item.url}`,
+        item: item.url.startsWith("http")
+          ? item.url
+          : `${BRAND.url}${item.url}`,
       })),
     });
   }

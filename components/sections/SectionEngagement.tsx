@@ -25,8 +25,7 @@ export default function SectionEngagement({
         ? "bg-[#1e3a8a] text-white border-[#1e3a8a]"
         : "bg-white text-slate-900 border-slate-200";
 
-  const muted =
-    variant === "light" ? "text-slate-600" : "text-white/80";
+  const muted = variant === "light" ? "text-slate-600" : "text-white/80";
 
   return (
     <div

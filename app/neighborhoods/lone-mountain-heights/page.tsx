@@ -22,7 +22,8 @@ import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "https://lonemountainheights.com/neighborhoods/lone-mountain-heights",
+    canonical:
+      "https://lonemountainheights.com/neighborhoods/lone-mountain-heights",
   },
   title: "Lone Mountain Heights Homes for Sale | Las Vegas 89129",
   description: BRAND.description,
@@ -43,7 +44,10 @@ export default function LoneMountainHeightsPage() {
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Neighborhoods", url: "/neighborhoods" },
-          { name: "Lone Mountain Heights", url: "/neighborhoods/lone-mountain-heights" },
+          {
+            name: "Lone Mountain Heights",
+            url: "/neighborhoods/lone-mountain-heights",
+          },
         ]}
         faqs={[...LONE_MOUNTAIN_HEIGHTS.faqs]}
       />
@@ -62,7 +66,10 @@ export default function LoneMountainHeightsPage() {
                 Home
               </Link>
               {" / "}
-              <Link href="/neighborhoods" className="hover:text-white no-underline">
+              <Link
+                href="/neighborhoods"
+                className="hover:text-white no-underline"
+              >
                 Neighborhoods
               </Link>
               {" / "}
@@ -80,8 +87,9 @@ export default function LoneMountainHeightsPage() {
                   Lone Mountain Heights Homes for Sale
                 </h1>
                 <p className="text-xl text-white/85 max-w-2xl mb-6">
-                  Gated Northwest Las Vegas living in ZIP 89129 — mountain views, spacious
-                  single-family homes, and trail access at Lone Mountain.
+                  Gated Northwest Las Vegas living in ZIP 89129 — mountain
+                  views, spacious single-family homes, and trail access at Lone
+                  Mountain.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <CalendlyButton
@@ -121,9 +129,10 @@ export default function LoneMountainHeightsPage() {
                   Community lifestyle
                 </h2>
                 <p className="text-slate-600 text-lg mb-6">
-                  Lone Mountain Heights is a gated residential community known for larger floor
-                  plans, cul-de-sac privacy, and proximity to hiking at Lone Mountain Regional Park.
-                  Buyers often compare it with Centennial Hills and Skye Canyon for Northwest
+                  Lone Mountain Heights is a gated residential community known
+                  for larger floor plans, cul-de-sac privacy, and proximity to
+                  hiking at Lone Mountain Regional Park. Buyers often compare it
+                  with Centennial Hills and Skye Canyon for Northwest
                   convenience without giving up a guarded entrance.
                 </p>
                 <div className="grid sm:grid-cols-2 gap-4">
@@ -138,7 +147,9 @@ export default function LoneMountainHeightsPage() {
                       className="flex items-center gap-3 p-4 border border-slate-200 rounded-lg"
                     >
                       <Icon className="h-5 w-5 text-[#1e3a8a]" />
-                      <span className="text-slate-800 text-sm font-medium">{label}</span>
+                      <span className="text-slate-800 text-sm font-medium">
+                        {label}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -148,7 +159,9 @@ export default function LoneMountainHeightsPage() {
                   <AgentPortrait size="md" />
                   <div>
                     <p className="font-semibold">{AGENT.name}</p>
-                    <p className="text-sm text-slate-300">Your Lone Mountain Heights guide</p>
+                    <p className="text-sm text-slate-300">
+                      Your Lone Mountain Heights guide
+                    </p>
                   </div>
                 </div>
                 <dl className="space-y-4">
@@ -194,8 +207,9 @@ export default function LoneMountainHeightsPage() {
               Buying or selling in Lone Mountain Heights
             </h2>
             <p className="text-center text-slate-600 mb-8">
-              Gated inventory moves on pricing accuracy. Dr. Jan Duffy prepares buyers with
-              pre-tour comps and sellers with a day-one pricing strategy.
+              Gated inventory moves on pricing accuracy. Dr. Jan Duffy prepares
+              buyers with pre-tour comps and sellers with a day-one pricing
+              strategy.
             </p>
             <div className="grid md:grid-cols-2 gap-6">
               <Link
@@ -207,7 +221,8 @@ export default function LoneMountainHeightsPage() {
                   <h3 className="font-bold text-slate-900">Buyers</h3>
                 </div>
                 <p className="text-sm text-slate-600">
-                  Pre-approval, private showings, and offer strategy for 89129 gated homes.
+                  Pre-approval, private showings, and offer strategy for 89129
+                  gated homes.
                 </p>
               </Link>
               <Link
@@ -219,7 +234,8 @@ export default function LoneMountainHeightsPage() {
                   <h3 className="font-bold text-slate-900">Sellers</h3>
                 </div>
                 <p className="text-sm text-slate-600">
-                  Free CMA, prep checklist, and marketing that highlights view and outdoor living.
+                  Free CMA, prep checklist, and marketing that highlights view
+                  and outdoor living.
                 </p>
               </Link>
             </div>
@@ -240,7 +256,10 @@ export default function LoneMountainHeightsPage() {
               · Hours 9am–6pm daily
             </p>
             <div className="flex flex-wrap justify-center gap-3 mt-4">
-              <a href={AGENT.phoneTel} className="text-sm font-semibold text-[#1e3a8a]">
+              <a
+                href={AGENT.phoneTel}
+                className="text-sm font-semibold text-[#1e3a8a]"
+              >
                 Call
               </a>
               <a

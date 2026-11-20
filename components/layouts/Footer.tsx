@@ -17,8 +17,8 @@ export default function Footer() {
               <BrandLogo variant="footer" showPortrait />
             </div>
             <p className="text-slate-300 mb-4 text-sm">
-              Luxury gated living in Northwest Las Vegas 89129. {BRAND.subscript} —{" "}
-              {AGENT.brokerage}.
+              Luxury gated living in Northwest Las Vegas 89129.{" "}
+              {BRAND.subscript} — {AGENT.brokerage}.
             </p>
             <div className="flex items-center gap-3 mb-4">
               <AgentPortrait size="sm" />
@@ -167,10 +167,14 @@ export default function Footer() {
         <div className="border-t border-slate-800 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-slate-400 text-sm text-center md:text-left">
-              © {currentYear} {BRAND.name}. {BRAND.subscript}. All Rights Reserved.
+              © {currentYear} {BRAND.name}. {BRAND.subscript}. All Rights
+              Reserved.
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm">
-              <Link href="/faq" className="text-slate-400 hover:text-white transition-colors no-underline">
+              <Link
+                href="/faq"
+                className="text-slate-400 hover:text-white transition-colors no-underline"
+              >
                 FAQ
               </Link>
               <Link
@@ -182,11 +186,12 @@ export default function Footer() {
             </div>
           </div>
           <p className="text-slate-500 text-xs mt-4 text-center">
-            {AGENT.name}, {AGENT.title} | License {AGENT.license} | {AGENT.brokerage}
+            {AGENT.name}, {AGENT.title} | License {AGENT.license} |{" "}
+            {AGENT.brokerage}
           </p>
           <p className="text-slate-600 text-xs mt-2 text-center max-w-3xl mx-auto">
-            Serving {BRAND.name} and Northwest Las Vegas with Berkshire Hathaway HomeServices —
-            trust, ethical standards, and financial strength.
+            Serving {BRAND.name} and Northwest Las Vegas with Berkshire Hathaway
+            HomeServices — trust, ethical standards, and financial strength.
           </p>
         </div>
       </div>

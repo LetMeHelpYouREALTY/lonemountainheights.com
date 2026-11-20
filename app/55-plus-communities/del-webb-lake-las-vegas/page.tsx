@@ -19,7 +19,8 @@ import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "https://lonemountainheights.com/55-plus-communities/del-webb-lake-las-vegas",
+    canonical:
+      "https://lonemountainheights.com/55-plus-communities/del-webb-lake-las-vegas",
   },
   title: "Del Webb at Lake Las Vegas Homes | Berkshire Hathaway HomeServices",
   description:
@@ -38,7 +39,13 @@ export default function DelWebbLakeLasVegasPage() {
     <>
       <PageJsonLd
         path="/55-plus-communities/del-webb-lake-las-vegas"
-        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Del Webb Lake Las Vegas", url: "/55-plus-communities/del-webb-lake-las-vegas" }]}
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          {
+            name: "Del Webb Lake Las Vegas",
+            url: "/55-plus-communities/del-webb-lake-las-vegas",
+          },
+        ]}
       />
 
       <Navbar />
@@ -47,9 +54,13 @@ export default function DelWebbLakeLasVegasPage() {
           {/* Breadcrumb */}
           <div className="max-w-6xl mx-auto mb-6">
             <nav className="text-sm text-slate-500">
-              <Link href="/" className="hover:text-blue-600">Home</Link>
+              <Link href="/" className="hover:text-blue-600">
+                Home
+              </Link>
               {" / "}
-              <Link href="/55-plus-communities" className="hover:text-blue-600">55+ Communities</Link>
+              <Link href="/55-plus-communities" className="hover:text-blue-600">
+                55+ Communities
+              </Link>
               {" / "}
               <span className="text-slate-900">Del Webb at Lake Las Vegas</span>
             </nav>
@@ -65,7 +76,8 @@ export default function DelWebbLakeLasVegasPage() {
               Del Webb at Lake Las Vegas
             </h1>
             <p className="text-xl text-slate-600">
-              Modern homes. Lake views. Resort living. The newest Del Webb in Las Vegas.
+              Modern homes. Lake views. Resort living. The newest Del Webb in
+              Las Vegas.
             </p>
           </div>
 
@@ -79,14 +91,16 @@ export default function DelWebbLakeLasVegasPage() {
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-400 mb-1">$400K-$900K</div>
-
-
+                <div className="text-3xl font-bold text-blue-400 mb-1">
+                  $400K-$900K
+                </div>
 
                 <div className="text-slate-300 text-sm">Price Range</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-400 mb-1">$200-$280</div>
+                <div className="text-3xl font-bold text-blue-400 mb-1">
+                  $200-$280
+                </div>
                 <div className="text-slate-300 text-sm">Monthly HOA</div>
               </div>
               <div className="text-center">
@@ -94,7 +108,9 @@ export default function DelWebbLakeLasVegasPage() {
                 <div className="text-slate-300 text-sm">Homes</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-400 mb-1">2016+</div>
+                <div className="text-3xl font-bold text-blue-400 mb-1">
+                  2016+
+                </div>
                 <div className="text-slate-300 text-sm">Construction</div>
               </div>
             </div>
@@ -107,24 +123,29 @@ export default function DelWebbLakeLasVegasPage() {
                 About Del Webb at Lake Las Vegas
               </h2>
               <p>
-                <strong>Del Webb at Lake Las Vegas</strong> represents the newest generation of
-                Del Webb communities—modern construction, contemporary floor plans, and a stunning
-                setting on the shores of Lake Las Vegas. This 1,800+ home community combines
-                Del Webb's legendary lifestyle programming with the resort atmosphere of Lake
-                Las Vegas.
+                <strong>Del Webb at Lake Las Vegas</strong> represents the
+                newest generation of Del Webb communities—modern construction,
+                contemporary floor plans, and a stunning setting on the shores
+                of Lake Las Vegas. This 1,800+ home community combines Del
+                Webb's legendary lifestyle programming with the resort
+                atmosphere of Lake Las Vegas.
               </p>
               <p>
-                Built from 2016 to present, homes feature open floor plans, modern finishes,
-                and energy-efficient construction. Many homes offer lake, mountain, or golf
-                course views. The community's amenities center includes fitness facilities,
-                pools, pickleball courts, and gathering spaces for Del Webb's signature
-                lifestyle activities.
+                Built from 2016 to present, homes feature open floor plans,
+                modern finishes, and energy-efficient construction. Many homes
+                offer lake, mountain, or golf course views. The community's
+                amenities center includes fitness facilities, pools, pickleball
+                courts, and gathering spaces for Del Webb's signature lifestyle
+                activities.
               </p>
               <p>
-                <strong>Berkshire Hathaway HomeServices Nevada Properties</strong> helps buyers
-                navigate Del Webb's various floor plans and lot positions. Dr. Jan Duffy provides
-                guidance on which phases offer the best value and which premium lots justify
-                their price premiums.
+                <strong>
+                  Berkshire Hathaway HomeServices Nevada Properties
+                </strong>{" "}
+                helps buyers navigate Del Webb's various floor plans and lot
+                positions. Dr. Jan Duffy provides guidance on which phases offer
+                the best value and which premium lots justify their price
+                premiums.
               </p>
             </div>
           </section>
@@ -139,8 +160,9 @@ export default function DelWebbLakeLasVegasPage() {
                     The Lake Las Vegas Experience
                   </h3>
                   <p className="text-slate-700 mb-4">
-                    Lake Las Vegas is a 320-acre private lake surrounded by luxury resorts, golf
-                    courses, and residential communities. Del Webb residents enjoy access to:
+                    Lake Las Vegas is a 320-acre private lake surrounded by
+                    luxury resorts, golf courses, and residential communities.
+                    Del Webb residents enjoy access to:
                   </p>
                   <div className="grid md:grid-cols-2 gap-4">
                     <ul className="space-y-2 text-slate-700">
@@ -179,7 +201,9 @@ export default function DelWebbLakeLasVegasPage() {
                 <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                   <Dumbbell className="h-6 w-6 text-blue-600" />
                 </div>
-                <h3 className="font-bold text-slate-900 mb-2">Fitness & Pools</h3>
+                <h3 className="font-bold text-slate-900 mb-2">
+                  Fitness & Pools
+                </h3>
                 <ul className="text-slate-600 text-sm space-y-1">
                   <li>• Resort-style pool & spa</li>
                   <li>• Modern fitness center</li>
@@ -191,7 +215,9 @@ export default function DelWebbLakeLasVegasPage() {
                 <div className="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                   <Star className="h-6 w-6 text-green-600" />
                 </div>
-                <h3 className="font-bold text-slate-900 mb-2">Courts & Sports</h3>
+                <h3 className="font-bold text-slate-900 mb-2">
+                  Courts & Sports
+                </h3>
                 <ul className="text-slate-600 text-sm space-y-1">
                   <li>• Pickleball courts</li>
                   <li>• Tennis courts</li>
@@ -223,36 +249,48 @@ export default function DelWebbLakeLasVegasPage() {
               <div className="flex items-start">
                 <CheckCircle className="h-6 w-6 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
                 <div>
-                  <strong className="text-slate-900">Newest construction in Las Vegas 55+ market</strong>
+                  <strong className="text-slate-900">
+                    Newest construction in Las Vegas 55+ market
+                  </strong>
                   <p className="text-slate-600 text-sm">
-                    Modern floor plans, current building codes, energy efficiency, warranties
+                    Modern floor plans, current building codes, energy
+                    efficiency, warranties
                   </p>
                 </div>
               </div>
               <div className="flex items-start">
                 <CheckCircle className="h-6 w-6 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
                 <div>
-                  <strong className="text-slate-900">Unique lakefront setting</strong>
+                  <strong className="text-slate-900">
+                    Unique lakefront setting
+                  </strong>
                   <p className="text-slate-600 text-sm">
-                    The only 55+ community on Lake Las Vegas—waterfront views and activities
+                    The only 55+ community on Lake Las Vegas—waterfront views
+                    and activities
                   </p>
                 </div>
               </div>
               <div className="flex items-start">
                 <CheckCircle className="h-6 w-6 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
                 <div>
-                  <strong className="text-slate-900">Resort-style living</strong>
+                  <strong className="text-slate-900">
+                    Resort-style living
+                  </strong>
                   <p className="text-slate-600 text-sm">
-                    Access to Westin, Reflection Bay, and Lake Las Vegas Village amenities
+                    Access to Westin, Reflection Bay, and Lake Las Vegas Village
+                    amenities
                   </p>
                 </div>
               </div>
               <div className="flex items-start">
                 <CheckCircle className="h-6 w-6 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
                 <div>
-                  <strong className="text-slate-900">Del Webb lifestyle programming</strong>
+                  <strong className="text-slate-900">
+                    Del Webb lifestyle programming
+                  </strong>
                   <p className="text-slate-600 text-sm">
-                    Organized activities, clubs, travel, and social events—built-in social life
+                    Organized activities, clubs, travel, and social
+                    events—built-in social life
                   </p>
                 </div>
               </div>
@@ -263,14 +301,17 @@ export default function DelWebbLakeLasVegasPage() {
           <section className="mb-16 max-w-4xl mx-auto">
             <div className="bg-blue-50 border-l-4 border-blue-600 rounded-r-xl p-8">
               <blockquote className="text-lg text-slate-700 italic mb-4">
-                "Del Webb at Lake Las Vegas offers something no other 55+ community can—lakefront
-                living in the desert. The homes are modern, the setting is spectacular, and the
-                Del Webb programming creates instant community. As a{" "}
-                <strong>Berkshire Hathaway HomeServices</strong> agent, I help buyers understand
-                which lots offer the best views and which floor plans work for their lifestyle."
+                "Del Webb at Lake Las Vegas offers something no other 55+
+                community can—lakefront living in the desert. The homes are
+                modern, the setting is spectacular, and the Del Webb programming
+                creates instant community. As a{" "}
+                <strong>Berkshire Hathaway HomeServices</strong> agent, I help
+                buyers understand which lots offer the best views and which
+                floor plans work for their lifestyle."
               </blockquote>
               <cite className="text-slate-900 font-semibold">
-                — Dr. Jan Duffy, Berkshire Hathaway HomeServices Nevada Properties
+                — Dr. Jan Duffy, Berkshire Hathaway HomeServices Nevada
+                Properties
               </cite>
             </div>
           </section>
@@ -281,8 +322,8 @@ export default function DelWebbLakeLasVegasPage() {
               Experience Lakefront 55+ Living
             </h2>
             <p className="text-xl text-blue-100 mb-8">
-              Tour Del Webb at Lake Las Vegas with Dr. Jan Duffy. See the homes, the lake,
-              and the lifestyle that makes this community special.
+              Tour Del Webb at Lake Las Vegas with Dr. Jan Duffy. See the homes,
+              the lake, and the lifestyle that makes this community special.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -301,7 +342,9 @@ export default function DelWebbLakeLasVegasPage() {
             </div>
           </section>
         </div>
-        <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
+        <div className="text-center text-sm text-slate-500 mt-8">
+          Last Updated: January 2026
+        </div>
       </main>
       <CalendlyScheduleSection />
       <Footer />

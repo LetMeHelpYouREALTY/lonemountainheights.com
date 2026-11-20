@@ -11,7 +11,13 @@ import BrandLogo from "@/components/brand/BrandLogo";
 import CalendlyButton from "@/components/calendly/CalendlyButton";
 import AeoAnswerBlock from "@/components/seo/AeoAnswerBlock";
 import Link from "next/link";
-import { Phone, Mountain, Shield, Home as HomeIcon, MapPin } from "lucide-react";
+import {
+  Phone,
+  Mountain,
+  Shield,
+  Home as HomeIcon,
+  MapPin,
+} from "lucide-react";
 import {
   AGENT,
   BRAND,
@@ -47,7 +53,10 @@ export default function Home() {
         title={`${BRAND.name} Homes for Sale | ${BRAND.subscript}`}
         breadcrumbs={[
           { name: "Home", url: "/" },
-          { name: "Lone Mountain Heights", url: "/neighborhoods/lone-mountain-heights" },
+          {
+            name: "Lone Mountain Heights",
+            url: "/neighborhoods/lone-mountain-heights",
+          },
         ]}
       />
       <Navbar />
@@ -69,11 +78,14 @@ export default function Home() {
                 style={{ fontFamily: "var(--font-display), Georgia, serif" }}
               >
                 Gated homes. Mountain light.
-                <span className="block text-[#c9a227]">Lone Mountain Heights.</span>
+                <span className="block text-[#c9a227]">
+                  Lone Mountain Heights.
+                </span>
               </h1>
               <p className="aeo-summary text-lg md:text-xl text-white/85 mb-8 max-w-2xl">
-                Lone Mountain Heights is a gated community in Northwest Las Vegas ZIP 89129 —
-                mountain views, spacious floor plans, and private tours with Dr. Jan Duffy.
+                Lone Mountain Heights is a gated community in Northwest Las
+                Vegas ZIP 89129 — mountain views, spacious floor plans, and
+                private tours with Dr. Jan Duffy.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <CalendlyButton
@@ -111,13 +123,17 @@ export default function Home() {
                   Why buyers choose Lone Mountain Heights
                 </h2>
                 <p className="text-slate-600 text-lg mb-6">
-                  Lone Mountain Heights pairs gated privacy with Northwest Las Vegas convenience —
-                  mountain and valley views, entertainer floor plans, and quick access to US-95,
-                  shopping, and Lone Mountain Regional Park trails.
+                  Lone Mountain Heights pairs gated privacy with Northwest Las
+                  Vegas convenience — mountain and valley views, entertainer
+                  floor plans, and quick access to US-95, shopping, and Lone
+                  Mountain Regional Park trails.
                 </p>
                 <ul className="space-y-3 mb-8">
                   {LONE_MOUNTAIN_HEIGHTS.highlights.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-slate-700">
+                    <li
+                      key={item}
+                      className="flex items-start gap-3 text-slate-700"
+                    >
                       <Mountain className="h-5 w-5 text-[#1e3a8a] shrink-0 mt-0.5" />
                       <span>{item}</span>
                     </li>
@@ -136,26 +152,33 @@ export default function Home() {
                     <AgentPortrait size="md" priority />
                     <div>
                       <p className="font-semibold text-lg">{AGENT.name}</p>
-                      <p className="text-sm text-slate-300">{BRAND.subscript}</p>
+                      <p className="text-sm text-slate-300">
+                        {BRAND.subscript}
+                      </p>
                     </div>
                   </div>
                   <p className="text-slate-200 mb-6 italic leading-relaxed">
-                    &ldquo;Lone Mountain Heights holds a premium in 89129 because gated privacy and
-                    mountain proximity still matter. Inventory is thin — timing and pricing strategy
-                    win deals.&rdquo;
+                    &ldquo;Lone Mountain Heights holds a premium in 89129
+                    because gated privacy and mountain proximity still matter.
+                    Inventory is thin — timing and pricing strategy win
+                    deals.&rdquo;
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-center">
                     <div className="bg-white/5 rounded-lg p-4">
                       <div className="text-2xl font-bold text-[#c9a227]">
                         {marketStats.loneMountainHeights.medianPriceFormatted}
                       </div>
-                      <div className="text-xs text-slate-400 mt-1">Est. community median</div>
+                      <div className="text-xs text-slate-400 mt-1">
+                        Est. community median
+                      </div>
                     </div>
                     <div className="bg-white/5 rounded-lg p-4">
                       <div className="text-2xl font-bold text-[#c9a227]">
                         {marketStats.loneMountainHeights.daysOnMarket}
                       </div>
-                      <div className="text-xs text-slate-400 mt-1">Avg days on market</div>
+                      <div className="text-xs text-slate-400 mt-1">
+                        Avg days on market
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -174,7 +197,9 @@ export default function Home() {
               >
                 Lone Mountain Heights Market Snapshot
               </h2>
-              <p className="text-blue-100">Updated {marketStats.lastUpdated} · ZIP 89129 corridor</p>
+              <p className="text-blue-100">
+                Updated {marketStats.lastUpdated} · ZIP 89129 corridor
+              </p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
               {[
@@ -196,9 +221,13 @@ export default function Home() {
                 { value: "89129", label: "Primary ZIP", sub: "NW Las Vegas" },
               ].map(({ value, label, sub }) => (
                 <div key={label} className="text-center">
-                  <div className="text-2xl md:text-3xl font-bold text-[#c9a227] mb-1">{value}</div>
+                  <div className="text-2xl md:text-3xl font-bold text-[#c9a227] mb-1">
+                    {value}
+                  </div>
                   <div className="text-blue-100 text-sm">{label}</div>
-                  {sub && <div className="text-emerald-300 text-xs mt-1">{sub}</div>}
+                  {sub && (
+                    <div className="text-emerald-300 text-xs mt-1">{sub}</div>
+                  )}
                 </div>
               ))}
             </div>
@@ -229,8 +258,8 @@ export default function Home() {
                 How Dr. Jan helps in Lone Mountain Heights
               </h2>
               <p className="text-slate-600 max-w-2xl mx-auto">
-                One specialist for buying, selling, and relocating into 89129 — with Calendly
-                scheduling and live MLS search.
+                One specialist for buying, selling, and relocating into 89129 —
+                with Calendly scheduling and live MLS search.
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -263,7 +292,9 @@ export default function Home() {
                     <AgentPortrait size="sm" />
                     <Icon className="h-6 w-6 text-[#1e3a8a]" />
                   </div>
-                  <h3 className="font-bold text-lg text-slate-900 mb-2">{title}</h3>
+                  <h3 className="font-bold text-lg text-slate-900 mb-2">
+                    {title}
+                  </h3>
                   <p className="text-slate-600 text-sm">{desc}</p>
                 </Link>
               ))}
@@ -290,7 +321,9 @@ export default function Home() {
                   <div>
                     <h2
                       className="text-3xl font-semibold text-slate-900"
-                      style={{ fontFamily: "var(--font-display), Georgia, serif" }}
+                      style={{
+                        fontFamily: "var(--font-display), Georgia, serif",
+                      }}
                     >
                       {BRAND.name}
                     </h2>
@@ -309,7 +342,10 @@ export default function Home() {
                 </p>
                 <p className="text-slate-700 mb-2">
                   <strong>Phone:</strong>{" "}
-                  <a href={AGENT.phoneTel} className="text-[#1e3a8a] font-semibold">
+                  <a
+                    href={AGENT.phoneTel}
+                    className="text-[#1e3a8a] font-semibold"
+                  >
                     {AGENT.phone}
                   </a>
                 </p>
