@@ -26,14 +26,18 @@ export async function GET() {
     `- About: ${origin}/about`,
     `- Home valuation: ${origin}/home-valuation`,
     '',
+    '## Brokerage',
+    '- Berkshire Hathaway HomeServices Nevada Properties: https://www.bhhsnv.com/',
+    '',
   ]
 
   if (config.domain === 'lonemountainheights.com') {
     lines.push(
       '## Lone Mountain Heights (89129)',
       '- Custom luxury homes and estate lots on the Lone Mountain ridgeline in Northwest Las Vegas.',
-      '- MLS search and listings appear on the homepage under the hero via RealScout.',
-      '- Buyer FAQ on the homepage covers pricing bands, HOAs, and scheduling tours.',
+      '- MLS search and listings appear on the homepage directly under the hero via RealScout.',
+      '- Buyer FAQ on the homepage matches FAQPage JSON-LD (five questions).',
+      `- Dedicated GEO page: ${origin}/neighborhoods/lone-mountain-heights`,
       '',
     )
   }

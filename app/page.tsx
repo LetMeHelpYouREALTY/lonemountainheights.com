@@ -164,6 +164,14 @@ export default async function Home() {
                   </dd>
                 </div>
               </dl>
+              <p className="text-center mt-8">
+                <Link
+                  href="/neighborhoods/lone-mountain-heights"
+                  className="text-blue-300 hover:text-white font-medium underline"
+                >
+                  Full Lone Mountain Heights neighborhood guide
+                </Link>
+              </p>
             </div>
           </section>
         )}

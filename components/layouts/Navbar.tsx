@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BhhsNevadaLogo } from "@/components/brand/BhhsNevadaLogo";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -44,14 +45,13 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          {/* Brand Logo */}
-          <Link href="/" className="flex flex-col">
-            <span className="text-lg md:text-xl lg:text-2xl font-bold text-slate-900 hover:text-blue-600 transition-colors leading-tight">
-              Berkshire Hathaway
-              <span className="text-blue-600"> HomeServices</span>
-            </span>
-            <span className="text-xs text-slate-500 hidden sm:block">Nevada Properties</span>
-          </Link>
+          {/* Brand + site home */}
+          <div className="flex flex-col gap-1 min-w-0">
+            <BhhsNevadaLogo height={32} priority className="max-h-8" />
+            <Link href="/" className="text-xs text-slate-500 hover:text-blue-600 truncate max-w-[220px] sm:max-w-none">
+              Dr. Jan Duffy · Las Vegas real estate
+            </Link>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-5">

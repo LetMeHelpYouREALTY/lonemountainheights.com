@@ -92,6 +92,15 @@ const neighborhoods = [
     bestFor: "Families, outdoor lovers, professionals",
   },
   {
+    name: "Lone Mountain Heights",
+    slug: "lone-mountain-heights",
+    medianPrice: "Luxury custom",
+    priceChange: "—",
+    description: "Estate lots and custom homes on the Lone Mountain ridgeline (89129)",
+    highlights: ["Ridgeline Views", "Large Lots", "Custom Architecture", "89129"],
+    bestFor: "Luxury buyers, custom-home seekers, privacy-focused households",
+  },
+  {
     name: "Inspirada",
     slug: "inspirada",
     medianPrice: "$525,000",

@@ -1,5 +1,8 @@
 import Link from "next/link";
-import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, Linkedin, Youtube } from "lucide-react";
+import { BhhsNevadaLogo } from "@/components/brand/BhhsNevadaLogo";
+import { BROKERAGE_SOCIAL, BROKERAGE_NAME } from "@/lib/brokerage";
+import { CLIENT_PHONE_DISPLAY, CLIENT_PHONE_TEL, officePostalAddress } from "@/lib/domain-site";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -10,38 +13,40 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
           <div>
-            <h3 className="font-bold text-xl mb-4">Berkshire Hathaway HomeServices</h3>
+            <div className="mb-4 bg-white rounded-md p-3 inline-block">
+              <BhhsNevadaLogo height={40} link />
+            </div>
             <p className="text-slate-300 mb-4 text-sm">
-              Nevada Properties - Your trusted real estate partner in Las Vegas, Henderson, and
-              Summerlin. Backed by Warren Buffett's legacy of trust.
+              {BROKERAGE_NAME} — Dr. Jan Duffy serves luxury and residential buyers and sellers
+              across the Las Vegas Valley, including Northwest Las Vegas and Lone Mountain Heights.
             </p>
             <div className="flex space-x-4">
               <a
-                href="http://drjanduffy.realscout.com/"
+                href={BROKERAGE_SOCIAL.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-400 hover:text-white transition-colors"
-                aria-label="Search Las Vegas Homes"
+                aria-label={`${BROKERAGE_NAME} on Facebook`}
               >
                 <Facebook className="h-5 w-5" />
               </a>
               <a
-                href="http://drjanduffy.realscout.com/"
+                href={BROKERAGE_SOCIAL.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-400 hover:text-white transition-colors"
-                aria-label="Search Las Vegas Homes"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a
-                href="http://drjanduffy.realscout.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-slate-400 hover:text-white transition-colors"
-                aria-label="Search Las Vegas Homes"
+                aria-label={`${BROKERAGE_NAME} on LinkedIn`}
               >
                 <Linkedin className="h-5 w-5" />
+              </a>
+              <a
+                href={BROKERAGE_SOCIAL.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-white transition-colors"
+                aria-label={`${BROKERAGE_NAME} on YouTube`}
+              >
+                <Youtube className="h-5 w-5" />
               </a>
             </div>
           </div>
@@ -172,19 +177,17 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 mr-3 text-blue-400 flex-shrink-0 mt-0.5" />
-                <span className="text-slate-300 text-sm">
-                  9406 W Lake Mead Blvd, Suite 100
+                <address className="text-slate-300 text-sm not-italic">
+                  {officePostalAddress().streetAddress}
                   <br />
-                  Las Vegas, NV 89134
-                </span>
+                  {officePostalAddress().addressLocality}, {officePostalAddress().addressRegion}{' '}
+                  {officePostalAddress().postalCode}
+                </address>
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 mr-3 text-blue-400 flex-shrink-0" />
-                <Link
-                  href="tel:+17025001942"
-                  className="text-slate-300 hover:text-white transition-colors text-sm"
-                >
-                  (702) 500-1942
+                <Link href={CLIENT_PHONE_TEL} className="text-slate-300 hover:text-white transition-colors text-sm">
+                  {CLIENT_PHONE_DISPLAY}
                 </Link>
               </li>
               <li className="flex items-center">

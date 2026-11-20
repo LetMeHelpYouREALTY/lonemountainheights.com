@@ -15,9 +15,18 @@ export async function generateMetadata(): Promise<Metadata> {
   const origin = siteOrigin(config);
   return {
     metadataBase: new URL(origin),
-    title: `${config.neighborhood} | Dr. Jan Duffy, REALTOR® | BHHS Nevada`,
+    title: {
+      default: `${config.heroHeadline} | Dr. Jan Duffy, REALTOR®`,
+      template: `%s | ${config.neighborhood} · Dr. Jan Duffy`,
+    },
     description: config.description,
     keywords: config.keywords,
+    twitter: {
+      card: 'summary_large_image',
+      title: config.heroHeadline,
+      description: config.description,
+      images: [agentHeadshotPath()],
+    },
     icons: {
       icon: [{ url: "/icon.png", type: "image/png" }],
       apple: [{ url: "/apple-icon.png", type: "image/png" }],
