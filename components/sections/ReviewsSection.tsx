@@ -2,6 +2,9 @@
 
 import { Star, Quote } from "lucide-react";
 import Image from "next/image";
+import AgentPortrait from "@/components/brand/AgentPortrait";
+import SectionEngagement from "@/components/sections/SectionEngagement";
+import { BRAND, OFFICE } from "@/lib/brand";
 
 export interface Review {
   id: number;
@@ -69,17 +72,23 @@ export default function ReviewsSection({
   reviews = defaultReviews,
   title = "What Our Clients Say",
   subtitle = "Real testimonials from satisfied clients across Las Vegas and Henderson",
-  googleReviewsUrl = "https://search.google.com/local/writereview?placeid=ChIJ7XLw8ta5yIARjTZPjgHJWVQ",
+  googleReviewsUrl = OFFICE.reviewsUrl,
   className = "",
 }: ReviewsSectionProps) {
   return (
     <section className={`py-16 md:py-24 bg-slate-50 ${className}`}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
+          <div className="flex justify-center mb-5">
+            <AgentPortrait size="md" />
+          </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
             {title}
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">{subtitle}</p>
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            {subtitle ||
+              `Clients across ${BRAND.name} and the Las Vegas Valley`}
+          </p>
           {/* Aggregate Rating Display */}
           <div className="flex items-center justify-center gap-2 mt-4">
             <div className="flex">
@@ -122,7 +131,9 @@ export default function ReviewsSection({
                     />
                   ) : (
                     <div className="w-full h-full bg-slate-200 flex items-center justify-center">
-                      <span className="text-slate-400 text-sm">{review.name[0]}</span>
+                      <span className="text-slate-400 text-sm">
+                        {review.name[0]}
+                      </span>
                     </div>
                   )}
                 </div>
@@ -134,14 +145,24 @@ export default function ReviewsSection({
                 </div>
               </div>
 
-              <div className="flex items-center mb-4" itemProp="reviewRating" itemScope itemType="https://schema.org/Rating">
-                <meta itemProp="ratingValue" content={review.rating.toString()} />
+              <div
+                className="flex items-center mb-4"
+                itemProp="reviewRating"
+                itemScope
+                itemType="https://schema.org/Rating"
+              >
+                <meta
+                  itemProp="ratingValue"
+                  content={review.rating.toString()}
+                />
                 <meta itemProp="bestRating" content="5" />
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
                     className={`h-5 w-5 ${
-                      i < review.rating ? "text-yellow-400 fill-yellow-400" : "text-slate-300"
+                      i < review.rating
+                        ? "text-yellow-400 fill-yellow-400"
+                        : "text-slate-300"
                     }`}
                   />
                 ))}
@@ -149,7 +170,10 @@ export default function ReviewsSection({
 
               <div className="relative">
                 <Quote className="absolute -top-2 -left-2 h-8 w-8 text-blue-100" />
-                <p className="text-slate-700 relative z-10 pl-4" itemProp="reviewBody">
+                <p
+                  className="text-slate-700 relative z-10 pl-4"
+                  itemProp="reviewBody"
+                >
                   {review.text}
                 </p>
               </div>
@@ -168,6 +192,12 @@ export default function ReviewsSection({
             Read More Reviews on Google
             <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
           </a>
+        </div>
+        <div className="max-w-4xl mx-auto">
+          <SectionEngagement
+            headline="Join clients who booked directly with Dr. Jan"
+            body="Schedule on Calendly — no forms required."
+          />
         </div>
       </div>
     </section>

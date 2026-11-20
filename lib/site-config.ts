@@ -1,51 +1,60 @@
-// Site Configuration - HeyBerkshire.com
-// Berkshire Hathaway HomeServices Nevada Properties
+// Site Configuration — Lone Mountain Heights
+// Homes by Dr. Jan Duffy | Berkshire Hathaway HomeServices Nevada Properties
+
+import { AGENT, BRAND, LONE_MOUNTAIN_HEIGHTS, OFFICE } from "@/lib/brand";
 
 export const siteConfig = {
-  name: "HeyBerkshire",
-  fullName: "Berkshire Hathaway HomeServices Nevada Properties",
-  tagline: "Private Client Real Estate Advisory",
-  /** Full brand line for titles and OG: Berkshire Hathaway HomeServices Nevada Properties | Private Client Real Estate Advisory */
-  brandLine:
-    "Berkshire Hathaway HomeServices Nevada Properties | Private Client Real Estate Advisory",
-  brandName: "Berkshire Hathaway HomeServices",
-  shortName: "BHHS",
-  url: "https://heyberkshire.com",
-  description:
-    "Expert real estate services in Las Vegas and Henderson, NV. Buy, sell, or invest with Dr. Jan Duffy, your trusted Berkshire Hathaway HomeServices Nevada Properties agent.",
+  name: BRAND.name,
+  fullName: BRAND.fullName,
+  tagline: BRAND.tagline,
+  brandLine: `${BRAND.name} | ${BRAND.subscript}`,
+  brandName: BRAND.name,
+  shortName: "LMH",
+  url: BRAND.url,
+  description: BRAND.description,
+  subscript: BRAND.subscript,
 };
 
 export const agentInfo = {
-  name: "Dr. Jan Duffy",
-  title: "REALTOR®",
-  license: "S.0197614.LLC",
-  phone: "(702) 500-1942",
-  phoneFormatted: "(702) 500-1942",
-  phoneTel: "tel:+17025001942",
-  email: "homes@heyberkshire.com",
-  brokerage: "Berkshire Hathaway HomeServices Nevada Properties",
+  name: AGENT.name,
+  title: AGENT.title,
+  license: AGENT.license,
+  phone: AGENT.phone,
+  phoneFormatted: AGENT.phone,
+  phoneTel: AGENT.phoneTel,
+  email: AGENT.email,
+  brokerage: AGENT.brokerage,
+  portrait: AGENT.portrait,
 };
 
 export const officeInfo = {
-  name: "Berkshire Hathaway HomeServices Nevada Properties",
+  name: OFFICE.name,
   address: {
-    street: "9406 W Lake Mead Blvd, Suite 100",
-    city: "Las Vegas",
-    state: "NV",
-    zip: "89134",
-    full: "9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134",
+    street: OFFICE.street,
+    city: OFFICE.city,
+    state: OFFICE.state,
+    zip: OFFICE.zip,
+    full: OFFICE.full,
   },
   coordinates: {
-    lat: 36.1893,
-    lng: -115.2821,
+    lat: OFFICE.lat,
+    lng: OFFICE.lng,
   },
-  phone: "(702) 500-1942",
-  phoneTel: "tel:+17025001942",
+  phone: AGENT.phone,
+  phoneTel: AGENT.phoneTel,
 };
 
-// Market Statistics (Updated January 2026)
+// Market Statistics — Lone Mountain Heights / 89129 corridor (Nov 2026)
 export const marketStats = {
-  lastUpdated: "January 2026",
+  lastUpdated: "November 2026",
+  loneMountainHeights: {
+    medianPrice: 749900,
+    medianPriceFormatted: LONE_MOUNTAIN_HEIGHTS.medianListEstimate,
+    yearOverYearChange: "+5.2%",
+    daysOnMarket: 12,
+    priceRange: LONE_MOUNTAIN_HEIGHTS.priceRange,
+    zip: LONE_MOUNTAIN_HEIGHTS.zip,
+  },
   lasVegas: {
     medianPrice: 450000,
     medianPriceFormatted: "$450,000",
@@ -79,7 +88,6 @@ export const marketStats = {
   },
 };
 
-// Agent Stats
 export const agentStats = {
   servingSince: 2008,
   transactionsClosed: 500,
@@ -88,30 +96,52 @@ export const agentStats = {
   reviewCount: 50,
 };
 
-// Value Propositions
 export const valuePropositions = {
-  main: "When you work with a Berkshire Hathaway HomeServices agent, you're backed by a name synonymous with trust, ethical standards, and financial strength—the same principles that built Warren Buffett's empire.",
+  main: `Lone Mountain Heights buyers and sellers get hyperlocal guidance from ${AGENT.name} — gated-community comps, view premiums, and negotiation strategy backed by Berkshire Hathaway HomeServices.`,
   trust:
-    "Berkshire Hathaway HomeServices is the only real estate brand backed by Warren Buffett's Berkshire Hathaway Inc. This means unmatched financial stability, ethical standards, and a global referral network of 50,000+ agents.",
-  expertise:
-    "Serving Las Vegas since 2008 with $127M+ in closed transactions, Dr. Jan Duffy combines deep local market knowledge with the resources of a global brand.",
+    "Berkshire Hathaway HomeServices is the only real estate brand backed by Warren Buffett's Berkshire Hathaway Inc. Unmatched financial stability, ethical standards, and a global referral network.",
+  expertise: `Serving Las Vegas since 2008 with $127M+ in closed transactions, ${AGENT.name} combines Lone Mountain Heights market knowledge with the resources of a global brand.`,
 };
 
-// Neighborhoods served
 export const neighborhoods = [
+  {
+    name: "Lone Mountain Heights",
+    slug: "lone-mountain-heights",
+    description:
+      "Gated Northwest Las Vegas community with mountain views near Lone Mountain Regional Park",
+    medianPrice: LONE_MOUNTAIN_HEIGHTS.medianListEstimate,
+    highlights: [
+      "Gated community",
+      "Mountain views",
+      "89129 ZIP",
+      "Trail access",
+    ],
+  },
   {
     name: "Summerlin",
     slug: "summerlin",
-    description: "Master-planned community with parks, trails, and nearby public schools",
+    description:
+      "Master-planned community with parks, trails, and nearby public schools",
     medianPrice: "$625,000",
-    highlights: ["Red Rock views", "150+ parks", "Nearby public schools", "Golf courses"],
+    highlights: [
+      "Red Rock views",
+      "150+ parks",
+      "Nearby public schools",
+      "Golf courses",
+    ],
   },
   {
     name: "Henderson",
     slug: "henderson",
-    description: "Nevada's second-largest city with master-planned neighborhoods",
+    description:
+      "Nevada's second-largest city with master-planned neighborhoods",
     medianPrice: "$485,000",
-    highlights: ["Public crime maps", "Nearby public schools", "Lake Las Vegas", "Green Valley"],
+    highlights: [
+      "Public crime maps",
+      "Nearby public schools",
+      "Lake Las Vegas",
+      "Green Valley",
+    ],
   },
   {
     name: "Green Valley",
@@ -125,28 +155,43 @@ export const neighborhoods = [
     slug: "the-ridges",
     description: "Ultra-luxury guard-gated community in Summerlin",
     medianPrice: "$2.5M",
-    highlights: ["Celebrity homes", "Custom estates", "Bear's Best Golf", "Strip views"],
+    highlights: [
+      "Celebrity homes",
+      "Custom estates",
+      "Bear's Best Golf",
+      "Strip views",
+    ],
   },
   {
     name: "Southern Highlands",
     slug: "southern-highlands",
     description: "Master-planned luxury community with championship golf",
     medianPrice: "$750,000",
-    highlights: ["Golf community", "Guard-gated", "Mountain views", "Luxury amenities"],
+    highlights: [
+      "Golf community",
+      "Guard-gated",
+      "Mountain views",
+      "Luxury amenities",
+    ],
   },
   {
     name: "North Las Vegas",
     slug: "north-las-vegas",
-    description: "Rapidly growing area with affordable new construction",
+    description: "Rapidly growing area with new construction options",
     medianPrice: "$385,000",
-    highlights: ["New construction", "Affordable", "Growing area"],
+    highlights: ["New construction", "Growing area", "Value opportunities"],
   },
   {
     name: "Skye Canyon",
     slug: "skye-canyon",
     description: "Newer master-planned community in northwest Las Vegas",
     medianPrice: "$550,000",
-    highlights: ["New homes", "Mountain views", "Modern amenities", "Nearby public schools"],
+    highlights: [
+      "New homes",
+      "Mountain views",
+      "Modern amenities",
+      "Nearby public schools",
+    ],
   },
   {
     name: "Centennial Hills",
@@ -160,41 +205,49 @@ export const neighborhoods = [
     slug: "inspirada",
     description: "Henderson master-planned community with resort-style living",
     medianPrice: "$525,000",
-    highlights: ["Resort pools", "Walking trails", "New construction", "Nearby public schools"],
+    highlights: [
+      "Resort pools",
+      "Walking trails",
+      "New construction",
+      "Nearby public schools",
+    ],
   },
   {
     name: "Mountains Edge",
     slug: "mountains-edge",
     description: "Southwest Las Vegas master-planned community",
     medianPrice: "$475,000",
-    highlights: ["Mountain views", "Parks", "Growing area", "Affordable luxury"],
+    highlights: ["Mountain views", "Parks", "Growing area"],
   },
 ];
 
-// Services offered
 export const services = [
   {
     name: "Home Buying",
     slug: "buyers",
-    description: "Expert guidance through every step of the home buying process",
+    description:
+      "Expert guidance through every step of buying in Lone Mountain Heights and beyond",
     icon: "Home",
   },
   {
     name: "Home Selling",
     slug: "sellers",
-    description: "Maximize your home's value with professional marketing and negotiation",
+    description:
+      "Maximize your Lone Mountain Heights home's value with professional marketing",
     icon: "TrendingUp",
   },
   {
     name: "Luxury Homes",
     slug: "luxury-homes",
-    description: "Specialized expertise in Las Vegas luxury real estate",
+    description:
+      "Specialized expertise in Las Vegas luxury and gated communities",
     icon: "Star",
   },
   {
     name: "New Construction",
     slug: "new-construction",
-    description: "Free buyer representation for new home purchases",
+    description:
+      "Buyer representation for new home purchases across the valley",
     icon: "Building",
   },
   {
@@ -206,91 +259,69 @@ export const services = [
   {
     name: "Relocation",
     slug: "relocation",
-    description: "Comprehensive relocation assistance for moves to Las Vegas",
+    description: "Relocation assistance for moves into Northwest Las Vegas",
     icon: "Truck",
   },
   {
     name: "Home Valuation",
     slug: "home-valuation",
-    description: "Free property valuations using current market data",
+    description: "Free property valuations using current MLS comps",
     icon: "Calculator",
   },
   {
     name: "Market Analysis",
     slug: "market-report",
-    description: "In-depth Las Vegas real estate market insights",
+    description: "In-depth Lone Mountain Heights and Las Vegas market insights",
     icon: "BarChart",
   },
 ];
 
-// Expert quotes from Dr. Jan Duffy
 export const expertQuotes = {
-  market: `"The Las Vegas market remains strong heading into 2026. We're seeing continued demand from California relocators and remote workers, but the days of 20 offers on every listing are behind us. Buyers finally have some negotiating power."`,
+  market: `"Lone Mountain Heights holds a premium in 89129 because gated privacy and mountain proximity still matter to relocating buyers. Inventory is thin — timing and pricing strategy win deals."`,
   buyers: `"My job isn't just to show you houses—it's to make sure you don't overpay, that you understand what you're buying, and that you're protected through every step of the transaction."`,
-  sellers: `"Pricing your home correctly from day one is the single most important factor in getting top dollar. Overpriced homes sit, and every day on market costs you money."`,
-  luxury: `"Luxury buyers expect discretion, market expertise, and flawless execution. In this price range, one wrong move can cost hundreds of thousands of dollars."`,
-  investment: `"Las Vegas rental yields are among the best in the country right now. But you need to know which neighborhoods are appreciating and which have peaked."`,
-  relocation: `"Moving to a new city is stressful enough. I handle everything from neighborhood tours to school research to contractor referrals so you can focus on your new beginning."`,
+  sellers: `"Pricing your Lone Mountain Heights home correctly from day one is the single most important factor in getting top dollar. Overpriced homes sit, and every day on market costs you money."`,
+  luxury: `"Luxury and gated-community buyers expect discretion, market expertise, and flawless execution. In this price range, one wrong move can cost tens of thousands."`,
+  investment: `"Northwest Las Vegas rental demand stays resilient. You need street-level comps — not metro averages — to underwrite correctly."`,
+  relocation: `"Moving to Las Vegas is stressful enough. I handle neighborhood tours, contractor referrals, and closing logistics so you can focus on settling in."`,
   newConstruction: `"Builders have sales agents who work for them, not you. Having your own representation costs you nothing but can save you tens of thousands in upgrades and negotiations."`,
-  valueProposition: `"When clients ask why they should choose a Berkshire Hathaway HomeServices agent, I tell them: you're not just getting me—you're getting a global network of 50,000 agents, world-class marketing, and a brand that's synonymous with trust."`,
+  valueProposition: `"When clients ask why Lone Mountain Heights, I show them the gated setting, the trail access, and the comps. Then we tour — data first, emotion second."`,
 };
 
-// Common FAQs
 export const commonFAQs = {
-  general: [
-    {
-      question: "Why should I choose a Berkshire Hathaway HomeServices agent?",
-      answer:
-        "Berkshire Hathaway HomeServices is the only real estate brand backed by Warren Buffett's Berkshire Hathaway Inc. This means unmatched financial stability, ethical standards, and a global referral network of 50,000+ agents. When you're making the biggest purchase of your life, that trust matters.",
-    },
-    {
-      question: "What areas does Berkshire Hathaway HomeServices Nevada Properties cover?",
-      answer:
-        "BHHS Nevada Properties serves all of Las Vegas, Henderson, North Las Vegas, and surrounding areas, with specialized expertise in Summerlin, The Ridges, Skye Canyon, Southern Highlands, Green Valley, and Henderson's master-planned communities.",
-    },
-    {
-      question: "How do Berkshire Hathaway HomeServices agents get paid?",
-      answer:
-        "Commission structures are negotiable. Dr. Jan Duffy offers transparent pricing and will walk you through all costs before you sign anything. For buyers, our services are typically free as commissions are paid by the seller.",
-    },
-    {
-      question: "What is Dr. Jan Duffy's experience in Las Vegas real estate?",
-      answer:
-        "Dr. Jan Duffy has been serving Las Vegas since 2008, with $127M+ in closed transactions and 500+ satisfied clients. Her expertise spans residential, luxury, investment, and new construction properties throughout Southern Nevada.",
-    },
-  ],
+  general: LONE_MOUNTAIN_HEIGHTS.faqs,
   buying: [
     {
-      question: "How long does the home buying process take in Las Vegas?",
+      question: "How long does buying a home in Lone Mountain Heights take?",
       answer:
-        "Typically 30-45 days from offer acceptance to closing. Cash purchases can close in as little as 7-14 days. The timeline depends on financing, inspections, and other contingencies.",
+        "Typically 30-45 days from offer acceptance to closing. Cash purchases can close in as little as 7-14 days depending on inspections and title.",
     },
     {
-      question: "Do I need a pre-approval before looking at homes?",
+      question:
+        "Do I need a pre-approval before touring Lone Mountain Heights?",
       answer:
-        "Yes, a pre-approval letter is essential. It shows sellers you're serious and gives you a clear budget. Dr. Jan can connect you with trusted local lenders who offer competitive rates.",
+        "Yes. A pre-approval shows sellers you're serious and clarifies your budget. Dr. Jan can connect you with trusted local lenders.",
     },
     {
-      question: "How much do I need for a down payment?",
+      question: "Are there HOA fees in Lone Mountain Heights?",
       answer:
-        "Down payment requirements vary: FHA loans require 3.5%, conventional loans typically 3-20%, and VA/USDA loans may require 0% down. Dr. Jan can connect you with lenders who specialize in various loan programs.",
+        "Yes — as a gated community, Lone Mountain Heights typically includes HOA dues covering gate and common-area maintenance. Confirm current dues on each listing before writing an offer.",
     },
   ],
   selling: [
     {
-      question: "What is my home worth in today's Las Vegas market?",
+      question: "What is my Lone Mountain Heights home worth?",
       answer:
-        "Home values depend on location, condition, size, and recent comparable sales. Dr. Jan provides free, comprehensive home valuations using current MLS data and her expertise serving Las Vegas since 2008.",
+        "Values depend on view corridors, upgrades, pool/spa, lot position, and recent gated-community comps. Dr. Jan provides a free CMA using current MLS data.",
     },
     {
-      question: "How long will it take to sell my home?",
+      question: "How long will it take to sell in Lone Mountain Heights?",
       answer:
-        "Currently, well-priced homes in Las Vegas are selling in an average of 28 days. Luxury homes may take longer (45+ days). Pricing strategy is crucial—overpriced homes can sit for months.",
+        "Well-priced homes in this corridor have recently averaged roughly 12 days on market. Overpricing is the #1 reason listings stall.",
     },
     {
-      question: "What do I need to do to prepare my home for sale?",
+      question: "How should I prepare my home for sale?",
       answer:
-        "Dr. Jan provides a personalized preparation checklist for every listing. Generally, decluttering, minor repairs, fresh paint, and professional photography are the highest-ROI improvements.",
+        "Declutter, complete minor repairs, refresh paint, and invest in professional photography. Dr. Jan provides a personalized prep checklist for every listing.",
     },
   ],
 };

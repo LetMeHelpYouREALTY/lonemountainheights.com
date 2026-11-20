@@ -22,7 +22,11 @@ interface SchemaScriptProps {
  * Server component for injecting JSON-LD structured data
  * Can accept either a single schema or multiple schemas
  */
-export default function SchemaScript({ schema, schemas, id }: SchemaScriptProps) {
+export default function SchemaScript({
+  schema,
+  schemas,
+  id,
+}: SchemaScriptProps) {
   // Determine the final schema to render
   let finalSchema: Record<string, unknown>;
 
@@ -64,7 +68,7 @@ export function BreadcrumbSchema({
       name: item.name,
       item: item.url.startsWith("http")
         ? item.url
-        : `https://heyberkshire.com${item.url}`,
+        : `https://lonemountainheights.com${item.url}`,
     })),
   };
 
@@ -117,8 +121,8 @@ export function ReviewSchema({
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
-    "@id": "https://heyberkshire.com#organization",
-    name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
+    "@id": "https://lonemountainheights.com#organization",
+    name: "Lone Mountain Heights — Homes by Dr. Jan Duffy",
   };
 
   if (reviews && reviews.length > 0) {
@@ -163,7 +167,7 @@ export function NeighborhoodSchema({
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Place",
-    "@id": `https://heyberkshire.com/neighborhoods/${slug}#place`,
+    "@id": `https://lonemountainheights.com/neighborhoods/${slug}#place`,
     name: `${name}, Las Vegas`,
     description,
     address: {

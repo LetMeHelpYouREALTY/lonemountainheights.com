@@ -48,11 +48,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Prefer npm over pnpm for next-on-pages
+        # Stale pnpm-lock.yaml makes Vercel CLI try to spawn pnpm (ENOENT on runners)
+        run: rm -f pnpm-lock.yaml
+
       - name: Build for Cloudflare Pages
         run: npm run build:cloudflare
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           NEXT_PUBLIC_REALSCOUT_AGENT_ID: ${{ secrets.NEXT_PUBLIC_REALSCOUT_AGENT_ID }}
+          npm_config_user_agent: npm
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3

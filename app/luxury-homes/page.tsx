@@ -1,13 +1,16 @@
 import Navbar from "@/components/layouts/Navbar";
+import RealScoutOfficeSection from "@/components/realscout/RealScoutOfficeSection";
+import CalendlyScheduleSection from "@/components/calendly/CalendlyScheduleSection";
+import SectionEngagement from "@/components/sections/SectionEngagement";
+import AgentPortrait from "@/components/brand/AgentPortrait";
 import Footer from "@/components/layouts/Footer";
-import RealScoutListings from "@/components/realscout/RealScoutListings";
 import Link from "next/link";
-import { 
-  Phone, 
-  Star, 
-  Shield, 
-  Globe, 
-  Eye, 
+import {
+  Phone,
+  Star,
+  Shield,
+  Globe,
+  Eye,
   CheckCircle,
   Home,
   MapPin,
@@ -18,11 +21,15 @@ import {
   Users,
 } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/luxury-homes",
+  },
   title: "Las Vegas Luxury Homes for Sale | Berkshire Hathaway HomeServices",
   description:
-    "Discover Las Vegas luxury real estate with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. The Ridges, MacDonald Highlands, Summerlin, Southern Highlands. $1M+ homes. Call (702) 500-1942.",
+    "Discover Las Vegas luxury real estate with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. The Ridges, MacDonald Highlands, Summerlin, Southern Highlands. $1M+ homes. Call (702) 222-1964.",
   keywords: [
     "Las Vegas luxury homes",
     "The Ridges Las Vegas",
@@ -42,7 +49,7 @@ const luxurySchema = {
   provider: {
     "@type": "RealEstateAgent",
     name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
-    telephone: "+17025001942",
+    telephone: "+17022221964",
   },
   areaServed: "Las Vegas, Henderson, Summerlin luxury communities",
   serviceType: "Luxury Real Estate",
@@ -56,7 +63,12 @@ const luxuryNeighborhoods = [
     priceRange: "$2M - $15M+",
     description:
       "Ultra-exclusive guard-gated community with custom estates, celebrity residents, and Bear's Best Golf Club. One of the most prestigious addresses in Las Vegas with stunning Red Rock views.",
-    features: ["Guard-gated", "Custom estates", "Celebrity homes", "Golf course"],
+    features: [
+      "Guard-gated",
+      "Custom estates",
+      "Celebrity homes",
+      "Golf course",
+    ],
   },
   {
     name: "MacDonald Highlands",
@@ -64,7 +76,12 @@ const luxuryNeighborhoods = [
     priceRange: "$1.5M - $10M+",
     description:
       "Prestigious hillside community with Dragon Ridge Country Club and panoramic Strip views. Features modern contemporary architecture and exclusive amenities.",
-    features: ["Hillside location", "Strip views", "Country club", "Private lots"],
+    features: [
+      "Hillside location",
+      "Strip views",
+      "Country club",
+      "Private lots",
+    ],
   },
   {
     name: "Southern Highlands",
@@ -72,7 +89,12 @@ const luxuryNeighborhoods = [
     priceRange: "$800K - $5M+",
     description:
       "Guard-gated luxury community featuring championship golf, stunning mountain views, and resort-style living. Multiple neighborhoods within the community.",
-    features: ["Guard-gated", "Golf community", "Mountain views", "Multiple villages"],
+    features: [
+      "Guard-gated",
+      "Golf community",
+      "Mountain views",
+      "Multiple villages",
+    ],
   },
   {
     name: "The Summit Club",
@@ -80,7 +102,12 @@ const luxuryNeighborhoods = [
     priceRange: "$3M - $20M+",
     description:
       "Ultra-private Tom Fazio golf community with only 250 homesites. Las Vegas's most exclusive address with membership by invitation only.",
-    features: ["Private golf", "250 homesites", "Invitation only", "Tom Fazio design"],
+    features: [
+      "Private golf",
+      "250 homesites",
+      "Invitation only",
+      "Tom Fazio design",
+    ],
   },
   {
     name: "Ascaya",
@@ -88,7 +115,12 @@ const luxuryNeighborhoods = [
     priceRange: "$2M - $12M+",
     description:
       "Modern architectural community with panoramic views and contemporary custom homes. Known for innovative design and dramatic hillside settings.",
-    features: ["Modern architecture", "Panoramic views", "Custom homes", "Hillside lots"],
+    features: [
+      "Modern architecture",
+      "Panoramic views",
+      "Custom homes",
+      "Hillside lots",
+    ],
   },
   {
     name: "Lake Las Vegas",
@@ -96,7 +128,12 @@ const luxuryNeighborhoods = [
     priceRange: "$800K - $8M+",
     description:
       "Resort-style living on a 320-acre private lake with Mediterranean-inspired architecture. Golf, water sports, and a European village atmosphere.",
-    features: ["Lakefront living", "Resort amenities", "Golf courses", "Mediterranean style"],
+    features: [
+      "Lakefront living",
+      "Resort amenities",
+      "Golf courses",
+      "Mediterranean style",
+    ],
   },
 ];
 
@@ -116,6 +153,10 @@ const luxuryServices = [
 export default function LuxuryHomesPage() {
   return (
     <>
+      <PageJsonLd
+        path="/luxury-homes"
+        breadcrumbs={[{ name: "Home", url: "/" }]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(luxurySchema) }}
@@ -132,17 +173,30 @@ export default function LuxuryHomesPage() {
               Las Vegas Luxury Real Estate
             </h1>
             <p className="text-xl text-slate-600 mb-8">
-              <strong>Berkshire Hathaway HomeServices</strong> represents the gold standard in
-              luxury real estate. When you're buying or selling a $1M+ home, trust matters more than
-              ever. Our global network, discretion, and expertise ensure your luxury transaction 
-              receives the exceptional service it deserves.
+              <strong>Berkshire Hathaway HomeServices</strong> represents the
+              gold standard in luxury real estate. When you're buying or selling
+              a $1M+ home, trust matters more than ever. Our global network,
+              discretion, and expertise ensure your luxury transaction receives
+              the exceptional service it deserves.
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-500">
-              <span className="flex items-center"><CheckCircle className="h-4 w-4 text-green-500 mr-1" /> White Glove Service</span>
-              <span className="flex items-center"><CheckCircle className="h-4 w-4 text-green-500 mr-1" /> Global Buyer Network</span>
-              <span className="flex items-center"><CheckCircle className="h-4 w-4 text-green-500 mr-1" /> Discrete Transactions</span>
+              <span className="flex items-center">
+                <CheckCircle className="h-4 w-4 text-green-500 mr-1" /> White
+                Glove Service
+              </span>
+              <span className="flex items-center">
+                <CheckCircle className="h-4 w-4 text-green-500 mr-1" /> Global
+                Buyer Network
+              </span>
+              <span className="flex items-center">
+                <CheckCircle className="h-4 w-4 text-green-500 mr-1" /> Discrete
+                Transactions
+              </span>
             </div>
           </div>
+
+          <RealScoutOfficeSection />
+          <SectionEngagement />
 
           {/* Luxury Stats */}
           <section className="mb-16 bg-slate-900 text-white rounded-2xl p-8 md:p-12 max-w-5xl mx-auto">
@@ -150,26 +204,38 @@ export default function LuxuryHomesPage() {
               Las Vegas Luxury Market Statistics | January 2026
             </h2>
             <p className="text-slate-300 text-center max-w-3xl mx-auto mb-8">
-              The Las Vegas luxury market continues to attract affluent buyers from California, 
-              the Midwest, and international markets. Understanding current market conditions 
-              is essential for both buyers and sellers in this segment.
+              The Las Vegas luxury market continues to attract affluent buyers
+              from California, the Midwest, and international markets.
+              Understanding current market conditions is essential for both
+              buyers and sellers in this segment.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-400 mb-1">$1.2M</div>
-                <div className="text-slate-300 text-sm">Median Luxury Price</div>
+                <div className="text-3xl font-bold text-blue-400 mb-1">
+                  $1.2M
+                </div>
+
+                <div className="text-slate-300 text-sm">
+                  Median Luxury Price
+                </div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-400 mb-1">+8.5%</div>
+                <div className="text-3xl font-bold text-green-400 mb-1">
+                  +8.5%
+                </div>
                 <div className="text-slate-300 text-sm">YoY Appreciation</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold mb-1">890</div>
-                <div className="text-slate-300 text-sm">Active $1M+ Listings</div>
+                <div className="text-slate-300 text-sm">
+                  Active $1M+ Listings
+                </div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold mb-1">45 Days</div>
-                <div className="text-slate-300 text-sm">Avg. Days on Market</div>
+                <div className="text-slate-300 text-sm">
+                  Avg. Days on Market
+                </div>
               </div>
             </div>
           </section>
@@ -180,9 +246,10 @@ export default function LuxuryHomesPage() {
               Why Choose Berkshire Hathaway for Luxury Real Estate
             </h2>
             <p className="text-slate-600 text-center max-w-3xl mx-auto mb-8">
-              In luxury real estate, the agent you choose can impact both the sale price and 
-              the transaction experience. Berkshire Hathaway HomeServices agents bring resources, 
-              reputation, and expertise that make a measurable difference in this competitive segment.
+              In luxury real estate, the agent you choose can impact both the
+              sale price and the transaction experience. Berkshire Hathaway
+              HomeServices agents bring resources, reputation, and expertise
+              that make a measurable difference in this competitive segment.
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
@@ -209,7 +276,10 @@ export default function LuxuryHomesPage() {
               ].map((item) => {
                 const Icon = item.icon;
                 return (
-                  <div key={item.title} className="text-center p-6 bg-slate-50 rounded-xl">
+                  <div
+                    key={item.title}
+                    className="text-center p-6 bg-slate-50 rounded-xl"
+                  >
                     <div className="bg-blue-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                       <Icon className="h-8 w-8 text-blue-600" />
                     </div>
@@ -228,15 +298,18 @@ export default function LuxuryHomesPage() {
             </h2>
             <div className="bg-slate-50 rounded-lg p-8">
               <blockquote className="text-lg text-slate-700 italic mb-4">
-                "Luxury buyers expect discretion, market expertise, and flawless execution. In this
-                price range, one wrong move can cost hundreds of thousands of dollars. That's why
-                the Berkshire Hathaway HomeServices name matters—it tells buyers and sellers alike
-                that they're working with the best. I've helped clients purchase and sell homes from 
-                $1 million to over $10 million, and every transaction receives my full attention 
-                and the complete resources of BHHS."
+                "Luxury buyers expect discretion, market expertise, and flawless
+                execution. In this price range, one wrong move can cost hundreds
+                of thousands of dollars. That's why the Berkshire Hathaway
+                HomeServices name matters—it tells buyers and sellers alike that
+                they're working with the best. I've helped clients purchase and
+                sell homes from $1 million to over $10 million, and every
+                transaction receives my full attention and the complete
+                resources of BHHS."
               </blockquote>
               <cite className="text-slate-900 font-semibold">
-                — Dr. Jan Duffy, BHHS Nevada Properties | Serving Las Vegas Since 2008
+                — Dr. Jan Duffy, BHHS Nevada Properties | Serving Las Vegas
+                Since 2008
               </cite>
             </div>
           </section>
@@ -247,9 +320,10 @@ export default function LuxuryHomesPage() {
               Premier Las Vegas Luxury Communities
             </h2>
             <p className="text-slate-600 text-center max-w-3xl mx-auto mb-8">
-              Las Vegas offers some of the most desirable luxury communities in the Southwest. From 
-              ultra-exclusive guard-gated enclaves to lakefront estates, these premier neighborhoods 
-              attract discerning buyers seeking the finest in design, amenities, and lifestyle.
+              Las Vegas offers some of the most desirable luxury communities in
+              the Southwest. From ultra-exclusive guard-gated enclaves to
+              lakefront estates, these premier neighborhoods attract discerning
+              buyers seeking the finest in design, amenities, and lifestyle.
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {luxuryNeighborhoods.map((neighborhood) => (
@@ -259,17 +333,26 @@ export default function LuxuryHomesPage() {
                 >
                   <div className="flex justify-between items-start mb-3">
                     <div>
-                      <h3 className="font-bold text-lg text-slate-900">{neighborhood.name}</h3>
-                      <p className="text-sm text-slate-500">{neighborhood.location}</p>
+                      <h3 className="font-bold text-lg text-slate-900">
+                        {neighborhood.name}
+                      </h3>
+                      <p className="text-sm text-slate-500">
+                        {neighborhood.location}
+                      </p>
                     </div>
                     <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded">
                       {neighborhood.priceRange}
                     </span>
                   </div>
-                  <p className="text-slate-600 text-sm mb-4">{neighborhood.description}</p>
+                  <p className="text-slate-600 text-sm mb-4">
+                    {neighborhood.description}
+                  </p>
                   <div className="flex flex-wrap gap-2">
                     {neighborhood.features.map((feature) => (
-                      <span key={feature} className="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded">
+                      <span
+                        key={feature}
+                        className="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded"
+                      >
                         {feature}
                       </span>
                     ))}
@@ -282,22 +365,29 @@ export default function LuxuryHomesPage() {
                 href="/neighborhoods"
                 className="text-blue-600 font-semibold hover:text-blue-700 inline-flex items-center"
               >
-                Explore All Neighborhoods <ArrowRight className="h-4 w-4 ml-2" />
+                Explore All Neighborhoods{" "}
+                <ArrowRight className="h-4 w-4 ml-2" />
               </Link>
             </div>
           </section>
 
           {/* Luxury Services */}
           <section className="mb-16 bg-blue-600 text-white rounded-2xl p-8 md:p-12 max-w-6xl mx-auto">
-            <h2 className="text-2xl font-bold mb-4 text-center">Luxury Home Marketing Services</h2>
+            <h2 className="text-2xl font-bold mb-4 text-center">
+              Luxury Home Marketing Services
+            </h2>
             <p className="text-blue-100 text-center max-w-3xl mx-auto mb-8">
-              Selling a luxury home requires more than just an MLS listing. Dr. Jan Duffy provides 
-              comprehensive marketing services that showcase your property to qualified buyers 
-              worldwide through Berkshire Hathaway HomeServices' premium marketing channels.
+              Selling a luxury home requires more than just an MLS listing. Dr.
+              Jan Duffy provides comprehensive marketing services that showcase
+              your property to qualified buyers worldwide through Berkshire
+              Hathaway HomeServices' premium marketing channels.
             </p>
             <div className="grid md:grid-cols-2 gap-4">
               {luxuryServices.map((service) => (
-                <div key={service} className="flex items-center bg-blue-500/30 p-4 rounded-lg">
+                <div
+                  key={service}
+                  className="flex items-center bg-blue-500/30 p-4 rounded-lg"
+                >
                   <CheckCircle className="h-5 w-5 text-blue-200 mr-3 flex-shrink-0" />
                   <span>{service}</span>
                 </div>
@@ -317,9 +407,10 @@ export default function LuxuryHomesPage() {
                   For Luxury Buyers
                 </h3>
                 <p className="text-slate-600 mb-4">
-                  Access to exclusive listings, off-market opportunities, and discrete showings. 
-                  Dr. Jan provides personalized search services for discerning buyers seeking 
-                  Las Vegas's finest properties.
+                  Access to exclusive listings, off-market opportunities, and
+                  discrete showings. Dr. Jan provides personalized search
+                  services for discerning buyers seeking Las Vegas's finest
+                  properties.
                 </p>
                 <ul className="space-y-2">
                   <li className="flex items-center text-slate-700">
@@ -346,9 +437,9 @@ export default function LuxuryHomesPage() {
                   For Luxury Sellers
                 </h3>
                 <p className="text-slate-600 mb-4">
-                  World-class marketing that reaches qualified buyers globally. The Berkshire 
-                  Hathaway brand attracts serious buyers and commands premium prices for 
-                  exceptional properties.
+                  World-class marketing that reaches qualified buyers globally.
+                  The Berkshire Hathaway brand attracts serious buyers and
+                  commands premium prices for exceptional properties.
                 </p>
                 <ul className="space-y-2">
                   <li className="flex items-center text-slate-700">
@@ -378,8 +469,9 @@ export default function LuxuryHomesPage() {
               Frequently Asked Questions About Las Vegas Luxury Homes
             </h2>
             <p className="text-slate-600 text-center max-w-3xl mx-auto mb-8">
-              Luxury real estate transactions involve unique considerations. Here are answers 
-              to common questions from buyers and sellers in this market segment.
+              Luxury real estate transactions involve unique considerations.
+              Here are answers to common questions from buyers and sellers in
+              this market segment.
             </p>
             <div className="space-y-4">
               {[
@@ -422,17 +514,18 @@ export default function LuxuryHomesPage() {
               Discover Las Vegas Luxury Living
             </h2>
             <p className="text-xl text-slate-300 mb-8">
-              Whether buying or selling a luxury property, Dr. Jan Duffy provides the expertise and
-              Berkshire Hathaway prestige your transaction deserves. Confidential consultations 
-              available for discerning clients.
+              Whether buying or selling a luxury property, Dr. Jan Duffy
+              provides the expertise and Berkshire Hathaway prestige your
+              transaction deserves. Confidential consultations available for
+              discerning clients.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+17025001942"
+                href="tel:+17022221964"
                 className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-md font-bold text-lg transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (702) 500-1942
+                Call (702) 222-1964
               </a>
               <Link
                 href="/contact"
@@ -448,9 +541,11 @@ export default function LuxuryHomesPage() {
         </div>
 
         {/* Last Updated */}
-        <div className="text-center text-sm text-slate-500 mt-8">Last Updated: January 2026</div>
+        <div className="text-center text-sm text-slate-500 mt-8">
+          Last Updated: January 2026
+        </div>
       </main>
-      <RealScoutListings />
+      <CalendlyScheduleSection />
       <Footer />
     </>
   );

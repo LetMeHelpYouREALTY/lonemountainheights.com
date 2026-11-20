@@ -1,15 +1,18 @@
 import Navbar from "@/components/layouts/Navbar";
+import RealScoutOfficeSection from "@/components/realscout/RealScoutOfficeSection";
+import CalendlyScheduleSection from "@/components/calendly/CalendlyScheduleSection";
+import SectionEngagement from "@/components/sections/SectionEngagement";
+import AgentPortrait from "@/components/brand/AgentPortrait";
 import Footer from "@/components/layouts/Footer";
-import RealScoutListings from "@/components/realscout/RealScoutListings";
 import Link from "next/link";
-import { 
-  Phone, 
-  Mail, 
-  Award, 
-  Users, 
-  Home, 
-  TrendingUp, 
-  CheckCircle, 
+import {
+  Phone,
+  Mail,
+  Award,
+  Users,
+  Home,
+  TrendingUp,
+  CheckCircle,
   MapPin,
   Shield,
   Star,
@@ -17,11 +20,15 @@ import {
   ArrowRight,
 } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://lonemountainheights.com/about",
+  },
   title: "About Dr. Jan Duffy | Berkshire Hathaway HomeServices Las Vegas",
   description:
-    "Meet Dr. Jan Duffy, your trusted Berkshire Hathaway HomeServices Nevada Properties agent. Serving Las Vegas since 2008, $127M+ in transactions, Henderson & Summerlin specialist. Call (702) 500-1942.",
+    "Meet Dr. Jan Duffy, your trusted Berkshire Hathaway HomeServices Nevada Properties agent. Serving Las Vegas since 2008, $127M+ in transactions, Henderson & Summerlin specialist. Call (702) 222-1964.",
   keywords: [
     "Dr. Jan Duffy",
     "Berkshire Hathaway HomeServices agent",
@@ -40,9 +47,9 @@ const personSchema = {
   jobTitle: "REALTOR®",
   description:
     "Licensed real estate agent with Berkshire Hathaway HomeServices Nevada Properties, serving Las Vegas, Henderson, and Summerlin since 2008.",
-  telephone: "+17025001942",
+  telephone: "+17022221964",
   email: "homes@heyberkshire.com",
-  url: "https://heyberkshire.com/about",
+  url: "https://lonemountainheights.com/about",
   worksFor: {
     "@type": "RealEstateAgent",
     name: "Berkshire Hathaway HomeServices Nevada Properties",
@@ -73,27 +80,33 @@ const personSchema = {
 const specializations = [
   {
     title: "Residential Home Sales",
-    description: "Single-family homes, condos, and townhomes throughout Las Vegas and Henderson",
+    description:
+      "Single-family homes, condos, and townhomes throughout Las Vegas and Henderson",
   },
   {
     title: "Luxury Properties ($1M+)",
-    description: "The Ridges, MacDonald Highlands, Southern Highlands, and other guard-gated communities",
+    description:
+      "The Ridges, MacDonald Highlands, Southern Highlands, and other guard-gated communities",
   },
   {
     title: "New Construction",
-    description: "Free buyer representation with Toll Brothers, Lennar, Century Communities, and more",
+    description:
+      "Free buyer representation with Toll Brothers, Lennar, Century Communities, and more",
   },
   {
     title: "Investment Properties",
-    description: "Rental properties, fix-and-flip opportunities, and portfolio building",
+    description:
+      "Rental properties, fix-and-flip opportunities, and portfolio building",
   },
   {
     title: "55+ Active Adult Communities",
-    description: "Sun City Summerlin, Sun City Anthem, Del Webb Lake Las Vegas expertise",
+    description:
+      "Sun City Summerlin, Sun City Anthem, Del Webb Lake Las Vegas expertise",
   },
   {
     title: "California Relocation",
-    description: "Helping CA families transition to Nevada's tax advantages and lower costs",
+    description:
+      "Helping CA families transition to Nevada's tax advantages and lower costs",
   },
 ];
 
@@ -115,6 +128,14 @@ const areasServed = [
 export default function AboutPage() {
   return (
     <>
+      <PageJsonLd
+        path="/about"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "About", url: "/about" },
+        ]}
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
@@ -131,62 +152,85 @@ export default function AboutPage() {
               Meet Your Berkshire Hathaway HomeServices Agent
             </h1>
             <p className="text-xl text-slate-600">
-              Dr. Jan Duffy has been serving Las Vegas since 2008—backed by the most
-              trusted name in real estate. Whether you're buying, selling, investing, or 
-              relocating, you'll receive expert guidance with integrity and professionalism.
+              Dr. Jan Duffy has been serving Las Vegas since 2008—backed by the
+              most trusted name in real estate. Whether you're buying, selling,
+              investing, or relocating, you'll receive expert guidance with
+              integrity and professionalism.
             </p>
+            <div className="flex justify-center mt-8">
+              <AgentPortrait size="xl" priority />
+            </div>
           </div>
 
+          <RealScoutOfficeSection />
+          <SectionEngagement />
+        </div>
+
+        <div className="container mx-auto px-4">
           {/* Agent Profile */}
           <section className="mb-16">
             <div className="grid md:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Dr. Jan Duffy</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                  Dr. Jan Duffy
+                </h2>
                 <p className="text-lg text-blue-600 mb-6">
                   REALTOR® | License S.0197614.LLC
                 </p>
 
                 <div className="prose prose-lg text-slate-700 mb-8 space-y-4">
                   <p>
-                    When you choose to work with <strong>Berkshire Hathaway HomeServices</strong>,
-                    you're choosing a legacy of trust, integrity, and excellence. I'm proud to
-                    represent this iconic brand in the Las Vegas real estate market, bringing 
-                    world-class resources and local expertise to every client I serve.
+                    When you choose to work with{" "}
+                    <strong>Berkshire Hathaway HomeServices</strong>, you're
+                    choosing a legacy of trust, integrity, and excellence. I'm
+                    proud to represent this iconic brand in the Las Vegas real
+                    estate market, bringing world-class resources and local
+                    expertise to every client I serve.
                   </p>
                   <p>
                     Since 2008, I've closed $127 million in transactions and
-                    helped hundreds of families find their perfect home in Las Vegas, Henderson,
-                    Summerlin, and throughout Southern Nevada. My expertise spans luxury properties,
-                    new construction, investment real estate, 55+ active adult communities, and 
-                    relocations—particularly for California families seeking Nevada's tax advantages.
+                    helped hundreds of families find their perfect home in Las
+                    Vegas, Henderson, Summerlin, and throughout Southern Nevada.
+                    My expertise spans luxury properties, new construction,
+                    investment real estate, 55+ active adult communities, and
+                    relocations—particularly for California families seeking
+                    Nevada's tax advantages.
                   </p>
                   <p>
-                    What sets <strong>Berkshire Hathaway HomeServices Nevada Properties</strong>{" "}
-                    apart? We're backed by Warren Buffett's Berkshire Hathaway Inc.—a name synonymous
-                    with financial strength and ethical standards. When you're making the biggest
-                    financial decision of your life, that trust matters. You deserve an agent who 
-                    puts your interests first, provides honest advice, and has the resources to 
-                    deliver exceptional results.
+                    What sets{" "}
+                    <strong>
+                      Berkshire Hathaway HomeServices Nevada Properties
+                    </strong>{" "}
+                    apart? We're backed by Warren Buffett's Berkshire Hathaway
+                    Inc.—a name synonymous with financial strength and ethical
+                    standards. When you're making the biggest financial decision
+                    of your life, that trust matters. You deserve an agent who
+                    puts your interests first, provides honest advice, and has
+                    the resources to deliver exceptional results.
                   </p>
                   <p>
-                    I believe in treating every client like family. Whether you're a first-time 
-                    buyer navigating the process for the first time, a luxury home seeker requiring 
-                    discretion, or an investor building a rental portfolio, I provide the same 
-                    level of dedication, expertise, and personalized attention. Real estate is 
-                    more than a transaction—it's about helping people find their place in the world.
+                    I believe in treating every client like family. Whether
+                    you're a first-time buyer navigating the process for the
+                    first time, a luxury home seeker requiring discretion, or an
+                    investor building a rental portfolio, I provide the same
+                    level of dedication, expertise, and personalized attention.
+                    Real estate is more than a transaction—it's about helping
+                    people find their place in the world.
                   </p>
                 </div>
 
                 {/* Contact Info */}
                 <div className="bg-slate-50 rounded-lg p-6 mb-8">
-                  <h3 className="font-bold text-slate-900 mb-4">Contact Dr. Jan Duffy</h3>
+                  <h3 className="font-bold text-slate-900 mb-4">
+                    Contact Dr. Jan Duffy
+                  </h3>
                   <div className="space-y-3">
                     <a
-                      href="tel:+17025001942"
+                      href="tel:+17022221964"
                       className="flex items-center text-slate-700 hover:text-blue-600"
                     >
                       <Phone className="h-5 w-5 mr-3 text-blue-600" />
-                      <span className="font-semibold">(702) 500-1942</span>
+                      <span className="font-semibold">(702) 222-1964</span>
                     </a>
                     <a
                       href="mailto:homes@heyberkshire.com"
@@ -198,10 +242,12 @@ export default function AboutPage() {
                     <div className="flex items-start text-slate-700">
                       <MapPin className="h-5 w-5 mr-3 text-blue-600 mt-0.5" />
                       <address className="not-italic">
-                        9406 W Lake Mead Blvd, Suite 100<br />
+                        9406 W Lake Mead Blvd, Suite 100
+                        <br />
                         Las Vegas, NV 89134
                       </address>
                     </div>
+
                     <div className="flex items-center text-slate-700">
                       <Clock className="h-5 w-5 mr-3 text-blue-600" />
                       Mon-Fri 9am-6pm, Sat 10am-4pm, Sun by appointment
@@ -211,9 +257,10 @@ export default function AboutPage() {
 
                 {/* Quote */}
                 <blockquote className="border-l-4 border-blue-600 pl-6 italic text-slate-700">
-                  "My job isn't just to show you houses—it's to make sure you don't overpay, that
-                  you understand what you're buying, and that you're protected through every step of
-                  the transaction. I treat every client like family and won't stop until we achieve 
+                  "My job isn't just to show you houses—it's to make sure you
+                  don't overpay, that you understand what you're buying, and
+                  that you're protected through every step of the transaction. I
+                  treat every client like family and won't stop until we achieve
                   your real estate goals."
                   <cite className="block mt-2 text-slate-900 font-semibold not-italic">
                     — Dr. Jan Duffy, BHHS Nevada Properties
@@ -227,28 +274,44 @@ export default function AboutPage() {
                 <div className="bg-gradient-to-br from-blue-100 to-slate-100 rounded-lg p-8 aspect-square flex items-center justify-center">
                   <div className="text-center">
                     <div className="text-6xl mb-4">👩‍💼</div>
-                    <p className="text-slate-600 font-semibold">Dr. Jan Duffy</p>
-                    <p className="text-sm text-slate-500">BHHS Nevada Properties</p>
+                    <p className="text-slate-600 font-semibold">
+                      Dr. Jan Duffy
+                    </p>
+                    <p className="text-sm text-slate-500">
+                      BHHS Nevada Properties
+                    </p>
                   </div>
                 </div>
 
                 {/* Stats Grid */}
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-blue-50 rounded-lg p-6 text-center">
-                    <div className="text-3xl font-bold text-blue-600 mb-1">Since 2008</div>
-                    <div className="text-sm text-slate-600">Serving Las Vegas</div>
+                    <div className="text-3xl font-bold text-blue-600 mb-1">
+                      Since 2008
+                    </div>
+                    <div className="text-sm text-slate-600">
+                      Serving Las Vegas
+                    </div>
                   </div>
                   <div className="bg-blue-50 rounded-lg p-6 text-center">
-                    <div className="text-3xl font-bold text-blue-600 mb-1">$127M+</div>
+                    <div className="text-3xl font-bold text-blue-600 mb-1">
+                      $127M+
+                    </div>
                     <div className="text-sm text-slate-600">Volume Closed</div>
                   </div>
                   <div className="bg-blue-50 rounded-lg p-6 text-center">
-                    <div className="text-3xl font-bold text-blue-600 mb-1">500+</div>
+                    <div className="text-3xl font-bold text-blue-600 mb-1">
+                      500+
+                    </div>
                     <div className="text-sm text-slate-600">Transactions</div>
                   </div>
                   <div className="bg-blue-50 rounded-lg p-6 text-center">
-                    <div className="text-3xl font-bold text-blue-600 mb-1">5.0★</div>
-                    <div className="text-sm text-slate-600">Realtor.com (50 reviews)</div>
+                    <div className="text-3xl font-bold text-blue-600 mb-1">
+                      5.0★
+                    </div>
+                    <div className="text-sm text-slate-600">
+                      Realtor.com (50 reviews)
+                    </div>
                   </div>
                 </div>
 
@@ -256,19 +319,33 @@ export default function AboutPage() {
                 <div className="bg-white border border-slate-200 rounded-lg p-6">
                   <h3 className="font-bold text-slate-900 mb-4">Quick Links</h3>
                   <div className="space-y-2">
-                    <Link href="/buyers" className="flex items-center text-slate-700 hover:text-blue-600">
+                    <Link
+                      href="/buyers"
+                      className="flex items-center text-slate-700 hover:text-blue-600"
+                    >
                       <ArrowRight className="h-4 w-4 mr-2 text-blue-600" />
                       Home Buying Guide
                     </Link>
-                    <Link href="/sellers" className="flex items-center text-slate-700 hover:text-blue-600">
+                    <Link
+                      href="/sellers"
+                      className="flex items-center text-slate-700 hover:text-blue-600"
+                    >
                       <ArrowRight className="h-4 w-4 mr-2 text-blue-600" />
                       Selling Your Home
                     </Link>
-                    <Link href="/home-valuation" className="flex items-center text-slate-700 hover:text-blue-600">
+                    <Link
+                      href="/home-valuation"
+                      className="flex items-center text-slate-700 hover:text-blue-600"
+                    >
                       <ArrowRight className="h-4 w-4 mr-2 text-blue-600" />
                       Free Home Valuation
                     </Link>
-                    <a href="http://drjanduffy.realscout.com/" target="_blank" rel="noopener noreferrer" className="flex items-center text-slate-700 hover:text-blue-600">
+                    <a
+                      href="http://drjanduffy.realscout.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center text-slate-700 hover:text-blue-600"
+                    >
                       <ArrowRight className="h-4 w-4 mr-2 text-blue-600" />
                       Browse Listings
                     </a>
@@ -284,13 +361,18 @@ export default function AboutPage() {
               Areas of Specialization
             </h2>
             <p className="text-slate-600 text-center max-w-3xl mx-auto mb-8">
-              Dr. Jan Duffy brings specialized expertise across multiple real estate categories. 
-              Whether you're a first-time buyer, luxury home seeker, investor, or retiree looking 
-              for the perfect 55+ community, you'll receive tailored guidance for your specific needs.
+              Dr. Jan Duffy brings specialized expertise across multiple real
+              estate categories. Whether you're a first-time buyer, luxury home
+              seeker, investor, or retiree looking for the perfect 55+
+              community, you'll receive tailored guidance for your specific
+              needs.
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {specializations.map((spec) => (
-                <div key={spec.title} className="bg-white rounded-lg p-6 border border-slate-200">
+                <div
+                  key={spec.title}
+                  className="bg-white rounded-lg p-6 border border-slate-200"
+                >
                   <h3 className="font-bold text-slate-900 mb-2 flex items-center">
                     <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
                     {spec.title}
@@ -307,9 +389,10 @@ export default function AboutPage() {
               Why Berkshire Hathaway HomeServices?
             </h2>
             <p className="text-slate-300 text-center max-w-3xl mx-auto mb-8">
-              Berkshire Hathaway HomeServices is the only real estate brand backed by Warren 
-              Buffett's Berkshire Hathaway Inc. This means unmatched financial stability, 
-              ethical standards, and a commitment to client service that defines every transaction.
+              Berkshire Hathaway HomeServices is the only real estate brand
+              backed by Warren Buffett's Berkshire Hathaway Inc. This means
+              unmatched financial stability, ethical standards, and a commitment
+              to client service that defines every transaction.
             </p>
             <div className="grid md:grid-cols-3 gap-8 mb-8">
               <div className="text-center">
@@ -318,8 +401,9 @@ export default function AboutPage() {
                 </div>
                 <h3 className="font-bold text-xl mb-2">Trusted Brand</h3>
                 <p className="text-slate-300 text-sm">
-                  The only real estate brand backed by Warren Buffett's Berkshire Hathaway Inc.—a 
-                  name synonymous with trust and integrity worldwide.
+                  The only real estate brand backed by Warren Buffett's
+                  Berkshire Hathaway Inc.—a name synonymous with trust and
+                  integrity worldwide.
                 </p>
               </div>
               <div className="text-center">
@@ -328,8 +412,9 @@ export default function AboutPage() {
                 </div>
                 <h3 className="font-bold text-xl mb-2">Global Network</h3>
                 <p className="text-slate-300 text-sm">
-                  50,000+ agents worldwide for seamless referrals and relocations. Whether you're 
-                  moving from California or anywhere else, our network has you covered.
+                  50,000+ agents worldwide for seamless referrals and
+                  relocations. Whether you're moving from California or anywhere
+                  else, our network has you covered.
                 </p>
               </div>
               <div className="text-center">
@@ -338,8 +423,9 @@ export default function AboutPage() {
                 </div>
                 <h3 className="font-bold text-xl mb-2">Ethical Standards</h3>
                 <p className="text-slate-300 text-sm">
-                  Rigorous ethical guidelines ensure your interests always come first. No pressure, 
-                  no games—just honest advice and expert representation.
+                  Rigorous ethical guidelines ensure your interests always come
+                  first. No pressure, no games—just honest advice and expert
+                  representation.
                 </p>
               </div>
             </div>
@@ -359,14 +445,18 @@ export default function AboutPage() {
               Areas Served by BHHS Nevada Properties
             </h2>
             <p className="text-slate-600 text-center max-w-3xl mx-auto mb-8">
-              Dr. Jan Duffy serves the entire Las Vegas Valley with specialized knowledge of each 
-              neighborhood's unique characteristics, price points, and lifestyle offerings. From 
-              luxury estates in The Ridges to affordable new construction in North Las Vegas, 
-              she provides expert guidance wherever you want to buy or sell.
+              Dr. Jan Duffy serves the entire Las Vegas Valley with specialized
+              knowledge of each neighborhood's unique characteristics, price
+              points, and lifestyle offerings. From luxury estates in The Ridges
+              to affordable new construction in North Las Vegas, she provides
+              expert guidance wherever you want to buy or sell.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {areasServed.map((area) => (
-                <div key={area} className="bg-slate-50 rounded-lg p-4 text-center hover:bg-blue-50 transition-colors">
+                <div
+                  key={area}
+                  className="bg-slate-50 rounded-lg p-4 text-center hover:bg-blue-50 transition-colors"
+                >
                   <Home className="h-5 w-5 mx-auto mb-2 text-blue-600" />
                   <span className="text-slate-700 font-medium">{area}</span>
                 </div>
@@ -377,7 +467,8 @@ export default function AboutPage() {
                 href="/neighborhoods"
                 className="text-blue-600 font-semibold hover:text-blue-700 inline-flex items-center"
               >
-                Explore All Neighborhoods <ArrowRight className="h-4 w-4 ml-2" />
+                Explore All Neighborhoods{" "}
+                <ArrowRight className="h-4 w-4 ml-2" />
               </Link>
             </div>
           </section>
@@ -388,8 +479,9 @@ export default function AboutPage() {
               What Clients Say About Dr. Jan Duffy
             </h2>
             <p className="text-slate-600 text-center max-w-3xl mx-auto mb-8">
-              With a 5.0★ rating from 50 Realtor.com reviews and hundreds of satisfied clients, Dr. Jan has built a 
-              reputation for excellence, integrity, and personalized service.
+              With a 5.0★ rating from 50 Realtor.com reviews and hundreds of
+              satisfied clients, Dr. Jan has built a reputation for excellence,
+              integrity, and personalized service.
             </p>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-white border border-slate-200 rounded-lg p-6">
@@ -401,11 +493,14 @@ export default function AboutPage() {
                   <Star className="h-5 w-5 text-yellow-400" />
                 </div>
                 <p className="text-slate-600 italic mb-3">
-                  "Dr. Jan made our California to Las Vegas relocation seamless. She understood 
-                  exactly what we were looking for and found us the perfect home in Summerlin. 
-                  Her knowledge of the market is exceptional."
+                  "Dr. Jan made our California to Las Vegas relocation seamless.
+                  She understood exactly what we were looking for and found us
+                  the perfect home in Summerlin. Her knowledge of the market is
+                  exceptional."
                 </p>
-                <p className="text-slate-900 font-semibold">— Michael & Sarah T., Summerlin</p>
+                <p className="text-slate-900 font-semibold">
+                  — Michael & Sarah T., Summerlin
+                </p>
               </div>
               <div className="bg-white border border-slate-200 rounded-lg p-6">
                 <div className="flex items-center mb-3">
@@ -416,30 +511,34 @@ export default function AboutPage() {
                   <Star className="h-5 w-5 text-yellow-400" />
                 </div>
                 <p className="text-slate-600 italic mb-3">
-                  "As first-time home buyers, we were nervous about the process. Dr. Jan walked 
-                  us through every step, explained everything clearly, and helped us get a great 
-                  deal. Highly recommend!"
+                  "As first-time home buyers, we were nervous about the process.
+                  Dr. Jan walked us through every step, explained everything
+                  clearly, and helped us get a great deal. Highly recommend!"
                 </p>
-                <p className="text-slate-900 font-semibold">— Jennifer & David K., Henderson</p>
+                <p className="text-slate-900 font-semibold">
+                  — Jennifer & David K., Henderson
+                </p>
               </div>
             </div>
           </section>
 
           {/* CTA */}
           <section className="text-center bg-blue-600 text-white rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Ready to Get Started?
+            </h2>
             <p className="text-xl text-blue-100 mb-8">
-              Questions about buying or selling in Las Vegas? Call or text Dr. Jan Duffy today 
-              for a free consultation. Whether you're ready to start your search or just exploring 
-              options, she's here to help.
+              Questions about buying or selling in Las Vegas? Call or text Dr.
+              Jan Duffy today for a free consultation. Whether you're ready to
+              start your search or just exploring options, she's here to help.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+17025001942"
+                href="tel:+17022221964"
                 className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (702) 500-1942
+                Call (702) 222-1964
               </a>
               <Link
                 href="/contact"
@@ -459,7 +558,7 @@ export default function AboutPage() {
           Last Updated: January 2026
         </div>
       </main>
-      <RealScoutListings />
+      <CalendlyScheduleSection />
       <Footer />
     </>
   );

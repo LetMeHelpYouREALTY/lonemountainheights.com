@@ -1,6 +1,9 @@
 import Navbar from "@/components/layouts/Navbar";
+import RealScoutOfficeSection from "@/components/realscout/RealScoutOfficeSection";
+import CalendlyScheduleSection from "@/components/calendly/CalendlyScheduleSection";
+import SectionEngagement from "@/components/sections/SectionEngagement";
+import AgentPortrait from "@/components/brand/AgentPortrait";
 import Footer from "@/components/layouts/Footer";
-import RealScoutListings from "@/components/realscout/RealScoutListings";
 import Link from "next/link";
 import {
   Phone,
@@ -14,11 +17,17 @@ import {
   TrendingUp,
 } from "lucide-react";
 import type { Metadata } from "next";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 
 export const metadata: Metadata = {
-  title: "Sun City Aliante Homes for Sale | Most Affordable Sun City | Dr. Jan Duffy",
+  alternates: {
+    canonical:
+      "https://lonemountainheights.com/55-plus-communities/sun-city-aliante",
+  },
+  title:
+    "Sun City Aliante Homes for Sale | Most Affordable Sun City | Dr. Jan Duffy",
   description:
-    "Sun City Aliante - the most affordable Sun City in Las Vegas. Homes from $280K-$550K with full amenities. 18-hole golf course, pools, fitness center. Dr. Jan Duffy, BHHS. Call (702) 500-1942.",
+    "Sun City Aliante - the most affordable Sun City in Las Vegas. Homes from $280K-$550K with full amenities. 18-hole golf course, pools, fitness center. Dr. Jan Duffy, BHHS. Call (702) 222-1964.",
   keywords: [
     "Sun City Aliante homes for sale",
     "Sun City Aliante Las Vegas",
@@ -57,6 +66,17 @@ const communitySchema = {
 export default function SunCityAliantePage() {
   return (
     <>
+      <PageJsonLd
+        path="/55-plus-communities/sun-city-aliante"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          {
+            name: "Sun City Aliante",
+            url: "/55-plus-communities/sun-city-aliante",
+          },
+        ]}
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(communitySchema) }}
@@ -89,10 +109,13 @@ export default function SunCityAliantePage() {
               Sun City Aliante
             </h1>
             <p className="text-xl text-slate-600">
-              Full Sun City amenities at the best value. Golf, pools, fitness, and
-              100+ clubs—from $280K.
+              Full Sun City amenities at the best value. Golf, pools, fitness,
+              and 100+ clubs—from $280K.
             </p>
           </div>
+
+          <RealScoutOfficeSection />
+          <SectionEngagement />
 
           {/* Quick Stats */}
           <section className="mb-16 bg-slate-900 text-white rounded-2xl p-8 md:p-12 max-w-5xl mx-auto">
@@ -104,6 +127,7 @@ export default function SunCityAliantePage() {
                 <div className="text-3xl font-bold text-green-400 mb-1">
                   $280K-$550K
                 </div>
+
                 <div className="text-slate-300 text-sm">Price Range</div>
               </div>
               <div className="text-center">
@@ -117,7 +141,9 @@ export default function SunCityAliantePage() {
                 <div className="text-slate-300 text-sm">Homes</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-400 mb-1">55+</div>
+                <div className="text-3xl font-bold text-green-400 mb-1">
+                  55+
+                </div>
                 <div className="text-slate-300 text-sm">Age Requirement</div>
               </div>
             </div>
@@ -133,20 +159,22 @@ export default function SunCityAliantePage() {
                 <strong>Sun City Aliante</strong> proves you don't have to
                 sacrifice quality for value. Built by Del Webb from 2003-2010,
                 this 2,800+ home community in North Las Vegas delivers the full
-                Sun City experience—championship golf, resort pools, state-of-the-art
-                fitness, and 100+ clubs—at the lowest price point of any Sun City
-                in Las Vegas.
+                Sun City experience—championship golf, resort pools,
+                state-of-the-art fitness, and 100+ clubs—at the lowest price
+                point of any Sun City in Las Vegas.
               </p>
               <p>
-                The community's 18-hole championship golf course winds through the
-                neighborhood, offering beautiful views and affordable resident
-                rates. The 42,000 square foot recreation center rivals those of
-                more expensive communities, with multiple pools, a fitness center,
-                tennis and pickleball courts, and gathering spaces for the
-                community's many clubs and activities.
+                The community's 18-hole championship golf course winds through
+                the neighborhood, offering beautiful views and affordable
+                resident rates. The 42,000 square foot recreation center rivals
+                those of more expensive communities, with multiple pools, a
+                fitness center, tennis and pickleball courts, and gathering
+                spaces for the community's many clubs and activities.
               </p>
               <p>
-                <strong>Berkshire Hathaway HomeServices Nevada Properties</strong>{" "}
+                <strong>
+                  Berkshire Hathaway HomeServices Nevada Properties
+                </strong>{" "}
                 helps buyers understand why Sun City Aliante represents
                 exceptional value. Dr. Jan Duffy guides clients through the
                 community's various floor plans and helps identify homes that
@@ -165,9 +193,9 @@ export default function SunCityAliantePage() {
                     Why Sun City Aliante Is the Best Value
                   </h3>
                   <p className="text-slate-700 mb-4">
-                    Compare Sun City Aliante to other Sun City communities and the
-                    value becomes clear. You get the same lifestyle, amenities,
-                    and community feel—at significantly lower prices.
+                    Compare Sun City Aliante to other Sun City communities and
+                    the value becomes clear. You get the same lifestyle,
+                    amenities, and community feel—at significantly lower prices.
                   </p>
                   <div className="grid md:grid-cols-3 gap-4">
                     <div className="bg-white rounded-lg p-4">
@@ -274,8 +302,8 @@ export default function SunCityAliantePage() {
                       Easy Freeway Access
                     </h3>
                     <p className="text-slate-600 text-sm">
-                      Direct access to I-215 and US-95. Downtown Las Vegas and the
-                      Strip are just 20-25 minutes away.
+                      Direct access to I-215 and US-95. Downtown Las Vegas and
+                      the Strip are just 20-25 minutes away.
                     </p>
                   </div>
                 </div>
@@ -288,8 +316,8 @@ export default function SunCityAliantePage() {
                       Aliante Casino & Hotel
                     </h3>
                     <p className="text-slate-600 text-sm">
-                      Walking distance to Aliante Casino with dining, entertainment,
-                      and movie theater.
+                      Walking distance to Aliante Casino with dining,
+                      entertainment, and movie theater.
                     </p>
                   </div>
                 </div>
@@ -302,8 +330,8 @@ export default function SunCityAliantePage() {
                       Lower Property Taxes
                     </h3>
                     <p className="text-slate-600 text-sm">
-                      North Las Vegas offers some of the lowest property tax rates
-                      in the valley.
+                      North Las Vegas offers some of the lowest property tax
+                      rates in the valley.
                     </p>
                   </div>
                 </div>
@@ -338,8 +366,8 @@ export default function SunCityAliantePage() {
                     Lowest entry price of any Sun City
                   </strong>
                   <p className="text-slate-600 text-sm">
-                    Homes starting around $280K—$40K-$70K less than other Sun City
-                    communities
+                    Homes starting around $280K—$40K-$70K less than other Sun
+                    City communities
                   </p>
                 </div>
               </div>
@@ -361,8 +389,8 @@ export default function SunCityAliantePage() {
                     Same amenities as more expensive communities
                   </strong>
                   <p className="text-slate-600 text-sm">
-                    Golf, pools, fitness, 100+ clubs—everything you'd expect from
-                    Sun City
+                    Golf, pools, fitness, 100+ clubs—everything you'd expect
+                    from Sun City
                   </p>
                 </div>
               </div>
@@ -385,16 +413,17 @@ export default function SunCityAliantePage() {
           <section className="mb-16 max-w-4xl mx-auto">
             <div className="bg-blue-50 border-l-4 border-blue-600 rounded-r-xl p-8">
               <blockquote className="text-lg text-slate-700 italic mb-4">
-                "Sun City Aliante is my top recommendation for buyers who want the
-                full Sun City lifestyle at the best possible price. The amenities
-                are excellent, the community is active and welcoming, and you
-                simply can't beat the value. As a{" "}
+                "Sun City Aliante is my top recommendation for buyers who want
+                the full Sun City lifestyle at the best possible price. The
+                amenities are excellent, the community is active and welcoming,
+                and you simply can't beat the value. As a{" "}
                 <strong>Berkshire Hathaway HomeServices</strong> agent, I help
-                buyers compare all the Sun City options and understand why Aliante
-                often makes the most financial sense."
+                buyers compare all the Sun City options and understand why
+                Aliante often makes the most financial sense."
               </blockquote>
               <cite className="text-slate-900 font-semibold">
-                — Dr. Jan Duffy, Berkshire Hathaway HomeServices Nevada Properties
+                — Dr. Jan Duffy, Berkshire Hathaway HomeServices Nevada
+                Properties
               </cite>
             </div>
           </section>
@@ -410,11 +439,11 @@ export default function SunCityAliantePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
               <a
-                href="tel:+17025001942"
+                href="tel:+17022221964"
                 className="inline-flex items-center justify-center bg-white text-green-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-green-50 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (702) 500-1942
+                Call (702) 222-1964
               </a>
               <Link
                 href="/contact"
@@ -435,7 +464,7 @@ export default function SunCityAliantePage() {
           Last Updated: January 2026
         </div>
       </main>
-      <RealScoutListings />
+      <CalendlyScheduleSection />
       <Footer />
     </>
   );

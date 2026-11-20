@@ -4,10 +4,9 @@ const config = {
   content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
-      extend: {
-        fontFamily: {
-          sans: ["var(--font-geist-sans)"],
-        },
+      fontFamily: {
+        sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "Georgia", "serif"],
       },
       keyframes: {
         "accordion-down": {
