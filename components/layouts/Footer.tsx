@@ -57,7 +57,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="http://drjanduffy.realscout.com/"
+                  href="https://drjanduffy.realscout.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-slate-300 hover:text-white transition-colors text-sm"
