@@ -9,7 +9,30 @@ import Link from "next/link";
 import { Phone, Home as HomeIcon, TrendingUp, Shield, Users } from "lucide-react";
 import { getPageDomainConfig } from "@/lib/get-domain-config";
 import { headers } from "next/headers";
-import { isLoneMountainHeightsDomain } from "@/lib/lone-mountain-heights";
+import {
+	isLoneMountainHeightsDomain,
+	LMH_NAP,
+} from "@/lib/lone-mountain-heights";
+import type { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+	const host = headers().get("x-domain") || headers().get("host") || "";
+	if (isLoneMountainHeightsDomain(host)) {
+		return {
+			title: "Lone Mountain Heights Homes for Sale | Dr. Jan Duffy, REALTOR®",
+			description:
+				"Lone Mountain Heights homes for sale in Northwest Las Vegas. Live MLS search, Calendly tours, buyer representation by Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Call (702) 222-1964.",
+			alternates: { canonical: LMH_NAP.siteUrl },
+			openGraph: {
+				title: "Lone Mountain Heights Homes for Sale",
+				url: LMH_NAP.siteUrl,
+				description:
+					"Northwest Las Vegas foothill homes with live MLS search and Calendly scheduling from Dr. Jan Duffy.",
+			},
+		};
+	}
+	return {};
+}
 
 export default async function Home() {
   const config = await getPageDomainConfig();

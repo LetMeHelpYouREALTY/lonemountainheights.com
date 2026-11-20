@@ -1,44 +1,68 @@
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import RealScoutListings from "@/components/realscout/RealScoutListings";
-import { Phone, Mail, MapPin, Clock, Calendar, CheckCircle, Star, Users, Shield } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Calendar, Star, Users, Shield } from "lucide-react";
 import CalendlyWidget from "@/components/calendly/CalendlyWidget";
-import Link from "next/link";
 import type { Metadata } from "next";
+import { getContactNap } from "@/lib/contact-nap";
+import { isLmhRequest } from "@/lib/request-host";
+import { LMH_NAP } from "@/lib/lone-mountain-heights";
 
-export const metadata: Metadata = {
-  title: "Contact Dr. Jan Duffy | Berkshire Hathaway HomeServices Las Vegas",
-  description:
-    "Contact Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Schedule an appointment, get directions, or call (702) 500-1942. Las Vegas, Henderson, Summerlin real estate expert.",
-  keywords: [
-    "contact real estate agent Las Vegas",
-    "Berkshire Hathaway contact",
-    "Dr. Jan Duffy phone",
-    "Las Vegas realtor contact",
-    "schedule real estate appointment",
-  ],
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const isLmh = isLmhRequest();
+  const nap = getContactNap(isLmh);
+  if (isLmh) {
+    return {
+      title: "Contact | Lone Mountain Heights | Dr. Jan Duffy",
+      description: `Contact Dr. Jan Duffy for Lone Mountain Heights homes. Call ${nap.phoneDisplay}. Office at ${LMH_NAP.addressFull}. Schedule on Calendly.`,
+      alternates: { canonical: `${nap.siteUrl}/contact` },
+      keywords: [
+        "contact Lone Mountain Heights realtor",
+        "Dr. Jan Duffy phone",
+        "Northwest Las Vegas realtor contact",
+      ],
+    };
+  }
+  return {
+    title: "Contact Dr. Jan Duffy | Berkshire Hathaway HomeServices Las Vegas",
+    description:
+      `Contact Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Schedule an appointment, get directions, or call ${nap.phoneDisplay}. Las Vegas, Henderson, Summerlin real estate expert.`,
+    keywords: [
+      "contact real estate agent Las Vegas",
+      "Berkshire Hathaway contact",
+      "Dr. Jan Duffy phone",
+      "Las Vegas realtor contact",
+      "schedule real estate appointment",
+    ],
+  };
+}
 
-const contactSchema = {
-  "@context": "https://schema.org",
-  "@type": "ContactPage",
-  mainEntity: {
-    "@type": "RealEstateAgent",
-    name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
-    telephone: "+17025001942",
-    email: "homes@heyberkshire.com",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "9406 W Lake Mead Blvd, Suite 100",
-      addressLocality: "Las Vegas",
-      addressRegion: "NV",
-      postalCode: "89134",
-      addressCountry: "US",
+export default async function ContactPage() {
+  const isLmh = isLmhRequest();
+  const nap = getContactNap(isLmh);
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    mainEntity: {
+      "@type": "RealEstateAgent",
+      "@id": `${nap.siteUrl}/#agent`,
+      name: isLmh
+        ? "Dr. Jan Duffy - Lone Mountain Heights"
+        : "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
+      telephone: nap.phoneTel,
+      email: nap.email,
+      url: `${nap.siteUrl}/contact`,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: nap.streetAddress,
+        addressLocality: nap.addressLocality,
+        addressRegion: nap.addressRegion,
+        postalCode: nap.postalCode,
+        addressCountry: nap.addressCountry,
+      },
     },
-  },
-};
+  };
 
-export default function ContactPage() {
   return (
     <>
       <script
@@ -81,10 +105,10 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-slate-900 mb-1">Phone (Call or Text)</h3>
                     <a
-                      href="tel:+17025001942"
+                      href={`tel:${nap.phoneTel}`}
                       className="text-2xl font-bold text-blue-600 hover:text-blue-700"
                     >
-                      (702) 500-1942
+                      {nap.phoneDisplay}
                     </a>
                     <p className="text-sm text-slate-500 mt-1">
                       Available 7 days a week, 9am-6pm
@@ -97,10 +121,10 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-slate-900 mb-1">Email</h3>
                     <a
-                      href="mailto:homes@heyberkshire.com"
+                      href={`mailto:${nap.email}`}
                       className="text-blue-600 hover:text-blue-700 font-medium"
                     >
-                      Homes@HeyBerkshire.com
+                      {nap.email}
                     </a>
                     <p className="text-sm text-slate-500 mt-1">
                       Typically respond within 2 hours
@@ -262,23 +286,23 @@ export default function ContactPage() {
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
               <a
-                href="tel:+17025001942"
+                href={`tel:${nap.phoneTel}`}
                 className="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white p-6 rounded-xl transition-colors"
               >
                 <Phone className="h-8 w-8 mr-4" />
                 <div className="text-left">
                   <div className="font-bold text-lg">Call Now</div>
-                  <div className="text-blue-100">(702) 500-1942</div>
+                  <div className="text-blue-100">{nap.phoneDisplay}</div>
                 </div>
               </a>
               <a
-                href="mailto:homes@heyberkshire.com"
+                href={`mailto:${nap.email}`}
                 className="flex items-center justify-center bg-slate-700 hover:bg-slate-800 text-white p-6 rounded-xl transition-colors"
               >
                 <Mail className="h-8 w-8 mr-4" />
                 <div className="text-left">
                   <div className="font-bold text-lg">Send Email</div>
-                  <div className="text-slate-300">Homes@HeyBerkshire.com</div>
+                  <div className="text-slate-300">{nap.email}</div>
                 </div>
               </a>
             </div>
@@ -301,7 +325,7 @@ export default function ContactPage() {
                 },
                 {
                   q: "How quickly can you respond to inquiries?",
-                  a: "I typically respond to calls, texts, and emails within 2 hours during business hours (9am-6pm daily). For urgent matters, calling or texting (702) 500-1942 is the fastest way to reach me.",
+                  a: `I typically respond to calls, texts, and emails within 2 hours during business hours (9am-6pm daily). For urgent matters, calling or texting ${nap.phoneDisplay} is the fastest way to reach me.`,
                 },
                 {
                   q: "Do you charge for consultations?",

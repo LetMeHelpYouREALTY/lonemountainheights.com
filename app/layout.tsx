@@ -28,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
       url: siteUrl,
       images: [{ url: "/images/agent/dr-jan-duffy.jpg", alt: "Dr. Jan Duffy, REALTOR®" }],
     },
-    alternates: { canonical: siteUrl },
+    // Per-path canonicals belong on page metadata — do not force homepage URL sitewide.
   };
 }
 

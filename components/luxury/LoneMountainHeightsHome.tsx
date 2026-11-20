@@ -8,10 +8,10 @@ import type { DomainConfig } from "@/lib/domain-config";
 import { BhhsNevadaMark } from "@/components/brand/BhhsNevadaMark";
 import {
 	buildCalendlyUrl,
-	buildLmhAgentJsonLd,
-	buildLmhFaqJsonLd,
-	buildLmhPlaceJsonLd,
+	buildLmhSiteGraphJsonLd,
+	LMH_AEO_ANSWERS,
 	LMH_FAQ,
+	LMH_NAP,
 	serializeJsonLd,
 } from "@/lib/lone-mountain-heights";
 
@@ -20,30 +20,21 @@ type LoneMountainHeightsHomeProps = {
 };
 
 export function LoneMountainHeightsHome({ config }: LoneMountainHeightsHomeProps) {
-	const siteUrl = `https://www.${config.domain}`;
+	const siteUrl = LMH_NAP.siteUrl;
 	const consultUrl = buildCalendlyUrl("buyer-consultation-30-min", "home-hero");
 	const showingUrl = buildCalendlyUrl("showing", "home-tour");
-
-	const jsonLd = [
-		buildLmhAgentJsonLd(siteUrl),
-		buildLmhPlaceJsonLd(siteUrl),
-		buildLmhFaqJsonLd(LMH_FAQ),
-	];
+	const graph = buildLmhSiteGraphJsonLd(siteUrl);
 
 	return (
 		<div className="lmh-luxury min-h-screen bg-[#121212] text-slate-100">
-			{jsonLd.map((block, index) => (
-				<script
-					key={index}
-					type="application/ld+json"
-					dangerouslySetInnerHTML={{ __html: serializeJsonLd(block) }}
-				/>
-			))}
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: serializeJsonLd(graph) }}
+			/>
 
 			<LuxuryNavbar scheduleHref={consultUrl} />
 
 			<main>
-				{/* Hero — no RealScout inside; listings band follows */}
 				<section className="relative overflow-hidden border-b border-[var(--lmh-border)]">
 					<div
 						className="absolute inset-0 bg-cover bg-center opacity-40"
@@ -52,21 +43,13 @@ export function LoneMountainHeightsHome({ config }: LoneMountainHeightsHomeProps
 					<div className="absolute inset-0 bg-gradient-to-b from-[#121212]/40 via-[#121212]/70 to-[#121212]" />
 					<div className="relative container mx-auto grid gap-10 px-4 py-16 md:grid-cols-[1.1fr_0.9fr] md:py-24 lg:items-center">
 						<div>
-							{config.ctaBadge ? (
-								<span className="inline-block rounded-full border border-[var(--lmh-gold)] px-4 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--lmh-gold)]">
-									{config.ctaBadge}
-								</span>
-							) : null}
-							<h1 className="mt-4 font-serif text-4xl font-semibold leading-tight text-white md:text-5xl lg:text-6xl">
+							<p className="font-serif text-2xl text-[var(--lmh-gold)] md:text-3xl">
+								Lone Mountain Heights
+							</p>
+							<h1 className="mt-3 font-serif text-4xl font-semibold leading-tight text-white md:text-5xl lg:text-6xl">
 								{config.heroHeadline}
 							</h1>
 							<p className="mt-6 max-w-xl text-lg text-slate-300">{config.heroSubheadline}</p>
-							<p className="mt-4 max-w-xl text-base text-slate-400">
-								<strong className="text-slate-200">Answer:</strong> Dr. Jan Duffy represents
-								buyers and sellers in Lone Mountain Heights and Northwest Las Vegas with
-								Berkshire Hathaway HomeServices Nevada Properties—search live listings below,
-								then schedule online.
-							</p>
 							<div className="mt-8 flex flex-wrap gap-4">
 								<a
 									href={consultUrl}
@@ -84,8 +67,11 @@ export function LoneMountainHeightsHome({ config }: LoneMountainHeightsHomeProps
 								>
 									Book a showing
 								</a>
-								<a href="tel:+17022221964" className="rounded-md px-2 py-3 font-semibold text-[var(--lmh-gold)]">
-									(702) 222-1964
+								<a
+									href={`tel:${LMH_NAP.phoneTel}`}
+									className="rounded-md px-2 py-3 font-semibold text-[var(--lmh-gold)]"
+								>
+									{LMH_NAP.phoneDisplay}
 								</a>
 							</div>
 						</div>
@@ -100,15 +86,20 @@ export function LoneMountainHeightsHome({ config }: LoneMountainHeightsHomeProps
 									className="h-auto w-full object-cover"
 									priority
 								/>
-								<div className="p-5 space-y-4">
+								<div className="space-y-4 p-5">
 									<BhhsNevadaMark variant="light" />
 									<p className="font-semibold text-white">Dr. Jan Duffy, REALTOR®</p>
-									<p className="mt-1 text-sm text-slate-400">
-										License S.0197614.LLC · Serving Northwest Las Vegas since 2008
+									<p className="text-sm text-slate-400">
+										License {LMH_NAP.license} · {LMH_NAP.addressFull}
 									</p>
-									<p className="mt-3 text-sm text-slate-300">
-										5.0★ on Realtor.com (50 reviews) · No generic web forms—schedule through
-										Calendly or call direct.
+									<p className="text-sm text-slate-300">
+										<a href={`tel:${LMH_NAP.phoneTel}`} className="text-[var(--lmh-gold)]">
+											{LMH_NAP.phoneDisplay}
+										</a>
+										{" · "}
+										<a href={`mailto:${LMH_NAP.email}`} className="underline">
+											{LMH_NAP.email}
+										</a>
 									</p>
 								</div>
 							</div>
@@ -123,25 +114,56 @@ export function LoneMountainHeightsHome({ config }: LoneMountainHeightsHomeProps
 					priceMax="2000000"
 				/>
 
-				{/* GEO context (no fabricated market stats) */}
+				<section className="border-b border-[var(--lmh-border)] py-16 md:py-20" aria-labelledby="lmh-aeo-heading">
+					<div className="container mx-auto max-w-4xl px-4">
+						<h2 id="lmh-aeo-heading" className="text-3xl font-semibold text-white">
+							Quick answers
+						</h2>
+						<p className="mt-3 text-slate-400">
+							Direct answers for search and AI assistants—same facts as our FAQ schema.
+						</p>
+						<div className="mt-10 space-y-10">
+							{LMH_AEO_ANSWERS.map((item) => (
+								<div key={item.id}>
+									<h3 className="text-xl font-semibold text-white">{item.heading}</h3>
+									<p className="mt-3 text-slate-300">
+										<strong className="text-slate-100">Answer: </strong>
+										{item.answer}
+									</p>
+								</div>
+							))}
+						</div>
+					</div>
+				</section>
+
 				<section className="py-16 md:py-20" aria-labelledby="lmh-geo-heading">
 					<div className="container mx-auto max-w-4xl px-4">
 						<h2 id="lmh-geo-heading" className="text-3xl font-semibold text-white">
 							Lone Mountain Heights at a glance
 						</h2>
 						<p className="mt-4 text-slate-300">
-							Lone Mountain Heights is a Northwest Las Vegas neighborhood along the Lone
-							Mountain corridor, with foothill views and access to the 215 beltway, Summerlin,
-							and Centennial Hills. Clark County School District serves the area.
+							<strong className="text-slate-100">Answer: </strong>
+							Lone Mountain Heights is a Northwest Las Vegas neighborhood along the Lone Mountain
+							corridor, with foothill views and access to the 215 beltway, Summerlin, and Centennial
+							Hills. Clark County School District serves the area.
 						</p>
 						<ul className="mt-6 list-disc space-y-2 pl-5 text-slate-300">
 							<li>Primarily single-family homes with desert and mountain outlooks</li>
 							<li>Convenient to Craig Ranch Regional Park and Northwest recreation</li>
-							<li>Buyer and seller representation with Dr. Jan Duffy—not a builder sales office</li>
+							<li>
+								Buyer and seller representation with Dr. Jan Duffy—not a builder sales office
+							</li>
 						</ul>
 						<p className="mt-6 text-sm text-slate-500">
-							Market pricing changes weekly—use the MLS search above or schedule a consultation for
-							current comps near your target streets.
+							Nearby:{" "}
+							<Link href="/neighborhoods/centennial-hills" className="text-[var(--lmh-gold)] underline">
+								Centennial Hills homes
+							</Link>
+							. Market pricing changes weekly—use the MLS search above or schedule a consultation for
+							current comps.
+						</p>
+						<p className="mt-4 text-sm text-slate-500">
+							Office: {LMH_NAP.addressFull} · {LMH_NAP.phoneDisplay}
 						</p>
 					</div>
 				</section>
@@ -166,13 +188,16 @@ export function LoneMountainHeightsHome({ config }: LoneMountainHeightsHomeProps
 							>
 								Schedule on Calendly
 							</a>
-							<Link href="/contact" className="rounded-md border border-slate-500 px-8 py-4 text-white">
+							<Link
+								href="/contact"
+								className="rounded-md border border-slate-500 px-8 py-4 text-white"
+							>
 								Office &amp; map
 							</Link>
 						</div>
 						<p className="mt-6 text-sm text-slate-500">
-							Dr. Jan Duffy · License S.0197614.LLC · Berkshire Hathaway HomeServices Nevada
-							Properties
+							{LMH_NAP.agentName} · License {LMH_NAP.license} · {LMH_NAP.brokerage} ·{" "}
+							{LMH_NAP.phoneDisplay}
 						</p>
 					</div>
 				</section>

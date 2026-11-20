@@ -17,58 +17,39 @@ import {
   ArrowRight,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { getContactNap } from "@/lib/contact-nap";
+import { isLmhRequest } from "@/lib/request-host";
+import { LMH_NAP } from "@/lib/lone-mountain-heights";
 
-export const metadata: Metadata = {
-  title: "About Dr. Jan Duffy | Berkshire Hathaway HomeServices Las Vegas",
-  description:
-    "Meet Dr. Jan Duffy, your trusted Berkshire Hathaway HomeServices Nevada Properties agent. Serving Las Vegas since 2008, $127M+ in transactions, Henderson & Summerlin specialist. Call (702) 500-1942.",
-  keywords: [
-    "Dr. Jan Duffy",
-    "Berkshire Hathaway HomeServices agent",
-    "Las Vegas realtor",
-    "BHHS Nevada Properties",
-    "Henderson real estate agent",
-    "Summerlin realtor",
-  ],
-};
-
-// Person Schema for Dr. Jan Duffy
-const personSchema = {
-  "@context": "https://schema.org",
-  "@type": "RealEstateAgent",
-  name: "Dr. Jan Duffy",
-  jobTitle: "REALTOR®",
-  description:
-    "Licensed real estate agent with Berkshire Hathaway HomeServices Nevada Properties, serving Las Vegas, Henderson, and Summerlin since 2008.",
-  telephone: "+17025001942",
-  email: "homes@heyberkshire.com",
-  url: "https://heyberkshire.com/about",
-  worksFor: {
-    "@type": "RealEstateAgent",
-    name: "Berkshire Hathaway HomeServices Nevada Properties",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "9406 W Lake Mead Blvd, Suite 100",
-      addressLocality: "Las Vegas",
-      addressRegion: "NV",
-      postalCode: "89134",
-    },
-  },
-  hasCredential: {
-    "@type": "EducationalOccupationalCredential",
-    credentialCategory: "Real Estate License",
-    credentialNumber: "S.0197614.LLC",
-  },
-  knowsAbout: [
-    "Las Vegas real estate",
-    "Henderson properties",
-    "Summerlin homes",
-    "Luxury real estate",
-    "Investment properties",
-    "55+ communities",
-    "California relocation",
-  ],
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const isLmh = isLmhRequest();
+  const nap = getContactNap(isLmh);
+  if (isLmh) {
+    return {
+      title: "About Dr. Jan Duffy | Lone Mountain Heights REALTOR®",
+      description: `Meet Dr. Jan Duffy, Lone Mountain Heights and Northwest Las Vegas REALTOR® at Berkshire Hathaway HomeServices Nevada Properties. License ${LMH_NAP.license}. Call ${nap.phoneDisplay}.`,
+      alternates: { canonical: `${nap.siteUrl}/about` },
+      keywords: [
+        "Dr. Jan Duffy",
+        "Lone Mountain Heights realtor",
+        "Northwest Las Vegas realtor",
+        "BHHS Nevada Properties",
+      ],
+    };
+  }
+  return {
+    title: "About Dr. Jan Duffy | Berkshire Hathaway HomeServices Las Vegas",
+    description: `Meet Dr. Jan Duffy, your trusted Berkshire Hathaway HomeServices Nevada Properties agent. Serving Las Vegas since 2008, $127M+ in transactions, Henderson & Summerlin specialist. Call ${nap.phoneDisplay}.`,
+    keywords: [
+      "Dr. Jan Duffy",
+      "Berkshire Hathaway HomeServices agent",
+      "Las Vegas realtor",
+      "BHHS Nevada Properties",
+      "Henderson real estate agent",
+      "Summerlin realtor",
+    ],
+  };
+}
 
 const specializations = [
   {
@@ -112,7 +93,55 @@ const areasServed = [
   "Spring Valley",
 ];
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const isLmh = isLmhRequest();
+  const nap = getContactNap(isLmh);
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "@id": `${nap.siteUrl}/#agent`,
+    name: "Dr. Jan Duffy",
+    jobTitle: "REALTOR®",
+    description: isLmh
+      ? "Licensed real estate agent with Berkshire Hathaway HomeServices Nevada Properties, specializing in Lone Mountain Heights and Northwest Las Vegas."
+      : "Licensed real estate agent with Berkshire Hathaway HomeServices Nevada Properties, serving Las Vegas, Henderson, and Summerlin since 2008.",
+    telephone: nap.phoneTel,
+    email: nap.email,
+    url: `${nap.siteUrl}/about`,
+    worksFor: {
+      "@type": "RealEstateAgent",
+      name: "Berkshire Hathaway HomeServices Nevada Properties",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: nap.streetAddress,
+        addressLocality: nap.addressLocality,
+        addressRegion: nap.addressRegion,
+        postalCode: nap.postalCode,
+      },
+    },
+    hasCredential: {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "Real Estate License",
+      credentialNumber: "S.0197614.LLC",
+    },
+    knowsAbout: isLmh
+      ? [
+          "Lone Mountain Heights",
+          "Northwest Las Vegas real estate",
+          "Centennial Hills",
+          "Las Vegas real estate",
+        ]
+      : [
+          "Las Vegas real estate",
+          "Henderson properties",
+          "Summerlin homes",
+          "Luxury real estate",
+          "Investment properties",
+          "55+ communities",
+          "California relocation",
+        ],
+  };
+
   return (
     <>
       <script
@@ -182,18 +211,18 @@ export default function AboutPage() {
                   <h3 className="font-bold text-slate-900 mb-4">Contact Dr. Jan Duffy</h3>
                   <div className="space-y-3">
                     <a
-                      href="tel:+17025001942"
+                      href={`tel:${nap.phoneTel}`}
                       className="flex items-center text-slate-700 hover:text-blue-600"
                     >
                       <Phone className="h-5 w-5 mr-3 text-blue-600" />
-                      <span className="font-semibold">(702) 500-1942</span>
+                      <span className="font-semibold">{nap.phoneDisplay}</span>
                     </a>
                     <a
-                      href="mailto:homes@heyberkshire.com"
+                      href={`mailto:${nap.email}`}
                       className="flex items-center text-slate-700 hover:text-blue-600"
                     >
                       <Mail className="h-5 w-5 mr-3 text-blue-600" />
-                      Homes@HeyBerkshire.com
+                      {nap.email}
                     </a>
                     <div className="flex items-start text-slate-700">
                       <MapPin className="h-5 w-5 mr-3 text-blue-600 mt-0.5" />
@@ -435,11 +464,11 @@ export default function AboutPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+17025001942"
+                href={`tel:${nap.phoneTel}`}
                 className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (702) 500-1942
+                Call {nap.phoneDisplay}
               </a>
               <Link
                 href="/contact"
