@@ -1,5 +1,5 @@
 import type { DomainConfig } from './domain-config'
-import type { FAQ } from '@/components/sections/FAQSection'
+import type { FAQ } from '@/lib/faqs'
 
 const LONE_MOUNTAIN_HEIGHTS_FAQS: FAQ[] = [
   {

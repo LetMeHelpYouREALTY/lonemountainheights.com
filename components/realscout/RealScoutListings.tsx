@@ -26,12 +26,22 @@ export default function RealScoutListings({ config }: Props) {
                 : `Discover exceptional homes in ${neighborhood} and the Las Vegas Valley.`}
             </p>
           </div>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center border border-slate-300 bg-white px-5 py-2.5 rounded-md font-semibold text-slate-800 hover:bg-slate-100 transition-colors"
-          >
-            Schedule a showing
-          </Link>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href="https://drjanduffy.realscout.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center border border-slate-300 bg-white px-5 py-2.5 rounded-md font-semibold text-slate-800 hover:bg-slate-100 transition-colors"
+            >
+              Open full MLS search
+            </a>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center border border-slate-300 bg-white px-5 py-2.5 rounded-md font-semibold text-slate-800 hover:bg-slate-100 transition-colors"
+            >
+              Schedule a showing
+            </Link>
+          </div>
         </div>
 
         <div

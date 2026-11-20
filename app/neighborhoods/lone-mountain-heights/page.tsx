@@ -256,6 +256,8 @@ export default async function LoneMountainHeightsPage() {
           subtitle="Live MLS — filter Northwest Las Vegas homes by price and features"
         />
 
+        <DomainRealScoutListings />
+
         <div className="container mx-auto px-4 py-16">
           {/* Answer-first overview */}
           <section className="mx-auto mb-16 max-w-4xl">
@@ -499,8 +501,6 @@ export default async function LoneMountainHeightsPage() {
             <CalendlyWidget url={scheduleUrl} height="700px" />
           </section>
         </div>
-
-        <DomainRealScoutListings />
 
         <section className="bg-blue-600 py-16 text-white">
           <div className="container mx-auto px-4 text-center">

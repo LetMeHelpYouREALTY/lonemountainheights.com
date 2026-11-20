@@ -225,9 +225,9 @@ export function generateLocalBusinessSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
-    "@id": "https://heyberkshire.com/#organization",
+    "@id": "https://lonemountainheights.com/#organization",
     name: businessInfo.name,
-    image: "https://heyberkshire.com/images/dr-jan-duffy.jpg",
+    image: "https://lonemountainheights.com/images/agent/dr-jan-duffy-portrait.jpg",
     url: businessInfo.url,
     telephone: businessInfo.phone.tel,
     email: businessInfo.email,

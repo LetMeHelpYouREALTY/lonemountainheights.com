@@ -1,5 +1,6 @@
-import FAQSection, { defaultFaqs } from '@/components/sections/FAQSection'
+import FAQSection from '@/components/sections/FAQSection'
 import { faqJsonLd, faqsForDomain } from '@/lib/domain-faqs'
+import { defaultFaqs } from '@/lib/faqs'
 import { jsonLdString } from '@/lib/json-ld'
 import type { DomainConfig } from '@/lib/domain-config'
 
