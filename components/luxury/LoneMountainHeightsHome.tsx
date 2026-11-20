@@ -5,6 +5,7 @@ import { LuxuryNavbar } from "@/components/layouts/LuxuryNavbar";
 import { RealScoutBelowHero } from "@/components/realscout/RealScoutBelowHero";
 import FAQSection from "@/components/sections/FAQSection";
 import type { DomainConfig } from "@/lib/domain-config";
+import { BhhsNevadaMark } from "@/components/brand/BhhsNevadaMark";
 import {
 	buildCalendlyUrl,
 	buildLmhAgentJsonLd,
@@ -99,7 +100,8 @@ export function LoneMountainHeightsHome({ config }: LoneMountainHeightsHomeProps
 									className="h-auto w-full object-cover"
 									priority
 								/>
-								<div className="p-5">
+								<div className="p-5 space-y-4">
+									<BhhsNevadaMark variant="light" />
 									<p className="font-semibold text-white">Dr. Jan Duffy, REALTOR®</p>
 									<p className="mt-1 text-sm text-slate-400">
 										License S.0197614.LLC · Serving Northwest Las Vegas since 2008

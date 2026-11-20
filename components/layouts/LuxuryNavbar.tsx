@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
+import { BhhsNevadaLogo } from "@/components/brand/BhhsNevadaLogo";
 
 type LuxuryNavbarProps = {
 	phoneDisplay?: string;
@@ -37,6 +38,10 @@ export function LuxuryNavbar({
 						</span>
 					</div>
 				</Link>
+
+				<div className="hidden shrink-0 lg:block">
+					<BhhsNevadaLogo variant="light" />
+				</div>
 
 				<nav className="hidden items-center gap-6 md:flex" aria-label="Primary">
 					<Link href="/listings" className="text-sm text-slate-300 hover:text-white">
