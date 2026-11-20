@@ -1,4 +1,5 @@
 import Navbar from "@/components/layouts/Navbar";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 import RealScoutOfficeSection from "@/components/realscout/RealScoutOfficeSection";
 import CalendlyScheduleSection from "@/components/calendly/CalendlyScheduleSection";
 import SectionEngagement from "@/components/sections/SectionEngagement";
@@ -23,17 +24,17 @@ import {
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sell Your Las Vegas Home | Berkshire Hathaway HomeServices",
+  title: "Sell Your Lone Mountain Heights Home | Dr. Jan Duffy",
   description:
-    "Sell your Las Vegas or Henderson home for top dollar with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Free home valuation. World-class marketing. Call (702) 222-1964.",
+    "Sell your Lone Mountain Heights or Northwest Las Vegas home with Dr. Jan Duffy. Free CMA, gated-community pricing strategy, Calendly consult. Call (702) 222-1964.",
   keywords: [
+    "sell Lone Mountain Heights home",
+    "89129 listing agent",
     "sell home Las Vegas",
-    "Las Vegas listing agent",
-    "Berkshire Hathaway sell house",
-    "Henderson home selling",
+    "Northwest Las Vegas home selling",
     "what is my home worth Las Vegas",
-    "Las Vegas real estate agent",
-    "Summerlin home selling",
+    "gated community home sale",
+    "Dr. Jan Duffy",
   ],
 };
 
@@ -128,7 +129,12 @@ const includedServices = [
 export default function SellersPage() {
   return (
     <>
-      <script
+      
+      <PageJsonLd
+        path="/sellers"
+        breadcrumbs={[{ name: "Home", url: "/" }]}
+      />
+<script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(sellerSchema) }}
       />

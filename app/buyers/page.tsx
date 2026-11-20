@@ -1,4 +1,5 @@
 import Navbar from "@/components/layouts/Navbar";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 import RealScoutOfficeSection from "@/components/realscout/RealScoutOfficeSection";
 import CalendlyScheduleSection from "@/components/calendly/CalendlyScheduleSection";
 import SectionEngagement from "@/components/sections/SectionEngagement";
@@ -24,17 +25,17 @@ import {
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Home Buying Guide Las Vegas | Berkshire Hathaway HomeServices",
+  title: "Buy Lone Mountain Heights Homes | Dr. Jan Duffy",
   description:
-    "Looking to buy a home in Las Vegas? Dr. Jan Duffy with Berkshire Hathaway HomeServices Nevada Properties guides you through every step. Free buyer consultation. Call (702) 222-1964.",
+    "Buy a home in Lone Mountain Heights or Northwest Las Vegas with Dr. Jan Duffy. Free buyer representation, gated-community comps, Calendly showings. Call (702) 222-1964.",
   keywords: [
+    "buy Lone Mountain Heights home",
+    "89129 homes for sale",
+    "Northwest Las Vegas buyer agent",
     "buy home Las Vegas",
-    "Las Vegas home buyer",
-    "Berkshire Hathaway buyer agent",
-    "Henderson homes for sale",
-    "first time home buyer Las Vegas",
+    "gated community Las Vegas",
     "California relocation Las Vegas",
-    "55+ communities Las Vegas",
+    "Dr. Jan Duffy",
   ],
 };
 
@@ -96,7 +97,12 @@ const neighborhoods = [
 export default function BuyersPage() {
   return (
     <>
-      <script
+      
+      <PageJsonLd
+        path="/buyers"
+        breadcrumbs={[{ name: "Home", url: "/" }]}
+      />
+<script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(buyerSchema) }}
       />

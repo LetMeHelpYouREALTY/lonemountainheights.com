@@ -3,7 +3,7 @@
 
 export const businessInfo = {
   // NAP - Must match GBP exactly
-  name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
+  name: "Lone Mountain Heights — Homes by Dr. Jan Duffy",
   address: {
     streetAddress: "9406 W Lake Mead Blvd, Suite 100",
     addressLocality: "Las Vegas",
@@ -12,11 +12,11 @@ export const businessInfo = {
     addressCountry: "US",
   },
   phone: {
-    display: "(702) 500-1942",
-    tel: "+17025001942",
+    display: "(702) 222-1964",
+    tel: "+17022221964",
   },
   email: "homes@heyberkshire.com",
-  url: "https://heyberkshire.com",
+  url: "https://lonemountainheights.com",
 
   // Business Details
   license: "S.0197614.LLC",
@@ -41,13 +41,18 @@ export const businessInfo = {
 
   // Service areas - Start focused, expand with prominence
   serviceAreas: [
-    // Primary (immediate city)
+    // Primary entity
+    "Lone Mountain Heights, Las Vegas, NV",
+    "89129",
+    // Primary corridor
+    "Northwest Las Vegas, NV",
+    "Centennial Hills, NV",
+    "Skye Canyon, NV",
+    // Secondary
     "Las Vegas, NV",
-    "Summerlin, NV",
-    // Secondary (close ZIPs)
-    "Henderson, NV",
     "North Las Vegas, NV",
-    // Tertiary (county expansion)
+    "Summerlin, NV",
+    "Henderson, NV",
     "Clark County, NV",
   ],
 

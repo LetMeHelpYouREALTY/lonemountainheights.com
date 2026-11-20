@@ -1,4 +1,5 @@
 import Navbar from "@/components/layouts/Navbar";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 import RealScoutOfficeSection from "@/components/realscout/RealScoutOfficeSection";
 import CalendlyScheduleSection from "@/components/calendly/CalendlyScheduleSection";
 import SectionEngagement from "@/components/sections/SectionEngagement";
@@ -67,7 +68,12 @@ const faqSchema = {
 export default function HomeValuationPage() {
   return (
     <>
-      <script
+      
+      <PageJsonLd
+        path="/home-valuation"
+        breadcrumbs={[{ name: "Home", url: "/" }]}
+      />
+<script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />

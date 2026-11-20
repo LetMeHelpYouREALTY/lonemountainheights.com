@@ -32,7 +32,7 @@ export default function AgentPortrait({
         width={px}
         height={px}
         className="h-full w-full object-cover"
-        priority={priority}
+        {...(priority ? { priority: true } : { loading: "lazy" as const })}
       />
     </div>
   );

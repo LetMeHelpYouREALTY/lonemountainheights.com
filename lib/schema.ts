@@ -85,19 +85,20 @@ export function generateRealEstateAgentSchema() {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
     "@id": `${BASE_URL}#organization`,
-    name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
+    name: siteConfig.fullName,
     alternateName: [
-      "HeyBerkshire",
+      "Lone Mountain Heights",
+      "Homes by Dr. Jan Duffy",
       "BHHS Nevada Properties",
-      "Berkshire Hathaway HomeServices",
+      "Berkshire Hathaway HomeServices Nevada Properties",
     ],
     url: BASE_URL,
-    logo: `${BASE_URL}/images/dr-jan-duffy.jpg`,
-    image: `${BASE_URL}/images/dr-jan-duffy.jpg`,
+    logo: `${BASE_URL}/images/agent/dr-jan-duffy.png`,
+    image: `${BASE_URL}/images/agent/dr-jan-duffy.png`,
     description: siteConfig.description,
-    telephone: "+1-702-500-1942",
+    telephone: "+1-702-222-1964",
     email: agentInfo.email,
-    priceRange: "$385K - $10M+",
+    priceRange: "$600K - $1.2M+",
     address: {
       "@type": "PostalAddress",
       streetAddress: officeInfo.address.street,
@@ -113,18 +114,19 @@ export function generateRealEstateAgentSchema() {
     },
     areaServed: [
       {
+        "@type": "Place",
+        name: "Lone Mountain Heights",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Las Vegas",
+          addressRegion: "NV",
+          postalCode: "89129",
+        },
+      },
+      {
         "@type": "City",
         name: "Las Vegas",
         sameAs: "https://en.wikipedia.org/wiki/Las_Vegas",
-      },
-      {
-        "@type": "City",
-        name: "Henderson",
-        sameAs: "https://en.wikipedia.org/wiki/Henderson,_Nevada",
-      },
-      {
-        "@type": "Place",
-        name: "Summerlin",
       },
       {
         "@type": "City",
@@ -132,15 +134,30 @@ export function generateRealEstateAgentSchema() {
       },
       {
         "@type": "Place",
-        name: "Green Valley",
+        name: "Centennial Hills",
+      },
+      {
+        "@type": "Place",
+        name: "Skye Canyon",
+      },
+      {
+        "@type": "City",
+        name: "Henderson",
+        sameAs: "https://en.wikipedia.org/wiki/Henderson,_Nevada",
       },
     ],
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-        opens: "08:00",
-        closes: "20:00",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "09:00",
+        closes: "18:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Saturday", "Sunday"],
+        opens: "10:00",
+        closes: "16:00",
       },
     ],
     hasCredential: {
@@ -170,6 +187,9 @@ export function generateRealEstateAgentSchema() {
       },
     },
     knowsAbout: [
+      "Lone Mountain Heights real estate",
+      "89129 homes for sale",
+      "Northwest Las Vegas gated communities",
       "Las Vegas real estate",
       "Henderson homes",
       "Summerlin properties",

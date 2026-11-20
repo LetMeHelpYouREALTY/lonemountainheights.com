@@ -4,49 +4,35 @@ import CalendlyScheduleSection from "@/components/calendly/CalendlyScheduleSecti
 import SectionEngagement from "@/components/sections/SectionEngagement";
 import AgentPortrait from "@/components/brand/AgentPortrait";
 import Footer from "@/components/layouts/Footer";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 import { Phone, Mail, MapPin, Clock, Calendar, CheckCircle, Star, Users, Shield } from "lucide-react";
 import CalendlyWidget from "@/components/calendly/CalendlyWidget";
 import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Dr. Jan Duffy | Berkshire Hathaway HomeServices Las Vegas",
+  title: "Contact Dr. Jan Duffy | Lone Mountain Heights Tours",
   description:
-    "Contact Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Schedule an appointment, get directions, or call (702) 222-1964. Las Vegas, Henderson, Summerlin real estate expert.",
+    "Contact Dr. Jan Duffy for Lone Mountain Heights showings and valuations. Book on Calendly or call (702) 222-1964. Berkshire Hathaway HomeServices Nevada Properties.",
   keywords: [
-    "contact real estate agent Las Vegas",
-    "Berkshire Hathaway contact",
+    "contact Lone Mountain Heights realtor",
     "Dr. Jan Duffy phone",
+    "Lone Mountain Heights showing",
     "Las Vegas realtor contact",
-    "schedule real estate appointment",
+    "schedule real estate appointment Las Vegas",
   ],
-};
-
-const contactSchema = {
-  "@context": "https://schema.org",
-  "@type": "ContactPage",
-  mainEntity: {
-    "@type": "RealEstateAgent",
-    name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
-    telephone: "+17022221964",
-    email: "homes@heyberkshire.com",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "9406 W Lake Mead Blvd, Suite 100",
-      addressLocality: "Las Vegas",
-      addressRegion: "NV",
-      postalCode: "89134",
-      addressCountry: "US",
-    },
-  },
 };
 
 export default function ContactPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
+      <PageJsonLd
+        path="/contact"
+        title="Contact Dr. Jan Duffy | Lone Mountain Heights"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Contact", url: "/contact" },
+        ]}
       />
       <Navbar />
       <main className="pt-24 pb-16">

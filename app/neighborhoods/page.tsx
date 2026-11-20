@@ -1,4 +1,5 @@
 import Navbar from "@/components/layouts/Navbar";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 import RealScoutOfficeSection from "@/components/realscout/RealScoutOfficeSection";
 import CalendlyScheduleSection from "@/components/calendly/CalendlyScheduleSection";
 import SectionEngagement from "@/components/sections/SectionEngagement";
@@ -9,15 +10,17 @@ import { MapPin, Phone, Home, Users, GraduationCap } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Las Vegas Neighborhoods | Berkshire Hathaway HomeServices",
+  title: "Lone Mountain Heights & Las Vegas Neighborhoods | Dr. Jan Duffy",
   description:
-    "Explore Las Vegas and Henderson neighborhoods with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. Summerlin, Henderson, The Ridges, Southern Highlands & more.",
+    "Explore Lone Mountain Heights and Las Vegas neighborhoods with Dr. Jan Duffy. Gated 89129 living, Centennial Hills, Skye Canyon, Summerlin & more. Call (702) 222-1964.",
   keywords: [
+    "Lone Mountain Heights",
     "Las Vegas neighborhoods",
-    "Henderson communities",
+    "89129 communities",
+    "Northwest Las Vegas neighborhoods",
+    "Centennial Hills",
+    "Skye Canyon",
     "Summerlin real estate",
-    "best neighborhoods Las Vegas",
-    "where to live Las Vegas",
   ],
 };
 
@@ -126,7 +129,12 @@ const neighborhoods = [
 export default function NeighborhoodsPage() {
   return (
     <>
-      <Navbar />
+      
+      <PageJsonLd
+        path="/neighborhoods"
+        breadcrumbs={[{ name: "Home", url: "/" }]}
+      />
+<Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Hero */}

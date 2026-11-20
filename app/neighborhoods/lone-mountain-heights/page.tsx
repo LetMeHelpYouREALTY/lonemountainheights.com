@@ -6,6 +6,8 @@ import SectionEngagement from "@/components/sections/SectionEngagement";
 import FAQSection from "@/components/sections/FAQSection";
 import AgentPortrait from "@/components/brand/AgentPortrait";
 import CalendlyButton from "@/components/calendly/CalendlyButton";
+import PageJsonLd from "@/components/seo/PageJsonLd";
+import AeoAnswerBlock from "@/components/seo/AeoAnswerBlock";
 import Link from "next/link";
 import { Phone, Mountain, Trees, Car, Home as HomeIcon } from "lucide-react";
 import type { Metadata } from "next";
@@ -29,22 +31,18 @@ export const metadata: Metadata = {
   },
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: LONE_MOUNTAIN_HEIGHTS.faqs.map((f) => ({
-    "@type": "Question",
-    name: f.question,
-    acceptedAnswer: { "@type": "Answer", text: f.answer },
-  })),
-};
-
 export default function LoneMountainHeightsPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      <PageJsonLd
+        path="/neighborhoods/lone-mountain-heights"
+        title="Lone Mountain Heights Homes for Sale | Las Vegas 89129"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Neighborhoods", url: "/neighborhoods" },
+          { name: "Lone Mountain Heights", url: "/neighborhoods/lone-mountain-heights" },
+        ]}
+        faqs={[...LONE_MOUNTAIN_HEIGHTS.faqs]}
       />
       <Navbar />
       <main className="pt-24 pb-0">
@@ -261,6 +259,8 @@ export default function LoneMountainHeightsPage() {
             </div>
           </div>
         </section>
+
+        <AeoAnswerBlock title="Lone Mountain Heights — answers for buyers and relocators" />
 
         <FAQSection
           faqs={[...LONE_MOUNTAIN_HEIGHTS.faqs]}

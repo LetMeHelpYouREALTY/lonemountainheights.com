@@ -1,4 +1,5 @@
 import Navbar from "@/components/layouts/Navbar";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 import RealScoutOfficeSection from "@/components/realscout/RealScoutOfficeSection";
 import CalendlyScheduleSection from "@/components/calendly/CalendlyScheduleSection";
 import SectionEngagement from "@/components/sections/SectionEngagement";
@@ -119,7 +120,12 @@ const luxuryServices = [
 export default function LuxuryHomesPage() {
   return (
     <>
-      <script
+      
+      <PageJsonLd
+        path="/luxury-homes"
+        breadcrumbs={[{ name: "Home", url: "/" }]}
+      />
+<script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(luxurySchema) }}
       />

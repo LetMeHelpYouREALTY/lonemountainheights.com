@@ -1,4 +1,5 @@
 import Navbar from "@/components/layouts/Navbar";
+import PageJsonLd from "@/components/seo/PageJsonLd";
 import RealScoutOfficeSection from "@/components/realscout/RealScoutOfficeSection";
 import CalendlyScheduleSection from "@/components/calendly/CalendlyScheduleSection";
 import SectionEngagement from "@/components/sections/SectionEngagement";
@@ -41,7 +42,12 @@ const reportSchema = {
 export default function MarketReportPage() {
   return (
     <>
-      <script
+      
+      <PageJsonLd
+        path="/market-report"
+        breadcrumbs={[{ name: "Home", url: "/" }]}
+      />
+<script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(reportSchema) }}
       />

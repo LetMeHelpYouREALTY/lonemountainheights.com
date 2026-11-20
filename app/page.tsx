@@ -9,6 +9,8 @@ import FAQSection from "@/components/sections/FAQSection";
 import AgentPortrait from "@/components/brand/AgentPortrait";
 import BrandLogo from "@/components/brand/BrandLogo";
 import CalendlyButton from "@/components/calendly/CalendlyButton";
+import PageJsonLd from "@/components/seo/PageJsonLd";
+import AeoAnswerBlock from "@/components/seo/AeoAnswerBlock";
 import Link from "next/link";
 import { Phone, Mountain, Shield, Home as HomeIcon, MapPin } from "lucide-react";
 import {
@@ -22,39 +24,15 @@ import {
 import { commonFAQs, marketStats } from "@/lib/site-config";
 
 export default function Home() {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: LONE_MOUNTAIN_HEIGHTS.faqs.map((f) => ({
-      "@type": "Question",
-      name: f.question,
-      acceptedAnswer: { "@type": "Answer", text: f.answer },
-    })),
-  };
-
-  const placeSchema = {
-    "@context": "https://schema.org",
-    "@type": "Place",
-    name: "Lone Mountain Heights",
-    description: BRAND.description,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Las Vegas",
-      addressRegion: "NV",
-      postalCode: "89129",
-      addressCountry: "US",
-    },
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }}
+      <PageJsonLd
+        path="/"
+        title={`${BRAND.name} Homes for Sale | ${BRAND.subscript}`}
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Lone Mountain Heights", url: "/neighborhoods/lone-mountain-heights" },
+        ]}
       />
       <Navbar />
       <main>
@@ -77,9 +55,9 @@ export default function Home() {
                 Gated homes. Mountain light.
                 <span className="block text-[#c9a227]">Lone Mountain Heights.</span>
               </h1>
-              <p className="text-lg md:text-xl text-white/85 mb-8 max-w-2xl">
-                Northwest Las Vegas 89129 — private gated living near Lone Mountain trails,
-                spacious floor plans, and comps that reward the right offer.
+              <p className="aeo-summary text-lg md:text-xl text-white/85 mb-8 max-w-2xl">
+                Lone Mountain Heights is a gated community in Northwest Las Vegas ZIP 89129 —
+                mountain views, spacious floor plans, and private tours with Dr. Jan Duffy.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <CalendlyButton
@@ -367,6 +345,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <AeoAnswerBlock />
 
         <FAQSection
           faqs={[...commonFAQs.general]}

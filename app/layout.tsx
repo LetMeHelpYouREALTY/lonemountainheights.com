@@ -75,6 +75,12 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: BRAND.url,
     },
+    other: {
+      "geo.region": "US-NV",
+      "geo.placename": "Lone Mountain Heights, Las Vegas",
+      "geo.position": "36.2365;-115.2825",
+      ICBM: "36.2365, -115.2825",
+    },
   };
 }
 
