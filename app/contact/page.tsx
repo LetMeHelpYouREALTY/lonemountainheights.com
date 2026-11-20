@@ -7,7 +7,6 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { getPageDomainConfig } from "@/lib/get-domain-config";
 import { calendlyUrl } from "@/lib/calendly";
-import { CLIENT_PHONE_DISPLAY, CLIENT_PHONE_TEL } from "@/lib/domain-site";
 
 export const metadata: Metadata = {
   title: "Contact Dr. Jan Duffy | Berkshire Hathaway HomeServices Las Vegas",
