@@ -17,6 +17,14 @@ export async function generateMetadata(): Promise<Metadata> {
     title: `${config.neighborhood} | Dr. Jan Duffy, REALTOR® | BHHS Nevada`,
     description: config.description,
     keywords: config.keywords,
+    alternates: {
+      canonical: siteOrigin,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, "max-image-preview": "large" },
+    },
     icons: {
       icon: [{ url: "/Image/agent1.jpg", sizes: "32x32", type: "image/jpeg" }],
       apple: "/Image/agent1.jpg",
@@ -26,7 +34,15 @@ export async function generateMetadata(): Promise<Metadata> {
       description: config.description,
       type: "website",
       url: siteOrigin,
+      siteName: config.neighborhood,
+      locale: "en_US",
       images: [{ url: "/Image/agent1.jpg", alt: "Dr. Jan Duffy, REALTOR®" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: config.heroHeadline,
+      description: config.description,
+      images: ["/Image/agent1.jpg"],
     },
   };
 }

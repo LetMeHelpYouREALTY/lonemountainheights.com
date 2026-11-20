@@ -21,22 +21,17 @@ export const LONE_MOUNTAIN_SITE_FAQ: FAQ[] = [
     answer:
       "Buyer representation is typically paid from the seller side under Nevada MLS practice. Schedule a consultation to talk through your price range, lender readiness, and which Northwest Las Vegas pockets fit your commute and lifestyle goals.",
   },
+  {
+    question: "Is Dr. Jan Duffy with Berkshire Hathaway HomeServices Nevada Properties?",
+    answer:
+      "Yes. Dr. Jan Duffy (License S.0197614.LLC) is a REALTOR® with Berkshire Hathaway HomeServices Nevada Properties (BHHSNV), the Las Vegas–area franchise backed by Berkshire Hathaway Inc. Brokerage services follow BHHS Nevada policies; market guidance on this site is provided by Dr. Jan Duffy for Lone Mountain and Northwest Las Vegas.",
+  },
+  {
+    question: "What is the difference between Lone Mountain and Centennial Hills?",
+    answer:
+      "Lone Mountain sits closer to the namesake butte and Lone Mountain Regional Park, with many established custom and resale homes in the 89129 ZIP. Centennial Hills continues master-planned growth to the north and west with newer retail along Durango and Craig. Many buyers compare both corridors for views, lot size, and commute to Summerlin or US-95.",
+  },
 ];
-
-export function buildFaqPageSchema(faqs: FAQ[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
-}
 
 export const LONE_MOUNTAIN_MARKET_STATS = [
   { value: "$495K", label: "NW Las Vegas Median", sub: "Centennial Hills corridor" },

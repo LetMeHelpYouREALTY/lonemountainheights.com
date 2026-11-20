@@ -6,18 +6,16 @@ import ReviewsSection from "@/components/sections/ReviewsSection";
 import FAQSection from "@/components/sections/FAQSection";
 import Footer from "@/components/layouts/Footer";
 import { HomeHeroCtas } from "@/components/home/HomeHeroCtas";
-import Link from "next/link";
 import Image from "next/image";
 import { Home as HomeIcon, TrendingUp, Shield, Users } from "lucide-react";
 import { getPageDomainConfig } from "@/lib/get-domain-config";
 import { NearbyAmenitiesSection } from "@/components/amenities/NearbyAmenitiesSection";
-import { getSiteOrigin } from "@/lib/amenities";
+import { getCommunityAmenityConfig, getSiteOrigin } from "@/lib/amenities";
 import { headers } from "next/headers";
-import {
-  buildFaqPageSchema,
-  LONE_MOUNTAIN_MARKET_STATS,
-  LONE_MOUNTAIN_SITE_FAQ,
-} from "@/lib/lone-mountain-content";
+import { LONE_MOUNTAIN_MARKET_STATS, LONE_MOUNTAIN_SITE_FAQ } from "@/lib/lone-mountain-content";
+import { buildHomePageGraph } from "@/lib/site-graph";
+import { BROKERAGE_LEGAL_NAME, BROKERAGE_MARKETING_URL } from "@/lib/brokerage";
+import Link from "next/link";
 
 export default async function Home() {
   const config = await getPageDomainConfig();
@@ -33,38 +31,20 @@ export default async function Home() {
         { value: "2.1", label: "Months Inventory", sub: "" },
       ] as const);
 
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "RealEstateAgent",
-    name: `Dr. Jan Duffy - ${config.neighborhood} Real Estate`,
-    url: siteOrigin,
-    telephone: "+17022221964",
-    image: `${siteOrigin}/Image/agent1.jpg`,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "9406 W Lake Mead Blvd, Suite 100",
-      addressLocality: "Las Vegas",
-      addressRegion: "NV",
-      postalCode: "89134",
-    },
-  };
-
-  const faqSchema = isLoneMountainHeights
-    ? buildFaqPageSchema(LONE_MOUNTAIN_SITE_FAQ)
-    : null;
+  const amenityConfig = getCommunityAmenityConfig(hostname);
+  const graphSchema = buildHomePageGraph({
+    siteOrigin,
+    config,
+    faqs: isLoneMountainHeights ? LONE_MOUNTAIN_SITE_FAQ : undefined,
+    amenityConfig,
+  });
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(graphSchema) }}
       />
-      {faqSchema ? (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      ) : null}
       <Navbar />
       <main>
         {/* Domain-Aware Hero — conversion first; MLS search sits below */}
@@ -141,6 +121,25 @@ export default async function Home() {
             </div>
           </div>
         </section>
+
+        {isLoneMountainHeights ? (
+          <section className="border-b border-slate-200 bg-slate-50 py-6" aria-label="Brokerage affiliation">
+            <div className="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-center gap-3 text-center text-sm text-slate-600">
+              <span>
+                Independent buyer &amp; seller representation with{" "}
+                <strong className="text-slate-900">{BROKERAGE_LEGAL_NAME}</strong> (BHHSNV).
+              </span>
+              <Link
+                href={BROKERAGE_MARKETING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-blue-600 hover:text-blue-700 underline underline-offset-4"
+              >
+                Visit bhhsnv.com
+              </Link>
+            </div>
+          </section>
+        ) : null}
 
         {/* RealScout MLS search — directly under hero */}
         <section

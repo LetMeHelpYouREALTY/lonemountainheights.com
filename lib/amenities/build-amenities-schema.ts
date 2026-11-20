@@ -1,4 +1,9 @@
 import type { CommunityAmenityConfig } from "./types";
+import {
+  BROKERAGE_LEGAL_NAME,
+  BROKERAGE_MARKETING_URL,
+  BROKERAGE_SAME_AS,
+} from "../brokerage";
 
 export function buildAmenitiesPageSchema(
   config: CommunityAmenityConfig,
@@ -17,7 +22,9 @@ export function buildAmenitiesPageSchema(
     identifier: "S.0197614.LLC",
     worksFor: {
       "@type": "Organization",
-      name: "Berkshire Hathaway HomeServices Nevada Properties",
+      name: BROKERAGE_LEGAL_NAME,
+      url: BROKERAGE_MARKETING_URL,
+      sameAs: [...BROKERAGE_SAME_AS],
     },
     areaServed: {
       "@type": "Place",
